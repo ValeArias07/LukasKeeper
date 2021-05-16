@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #FAEDE9;
+}
+
+.container button {
+    width: 180px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+#buttonRegist {
+    display: flex;
+    width: 180px;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 10;
+    background-color: #F87E96;
+    color: #394D72;
+    transition: all 0.3s ease 0s;
+}
+
+#buttonRegist:hover {
+    background-color: #a03c50;
+    color: #FAEDE9;
+}
+
+.container label {
+    font-family: "Monserrat", sans-serif;
+    width: 200px;
+    color: #394D72;
+    font-size: 20px;
+}
+
+.buttonContainer {
+    margin-top: 50px;
+}
+
+.field {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.field label {
+    margin: 10px;
+    text-align: right;
+}
+
+.container input {
+    width: 300px;
+    border: 0;
+    background-color: #DADDE1;
+    border-radius: 10px;
+    outline-color: #f87e96cc;
+    margin: 10px;
+    padding-left: 12px;
+    outline-width: 10px;
+}
+
+.container h1 {
+    font-family: "Monserrat", sans-serif;
+    color: #F87E96;
+    text-align: center;
+    margin: 10%;
+    font-weight: 10;
+}
+
+header {
+    background-color: #FAEDE9;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 2%;
+    border-radius: 20px;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.nav__links {
+    list-style: none;
+    display: flex;
+}
+
+.nav__links a {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #394D72;
+    text-decoration: none;
+}
+
+.nav__links li {
+    padding: 0px 20px;
+}
+
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+    color: #F87E96;
+}
+
+#own1,
+#own2 {
+    color: #F87E96;
+}
+
+
+/*
+Footer Config
+*/
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 2%;
+    background-color: #394D72;
+}
+
+.nav_links a {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #FAEDE9;
+    text-decoration: none;
+}
+
+.nav_links {
+    list-style: none;
+    display: flex;
+}
+
+.nav_links li {
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+    color: #F87E96;
+}

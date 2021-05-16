@@ -1,0 +1,7 @@
+.container {
+    flex-direction: column;
+}
+
+#name {
+    border-radius: 20px;
+}
