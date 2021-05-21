@@ -1,35 +1,68 @@
 package model;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class User {
+
+	public static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
 	private int id;
 	private String name;
 	private String lastName;
-	private Date dateOfbirth;
+	private Date dateOfBirth;
 	private String email;
 	private String password;
 	private String bank;
 	private String occupation;
-	private int idMonthlyPlan;
 
 	public User(){}
 
-	public User(String name, String password){
-		this.name = name;
+	public User(String email, String password){
+		this.email = email;
 		this.password = password;
 	}
 
-	public User(int id, String name, String lastName, Date dateOfbirth, String email, String password, String bank, String occupation, int idMonthlyPlan) {
+	public User(int id, String name, String lastName, Date dateOfBirth, String email, String password, String bank, String occupation) {
 		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
-		this.dateOfbirth = dateOfbirth;
+		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		this.password = password;
 		this.bank = bank;
 		this.occupation = occupation;
-		this.idMonthlyPlan = idMonthlyPlan;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public String getBank() {
+		return bank;
+	}
+
+	public String getOccupation() {
+		return occupation;
 	}
 }
