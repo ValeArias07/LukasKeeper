@@ -11,7 +11,7 @@ public class UserProvider {
         try {
             DBConnection connection = new DBConnection();
             connection.connect();
-            String sql = ("INSERT INTO users(name, lastname, email, password, dateOfbirth, bank, occupation, idMonthlyPlan, idCache) " +
+            String sql = ("INSERT INTO users(name, lastname, email, password, dateOfbirth, bank, occupation) " +
                     "VALUES ($NAME,$LASTNAME,$EMAIL, $PASSWORD,$BORNDATE, $BANK,$OCCUPATION")
                     .replace("$NAME","'"+user.getName()+"'")
                     .replace("$LASTNAME", "'"+user.getLastName()+"'")
