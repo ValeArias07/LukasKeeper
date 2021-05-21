@@ -21,6 +21,7 @@ public class UserProvider {
                     .replace("$BANK","'"+ user.getBank()+"'")
                     .replace("$OCCUPATION", "'"+user.getOccupation()+"'");
             connection.commandSQL(sql);
+            connection.disconnect();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
