@@ -1,5 +1,6 @@
 package model;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -7,7 +8,6 @@ public class User {
 
 	public static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-	private int id;
 	private String name;
 	private String lastName;
 	private Date dateOfBirth;
@@ -23,19 +23,14 @@ public class User {
 		this.password = password;
 	}
 
-	public User(int id, String name, String lastName, Date dateOfBirth, String email, String password, String bank, String occupation) {
-		this.id = id;
+	public User(String name, String lastName, String dateOfBirth, String email, String password, String bank, String occupation) throws ParseException {
 		this.name = name;
 		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
+		this.dateOfBirth = format.parse(dateOfBirth);
 		this.email = email;
 		this.password = password;
 		this.bank = bank;
 		this.occupation = occupation;
-	}
-
-	public int getId() {
-		return id;
 	}
 
 	public String getName() {
