@@ -48,13 +48,16 @@ public class UserProvider {
         DBConnection connection = new DBConnection();
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        String name = resultSet.getString(resultSet.findColumn("name"));
-        String lastName = resultSet.getString(resultSet.findColumn("lastname"));
-        String password = resultSet.getString(resultSet.findColumn("password"));
-        String dateOfBirth = resultSet.getString(resultSet.findColumn("dateOfbirth"));
-        String bank = resultSet.getString(resultSet.findColumn("bank"));
-        String occupation = resultSet.getString(resultSet.findColumn("occupation"));
-        User user = new User(name,lastName,dateOfBirth,email,password,bank,occupation);
+        User user = null;
+        if(resultSet.next()) {
+            String name = resultSet.getString(resultSet.findColumn("name"));
+            String lastName = resultSet.getString(resultSet.findColumn("lastname"));
+            String password = resultSet.getString(resultSet.findColumn("password"));
+            String dateOfBirth = resultSet.getString(resultSet.findColumn("dateOfbirth"));
+            String bank = resultSet.getString(resultSet.findColumn("bank"));
+            String occupation = resultSet.getString(resultSet.findColumn("occupation"));
+            user = new User(name, lastName, dateOfBirth, email, password, bank, occupation);
+        }
         connection.disconnect();
         return user;
     }
