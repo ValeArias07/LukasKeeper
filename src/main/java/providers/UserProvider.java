@@ -55,6 +55,7 @@ public class UserProvider {
         String bank = resultSet.getString(resultSet.findColumn("bank"));
         String occupation = resultSet.getString(resultSet.findColumn("occupation"));
         User user = new User(name,lastName,dateOfBirth,email,password,bank,occupation);
+        connection.disconnect();
         return user;
     }
 }
