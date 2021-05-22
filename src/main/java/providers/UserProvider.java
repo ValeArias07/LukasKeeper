@@ -44,7 +44,7 @@ public class UserProvider {
     }
 
     public User getUser(String email) throws SQLException, ParseException {
-        String sql = "SELECT * FROM users WHERE email = $EMAIL".replace("$EMAIL", "'" + email + "'");
+        String sql = "SELECT * FROM users WHERE email = $EMAIL".replace("$EMAIL", "'" + email.trim() + "'");
         DBConnection connection = new DBConnection();
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
