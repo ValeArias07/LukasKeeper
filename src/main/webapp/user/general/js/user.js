@@ -1,8 +1,8 @@
 class User{
-     constructor(name,lastname,dateOfBirth, email, bank, occupation, password, repassword) {
+     constructor(name,lastName,dateOfBirth, email, bank, occupation, password, repassword) {
 
         this.name=name;
-        this.lastname=lastname;
+        this.lastName=lastName;
         this.dateOfBirth=dateOfBirth;
         this.email=email;
         this.bank=bank;

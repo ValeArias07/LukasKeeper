@@ -26,24 +26,26 @@ public class UserServices {
 				.build();
 	}
 
-
-	@POST
+	@PUT
 	@Consumes("application/json")
-	@Path("signin1")
-	public void addNewUser1(String user) {
+	@Path("edit")
+	public Response editProfile(String user) {
+
 		Gson gson = new Gson();
 		UserProvider userProvider= new UserProvider();
 		User userObj= gson.fromJson(user,User.class);
-		System.out.println(userObj.toString());
+		userProvider.updateUser(userObj);
+
+		return Response
+				.status(200)
+				.header("Access-Control-Allow-Origin","*")
+				.build();
 	}
 
-	@PUT
-	@Path("edit")
-	public String editProfile(String user) { return ""; }
-
 	@GET
-	@Path("forgotpassword")
-	public String setTemporaryPassword(@QueryParam("email") String email) {
+	@Path("forgotpassword/{email}")
+	public String setTemporaryPassword(@PathParam("email") String email) {
+
 		return "";
 	}
 

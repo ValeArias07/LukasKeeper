@@ -28,4 +28,8 @@ public class UserProvider {
             throwables.printStackTrace();
         }
     }
+
+    public void updateUser(User user) {
+
+    }
 }
