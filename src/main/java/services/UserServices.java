@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-@Path("category")
+@Path("user")
 public class UserServices {
 
 	@POST

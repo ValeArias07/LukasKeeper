@@ -8,14 +8,30 @@ body {
     background-color: #FAEDE9;
 }
 
+#title {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: #F87E96;
+    margin: 2% 0 2% 0;
+}
+
 .container {
+    display: flex;
     width: 100%;
     height: 100%;
 }
 
+.container h2 {
+    font-family: 'Roboto', sans-serif;
+    color: #F87E96;
+}
+
+.container info {
+    font-family: 'Roboto', sans-serif;
+    color: #F87E96;
+}
+
 .article {
-    margin: 2% 4% 2% 4%;
-    padding-top: 30px;
     left: 0;
     width: auto;
     height: auto;
@@ -67,7 +83,43 @@ header {
     color: #F87E96;
 }
 
+#helpImage {
+    margin-left: 30px;
+}
 
+.info {
+    font-family: 'Work Sans', sans-serif;
+    text-align: left;
+    margin-left: 30%;
+    margin-bottom: 20%;
+    weight: auto;
+    height: auto;
+}
+
+.info p {
+    font-family: 'Work Sans', sans-serif;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 8x;
+    color: #394D72;
+}
+
+#infoLogo {
+    margin-bottom: 20%;
+}
+
+.socials span {
+    margin-left: 10px;
+}
+
+.socials a {
+    text-decoration: none;
+}
+
+.socials {
+    margin-bottom: 8px;
+    margin-top: 10px;
+}
 /*
 Footer Config
 */
