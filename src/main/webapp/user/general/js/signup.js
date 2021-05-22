@@ -1,10 +1,11 @@
 const name = document.getElementById('name');
 const lastName = document.getElementById('lastname');
-const dateOfBirth = document.getElementById('dateOfBirth');
 const email = document.getElementById('email');
-const occupation = document.getElementById('ocupation');
 const password = document.getElementById('password');
 const repassword = document.getElementById('repassword');
+const dateOfBirth = document.getElementById('dateOfBirth');
+const bank = document.getElementById('bank');
+const occupation = document.getElementById('ocupation');
 const button = document.getElementById('buttonRegist');
 
 const verifyPassword =()=>{
@@ -17,7 +18,7 @@ const verifyPassword =()=>{
 }
 
 const signUp=()=>{
-    const user = new User(name.value, lastName.value, dateOfBirth.value, email.value, occupation.value, password.value, repassword.value);
+    const user = new User(name.value, lastName.value, dateOfBirth.value, email.value, password.value, bank.value, occupation.value, );
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "http://localhost:8081/LukasKeeper_war/api/category/signup");
     xhr.setRequestHeader('Content-Type', 'application/json');
