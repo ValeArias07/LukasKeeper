@@ -18,9 +18,9 @@ const verifyPassword =()=>{
 }
 
 const signUp=()=>{
-    const user = new User(name.value, lastName.value, dateOfBirth.value, email.value, password.value, bank.value, occupation.value, );
+    const user = new User(name.value, lastName.value, dateOfBirth.value, email.value, password.value, bank.value, occupation.value);
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:8081/LukasKeeper_war/api/category/signup");
+    xhr.open("POST", "http://localhost:8081/LukasKeeper_war/api/user/signup");
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(user));
 }
