@@ -72,6 +72,18 @@ body {
     outline-width: 10px;
 }
 
+.selectFormat{
+    width: 300px;
+    border: 0;
+    background-color: #DADDE1;
+    border-radius: 10px;
+    outline-color: #f87e96cc;
+    margin: 10px;
+    padding-left: 12px;
+    outline-width: 10px;
+}
+
+
 .container h1 {
     font-family: "Monserrat", sans-serif;
     color: #F87E96;

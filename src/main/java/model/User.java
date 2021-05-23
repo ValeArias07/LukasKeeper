@@ -29,8 +29,10 @@ public class User {
         this.email = email;
         this.password = password;
         this.bank = bank;
-        this.occupation = occupation;
+        this.occupation=occupation;
     }
+
+
 
     public String getName() {
         return name;
