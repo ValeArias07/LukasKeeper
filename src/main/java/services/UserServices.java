@@ -73,6 +73,27 @@ public class UserServices {
 	@GET
 	@Produces("application/json")
 	@Path("checkEmail")
+	public boolean getComprobation(@QueryParam("email") String email) {
+		boolean check=false;
+		try {
+			UserProvider userProvider= new UserProvider();
+			User user=userProvider.getUser(email);
+			if(user==null){
+				return true;
+			}else{
+				return false;
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return check;
+	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getUserInfo")
 	public String getUser(@QueryParam("email") String email) {
 		String json="";
 		try {
@@ -88,5 +109,28 @@ public class UserServices {
 		}
 		return json;
 	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getNameAndPhoto")
+	public String getNameAndPhoto(@QueryParam("email") String email){
+		String json="";
+		try {
+			UserProvider userProvider= new UserProvider();
+			User user=userProvider.getUser(email);
+			Gson gson = new Gson();
+			json=gson.toJson(user.getName());
+			return json;
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return json;
+
+
+	}
+
+
 
 }
