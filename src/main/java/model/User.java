@@ -1,13 +1,12 @@
 package model;
 
+import db.DBConnection;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
-
-    public static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
     private String name;
     private String lastName;
     private Date dateOfBirth;
@@ -26,7 +25,7 @@ public class User {
     public User(String name, String lastName, String dateOfBirth, String email, String password, String bank, String occupation) throws ParseException {
         this.name = name;
         this.lastName = lastName;
-        this.dateOfBirth = format.parse(dateOfBirth);
+        this.dateOfBirth = DBConnection.format.parse(dateOfBirth);
         this.email = email;
         this.password = password;
         this.bank = bank;

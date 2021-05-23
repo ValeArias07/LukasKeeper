@@ -1,9 +1,11 @@
 package db;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class DBConnection {
 
+    public static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     private Connection connection;
 
     public DBConnection(){
