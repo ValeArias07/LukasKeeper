@@ -14,7 +14,7 @@ public class ExpensesServices {
 	@POST
 	@Consumes("application/json")
 	@Path("add")
-	public Response add(String expense) {
+	public Response add(@QueryParam("email") String email, String expense) {
 		try {
 			Gson gson = new Gson();
 			ChangeInAsset expenseObj=gson.fromJson(expense, ChangeInAsset.class);
