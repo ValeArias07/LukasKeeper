@@ -66,4 +66,9 @@ public class ChangeInAsset {
 	public int getIdUser() {
 		return idUser;
 	}
+
+
+	public void setNegativeValue(){
+		this.value *= (-1);
+	}
 }
