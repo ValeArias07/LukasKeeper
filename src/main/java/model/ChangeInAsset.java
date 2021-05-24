@@ -3,7 +3,7 @@ package model;
 
 import java.util.Date;
 
-public class ChangesInAssets {
+public class ChangeInAsset {
 
 	private int id;
 	private double value;
@@ -14,9 +14,9 @@ public class ChangesInAssets {
 	private int idUser;
 
 
-	public ChangesInAssets(){}
+	public ChangeInAsset(){}
 
-	public ChangesInAssets(int id, double value, String description, Date date, String frequency, int idCategory, int idUser) {
+	public ChangeInAsset(int id, double value, String description, Date date, String frequency, int idCategory, int idUser) {
 		this.id = id;
 		this.value = value;
 		this.description = description;
@@ -26,7 +26,7 @@ public class ChangesInAssets {
 		this.idUser = idUser;
 	}
 
-	public ChangesInAssets(double value, String description, Date date, String frequency, int idCategory, int idUser) {
+	public ChangeInAsset(double value, String description, Date date, String frequency, int idCategory, int idUser) {
 		this.value = value;
 		this.description = description;
 		this.date = date;
