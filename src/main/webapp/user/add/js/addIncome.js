@@ -14,7 +14,7 @@ const addIncome=(idCategory)=>{
 
     let xhr = new XMLHttpRequest();
     const income = new Income(amount.value, description.value, frequency.value, idCategory);
-    xhr.open("POST", "http://localhost:8081/LukasKeeper_war/api/user/categories/incomes.html");
+    xhr.open("POST", "http://localhost:8081/LukasKeeper_war/api/incomes/add");
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(income));
     alert("Ingreso añadido!");
