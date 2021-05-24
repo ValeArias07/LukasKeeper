@@ -1,6 +1,6 @@
 class Expense{
-    constructor(amount, description, idCategory){
-        this.amount=amount;
+    constructor(value, description, idCategory){
+        this.value=value;
         this.description=description;
         this.idCategory=idCategory;
     }
