@@ -13,7 +13,7 @@ const addExpense=(idCategory)=>{
 
     let xhr = new XMLHttpRequest();
     const expense = new Income(amount.value, description.value, idCategory);
-    xhr.open("POST", "http://localhost:8081/LukasKeeper_war/api/api/expenses/add");
+    xhr.open("POST", "http://localhost:8081/LukasKeeper_war/api/expenses/add");
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(expense));
     alert("Ingreso añadido!");
