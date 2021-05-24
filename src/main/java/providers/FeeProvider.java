@@ -12,7 +12,7 @@ public class FeeProvider {
     public void addFee(Fee fee) throws SQLException {
         DBConnection connection = new DBConnection();
         String date =DBConnection.format.format(fee.getDate());
-        String sql = ("INSERT INTO users(value, date, idSavingPlan, idDebts) " +
+        String sql = ("INSERT INTO fee(value, date, idSavingPlan, idDebts) " +
                 "VALUES ($VALUE,$DATE,$IDSP, $IDD)")
                 .replace("$VALUE","'"+fee.getValue()+"'")
                 .replace("$DATE","'"+date+"'")
