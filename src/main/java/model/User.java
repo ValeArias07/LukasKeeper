@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
+    private int id;
     private String name;
     private String lastName;
     private Date dateOfBirth;
@@ -21,7 +22,6 @@ public class User {
         this.email = email;
         this.password = password;
     }
-
     public User(String name, String lastName, String dateOfBirth, String email, String password, String bank, String occupation) throws ParseException {
         this.name = name;
         this.lastName = lastName;
@@ -31,8 +31,20 @@ public class User {
         this.bank = bank;
         this.occupation=occupation;
     }
+    public User(int id, String name, String lastName, String dateOfBirth, String email, String password, String bank, String occupation) throws ParseException {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.dateOfBirth = DBConnection.format.parse(dateOfBirth);
+        this.email = email;
+        this.password = password;
+        this.bank = bank;
+        this.occupation=occupation;
+    }
 
+    public void setId(int id) { this.id = id; }
 
+    public int getId() { return id; }
 
     public String getName() {
         return name;
