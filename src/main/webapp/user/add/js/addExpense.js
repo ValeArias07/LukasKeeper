@@ -6,7 +6,7 @@ const button = document.getElementById('buttonContainer');
 const getSelectors=()=>{
     let index1= document.getElementById("idCategory").selectedIndex;
     var idCategory=document.getElementById("idCategory").options[index1].text;
-    addIncome(idCategory);
+    addExpense(idCategory);
 }
 
 const addExpense=(idCategory)=>{
