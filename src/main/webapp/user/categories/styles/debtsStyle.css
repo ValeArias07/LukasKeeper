@@ -59,15 +59,19 @@ footer {
 #own2 {
     color: #F87E96;
 }
-
-#ownButton {
-    color: #F87E96
-}
-
-
 /*
 article config
 */
+
+.titleAD{
+    color: #df7187;
+    padding-top:10px;
+}
+
+.imgPageD{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
 
 .container {
     overflow: auto;
@@ -75,18 +79,98 @@ article config
 }
 
 .article {
-    position: sticky;
     margin: 4% 2%;
     padding-top: 30px;
-    width: auto;
+    height: auto;
+    width: 65%;
     float: right;
     text-align: center;
     border-radius: 20px;
-    background-color: #394D72;
-    font-family: 'Roboto', sans-serif;
+    background-color: #FAEDE9;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.field {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.fieldSelect {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 50px;
 }
 
 
+#title {
+    font-family: 'Work Sans', sans-serif;
+    margin-bottom: 80px;
+    font-size: larger;
+    color: #F87E96;
+}
+
+.field label {
+    margin: 10px;
+    text-align: right;
+    justify-content: flex-end;
+    width: 120px;
+    color: #394d72;
+}
+
+.fieldSelect label {
+    margin: 10px;
+    text-align: right;
+    justify-content: flex-end;
+    width: 120px;
+    color: #394d72;
+}
+
+#button {
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 10;
+    background-color: #F87E96;
+    color: #394D72;
+    transition: all 0.3s ease 0s;
+    margin-bottom: 60px;
+}
+
+#fieldContainer {
+    margin: 60px 0 40px 0;
+}
+
+.container input {
+    width: 300px;
+    border: 0;
+    background-color: #DADDE1;
+    border-radius: 10px;
+    outline-color: #f87e96cc;
+    margin: 10px;
+    padding-left: 12px;
+    outline-width: 10px;
+}
+
+#imagC {
+    height: 90px;
+    width: 90px;
+}
+
+.selectFormat {
+    width: 300px;
+    border: 0;
+    background-color: #DADDE1;
+    border-radius: 10px;
+    outline-color: #f87e96cc;
+    margin: 10px;
+    padding-left: 12px;
+    outline-width: 10px;
+}
 /*
 Sidebar consig
 */
