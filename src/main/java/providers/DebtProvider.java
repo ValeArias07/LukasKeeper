@@ -34,7 +34,7 @@ public class DebtProvider {
     }
 
     public ArrayList<Debt> getAllDebts(String emailUser) throws SQLException, ParseException {
-        String sql = ("SELECT debts.* FROM debts INNER JOIN users ON debts.idUser = users.id WHERE users.email = $EMAIL").replace("$EMAIL", "'" + emailUser + "'");
+        String sql = ("SELECT debts.* FROM debts INNER JOIN users ON debts.idUser = users.id WHERE users.email = $EMAIL").replace("$EMAIL", "'" + emailUser.trim() + "'");
         DBConnection connection = new DBConnection();
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
