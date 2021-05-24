@@ -1,4 +1,4 @@
-const amount = document.getElementById('amount');
+const value = document.getElementById('amount');
 const description = document.getElementById('description');
 const frequency = document.getElementById('frequency');
 const idCategory = document.getElementById('incomeType');
@@ -13,7 +13,7 @@ const getSelectors=()=>{
 const addIncome=(idCategory)=>{
 
     let xhr = new XMLHttpRequest();
-    const income = new Income(amount.value, description.value, frequency.value, idCategory);
+    const income = new Income(value.value, description.value, frequency.value, idCategory);
     xhr.open("POST", "http://localhost:8081/LukasKeeper_war/api/incomes/add");
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(income));
