@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class SavingPlan {
 
@@ -9,20 +9,59 @@ public class SavingPlan {
 	private double balance;
 	private double total;
 	private Date date;
-	private int fee;
-	private double interest;
+	private int monthlyFee;
 	private int idUser;
 
 	public SavingPlan(){}
 
-	public SavingPlan(int id, double goal, double balance, double total,Date date, int fee, double interest, int idUser) {
+	public SavingPlan(double goal, double balance, double total,Date date, int monthlyFee, int idUser) {
+		this.goal = goal;
+		this.balance = balance;
+		this.total = total;
+		this.date = date;
+		this.monthlyFee = monthlyFee;
+		this.idUser = idUser;
+	}
+
+	public SavingPlan(int id, double goal, double balance, double total,Date date, int monthlyFee, int idUser) {
 		this.id = id;
 		this.goal = goal;
 		this.balance = balance;
 		this.total = total;
 		this.date = date;
-		this.fee = fee;
-		this.interest = interest;
+		this.monthlyFee = monthlyFee;
 		this.idUser = idUser;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public double getGoal() {
+		return goal;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public int getMonthlyFee() {
+		return monthlyFee;
+	}
+
+	public int getIdUser() {
+		return idUser;
 	}
 }
