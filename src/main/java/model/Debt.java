@@ -1,34 +1,33 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Debt {
 
 	private int id;
 	private double value;
-	private Date date;
 	private String description;
+	private Date date;
 	private int fee;
 	private double interest;
 	private int idUser;
 
 	public Debt(){}
 
-	public Debt(double value, Date date, String description, int fee, double interest, int idUser) {
-		this.id = id;
+	public Debt(double value, String description, Date date, int fee, double interest, int idUser) {
 		this.value = value;
-		this.date=date;
 		this.description = description;
+		this.date=date;
 		this.fee = fee;
 		this.interest = interest;
 		this.idUser = idUser;
 	}
 
-	public Debt(int id, double value, Date date, String description, int fee, double interest, int idUser) {
+	public Debt(int id, double value, String description, Date date, int fee, double interest, int idUser) {
 		this.id = id;
 		this.value = value;
-		this.date=date;
 		this.description = description;
+		this.date=date;
 		this.fee = fee;
 		this.interest = interest;
 		this.idUser = idUser;

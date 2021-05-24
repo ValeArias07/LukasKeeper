@@ -1,18 +1,37 @@
 package services;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import com.google.gson.Gson;
+import model.Debt;
+import providers.DebtProvider;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.sql.SQLException;
 
 @Path("debts")
-public class DebtsServices implements GeneralServicesInterface{
+public class DebtsServices {
 
 	@POST
+	@Consumes("application/json")
 	@Path("add")
-	public Response add(String Saving) {
-		return null;
+	public Response add(@QueryParam("email") String email, String debt) {
+		try {
+			Gson gson = new Gson();
+			Debt debtObj=gson.fromJson(debt, Debt.class);
+			DebtProvider provider = new DebtProvider();
+			provider.addDebt(debtObj);
+			return  Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+
 	}
 
 	@GET
