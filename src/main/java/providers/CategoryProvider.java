@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class CategoryProvider {
     public void addCategory(Category category) throws SQLException {
         DBConnection connection = new DBConnection();
-        String sql = ("INSERT INTO users(name, type) " +
+        String sql = ("INSERT INTO category(name, type) " +
                 "VALUES ($NAME,$TYPE)")
                 .replace("$NAME","'"+category.getName()+"'")
                 .replace("$TYPE", "'"+category.getType()+"'");

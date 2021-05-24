@@ -1,20 +1,61 @@
 package services;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import com.google.gson.Gson;
+import model.Category;
+import model.ChangeInAsset;
+import model.Debt;
+import providers.CategoryProvider;
+import providers.ChangesInAssetsProvider;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.sql.SQLException;
 
 @Path("incomes")
-public class IncomeServices implements GeneralServicesInterface{
+public class IncomeServices{
 
 	@POST
+	@Consumes("application/json")
 	@Path("add")
-	public Response add(String Saving) {
-		return null;
+	public Response add(String income) {
+		try {
+			Gson gson = new Gson();
+			ChangeInAsset incomeObj=gson.fromJson(income, ChangeInAsset.class);
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			provider.addChangeInAsset(incomeObj);
+			return  Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
 	}
 
+	@POST
+	@Path("addCategory")
+	public Response addCategory(String category) {
+		try {
+			Gson gson = new Gson();
+			Category categoryObj=gson.fromJson(category, Category.class);
+			CategoryProvider provider = new CategoryProvider();
+			provider.addCategory(categoryObj);
+			return  Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
 	@GET
 	@Path("balance")
 	public Response balance() {

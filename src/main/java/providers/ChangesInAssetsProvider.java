@@ -12,7 +12,7 @@ public class ChangesInAssetsProvider {
     public void addChangeInAsset(ChangeInAsset change) throws SQLException {
         DBConnection connection = new DBConnection();
         String date =DBConnection.format.format(change.getDate());
-        String sql = ("INSERT INTO users(value, description, date, frequency, idCategory, idUser) " +
+        String sql = ("INSERT INTO changes_in_assets(value, description, date, frequency, idCategory, idUser) " +
                 "VALUES ($VALUE,$DESCRIPTION,$DATE, $FREQUENCY,$IDCA, $IDUS)")
                 .replace("$VALUE","'"+change.getValue()+"'")
                 .replace("$DESCRIPTION", "'"+change.getDescription()+"'")
