@@ -51,7 +51,18 @@
         </aside>
 
         <div class="article">
-            <h2>Titulo</h2>
+            <h2 class="titleAD">Agregar deuda</h2>
+            <img class="imgPageD" src="../../images/debt1.png">
+            <div class="fieldContainer">
+                <div class="field"><label>Cantidad: </label><input type="text" id="amount"></div>
+                <div class="field"><label>Descripción: </label><input type="text" id="description"></div>
+                <div class="field"><label>Fecha: </label><input type="date" id="date" /></div>
+                <div class="field"><label>Número de cuotas: </label><input type="text" id="numFee"></div>
+                <div class="field"><label>Porcentaje de interes: </label><input type="text" id="interestPer"></div>
+            </div>
+
+            <div class="buttonContainer"><button id="button" href="../categories/debts.hmtl"> Guardar </button></div>
+
         </div>
 
     </div>
@@ -74,5 +85,6 @@
     </footer>
     <!--footer end-->
 </body>
-
+<script src="js/debt.js"></script>
+<script src="js/addDebt.js"></script>
 </html>

@@ -11,14 +11,14 @@ public class DebtProvider {
     public void addDebt(Debt debt) throws SQLException {
         DBConnection connection = new DBConnection();
         String date =DBConnection.format.format(debt.getDate());
-        String sql = ("INSERT INTO users(value, description, date, fee, interest, idUser) " +
+        String sql = ("INSERT INTO debts(value, description, date, fee, interest, idUser) " +
                 "VALUES ($VALUE,$DESCRIPTION,$DATE, $FEE,$INTEREST,$IDUSER)")
-                .replace("$VALUE","'"+debt.getValue()+"'")
+                .replace("$VALUE",""+debt.getValue()+"")
                 .replace("$DESCRIPTION", "'"+debt.getDescription()+"'")
                 .replace("$DATE","'"+date+"'")
-                .replace("$FEE","'"+debt.getFee()+"'")
-                .replace("$INTEREST", "'"+debt.getInterest()+"'")
-                .replace("$IDUSER","'"+ debt.getIdUser());
+                .replace("$FEE",""+debt.getFee()+"")
+                .replace("$INTEREST", ""+debt.getInterest()+"")
+                .replace("$IDUSER",""+ debt.getIdUser());
         connection.connect();
         connection.commandSQL(sql);
         connection.disconnect();
