@@ -6,7 +6,7 @@
     <title>Registro</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/signupStyle.css">
+    <link rel="stylesheet" href="styles/signUpStyle.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
@@ -32,15 +32,32 @@
     <div class=" container ">
         <div class=article>
             <h1> Registro </h1>
-            <div class="field "> <label> Nombre:</label><input type=" text " name="name " /></div>
-            <div class="field "> <label> Apellido: </label><input type=" text " name="lastname " /></div>
-            <div class="field "><label> Fecha de Nacimiento: </label><input type="date" name="borndate " /></div>
-            <div class="field "><label> Correo Electrónico:</label><input type="email" ame="email " /></div>
-            <div class="field "><label> Banco: </label><input type="text" name="bank " /></div>
-            <div class="field "><label> Ocupación:</label><input type="text" name="ocupation " /></div>
-            <div class="field "><label> Contraseña: </label><input type="password" name="password" /></div>
-            <div class="field "><label> Confirmar contraseña:</label><input type="password" name="repassword" /></div>
-            <div class="buttonContainer"><button id="buttonRegist" href="login.html"> Registrarme </button></div>
+            <div class="field "> <label> Nombre:</label><input type=" text " id="name" /></div>
+            <div class="field "> <label> Apellido: </label><input type=" text " id="lastname" /></div>
+            <div class="field "><label> Fecha de Nacimiento: </label><input type="date" id="dateOfBirth" /></div>
+            <div class="field "><label> Correo Electrónico:</label><input type="email" id="email" /></div>
+
+            <div class="field "><label> Banco: </label >
+                <select name="occupation" id="bank" class="selectFormat">
+                    <option value="1">Bancolombia</option>
+                    <option value="2">Davivienda</option>
+                    <option value="3">Colpatria</option>
+                    <option value="10">Falabella</option>
+                </select>
+            </div>
+
+            <div class="field "><label> Ocupación:</label>
+                <select name="occupation" id="occupation" class="selectFormat">
+                    <option value="1">Estudiante</option>
+                    <option value="2">Profesor</option>
+                    <option value="3">Empleado</option>
+                    <option value="10">Independiente</option>
+                </select>
+            </div>
+
+            <div class="field "><label> Contraseña: </label><input type="password" id="password" /></div>
+            <div class="field "><label> Confirmar contraseña:</label><input type="password" id="repassword" /></div>
+            <div class="buttonContainer"><button id="buttonSignUp" href="login.html"> Registrarme </button></div>
 
         </div>
     </div>
@@ -61,5 +78,7 @@
     </footer>
     <!--footer end-->
 </body>
+<script src="js/user.js"> </script>
+<script src="js/signup.js"> </script>
 
 </html>
