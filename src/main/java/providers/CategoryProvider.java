@@ -2,6 +2,7 @@ package providers;
 
 import db.DBConnection;
 import model.Category;
+import model.ChangeInAsset;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,7 +57,7 @@ public class CategoryProvider {
             String name = resultSet.getString(resultSet.findColumn("name"));
             String type = resultSet.getString(resultSet.findColumn("type"));
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
-            categories.add(new Category(id,name,type,idUser));
+            if(id != ChangeInAsset.NULL_NUMBER)categories.add(new Category(id,name,type,idUser));
         }
         return categories;
     }

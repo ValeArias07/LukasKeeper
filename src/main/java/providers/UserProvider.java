@@ -48,18 +48,8 @@ public class UserProvider {
         DBConnection connection = new DBConnection();
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        User user = null;
-        if(resultSet.next()) {
-            String name = resultSet.getString(resultSet.findColumn("name"));
-            String lastName = resultSet.getString(resultSet.findColumn("lastname"));
-            String password = resultSet.getString(resultSet.findColumn("password"));
-            String dateOfBirth = resultSet.getString(resultSet.findColumn("dateOfbirth"));
-            String bank = resultSet.getString(resultSet.findColumn("bank"));
-            String occupation = resultSet.getString(resultSet.findColumn("occupation"));
-            user = new User(name, lastName, dateOfBirth, email, password, bank, occupation);
-        }
         connection.disconnect();
-        return user;
+        return getUser(resultSet);
     }
 
     public User getUser(int UserId) throws SQLException, ParseException {
@@ -67,19 +57,22 @@ public class UserProvider {
         DBConnection connection = new DBConnection();
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
+        return  getUser(resultSet);
+    }
+
+    private User getUser(ResultSet resultSet) throws SQLException, ParseException{
         User user = null;
         if(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
             String name = resultSet.getString(resultSet.findColumn("name"));
             String lastName = resultSet.getString(resultSet.findColumn("lastname"));
-            String email = resultSet.getString(resultSet.findColumn("email"));
             String password = resultSet.getString(resultSet.findColumn("password"));
             String dateOfBirth = resultSet.getString(resultSet.findColumn("dateOfbirth"));
+            String email =  resultSet.getString(resultSet.findColumn("email"));
             String bank = resultSet.getString(resultSet.findColumn("bank"));
             String occupation = resultSet.getString(resultSet.findColumn("occupation"));
             user = new User(id, name, lastName, dateOfBirth, email, password, bank, occupation);
         }
-        connection.disconnect();
         return user;
     }
 }

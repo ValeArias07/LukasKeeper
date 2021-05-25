@@ -17,14 +17,14 @@ public class UserServices {
 	@Path("signup")
 	public Response addNewUser(String user) {
 		try {
-		Gson gson = new Gson();
-		UserProvider userProvider= new UserProvider();
-		User userObj= gson.fromJson(user,User.class);
-		userProvider.addUser(userObj);
-		return Response
-				.status(200)
-				.header("Access-Control-Allow-Origin","*")
-				.build();
+			Gson gson = new Gson();
+			UserProvider userProvider= new UserProvider();
+			User userObj= gson.fromJson(user,User.class);
+			userProvider.addUser(userObj);
+			return Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
 
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
@@ -63,10 +63,32 @@ public class UserServices {
 		return "";
 	}
 
-	@GET
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
 	@Path("login")
-	public String getToken(String user) {
-		return "";
+	public boolean verifyUser(String user) {
+		Gson gson = new Gson();
+		boolean check=false;
+		try {
+			UserProvider userProvider= new UserProvider();
+			User usertoVerify= gson.fromJson(user,User.class);
+			User userRegisteredInDB=userProvider.getUser(usertoVerify.getEmail());
+
+			String password=userRegisteredInDB.getPassword();
+
+			if(password.equals(usertoVerify.getPassword())){
+				return true;
+			}else{
+				return false;
+			}
+
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return check;
 	}
 
 
@@ -127,10 +149,5 @@ public class UserServices {
 			e.printStackTrace();
 		}
 		return json;
-
-
 	}
-
-
-
 }
