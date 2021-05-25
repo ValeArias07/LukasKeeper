@@ -12,13 +12,14 @@ public class ChangesInAssetsProvider {
     public void addChangeInAsset(ChangeInAsset change) throws SQLException {
         DBConnection connection = new DBConnection();
         String date =DBConnection.format.format(change.getDate());
-        String sql = ("INSERT INTO changes_in_assets(value, description, date, frequency, idCategory, idUser) " +
-                "VALUES ($VALUE,$DESCRIPTION,$DATE, $FREQUENCY,$IDCA, $IDUS)")
+        String sql = ("INSERT INTO changes_in_assets(value, description, date, frequency, idUserCategory, idDefaultCategory, idUser) " +
+                "VALUES ($VALUE,$DESCRIPTION,$DATE, $FREQUENCY,$IDUCA,$IDDCA, $IDUS)")
                 .replace("$VALUE","'"+change.getValue()+"'")
                 .replace("$DESCRIPTION", "'"+change.getDescription()+"'")
                 .replace("$DATE","'"+date+"'")
                 .replace("$FREQUENCY","'"+change.getFrequency()+"'")
-                .replace("$IDCA", "'"+change.getIdCategory()+"'")
+                .replace("$IDUCA", "'"+change.getIdUserCategory()+"'")
+                .replace("$IDDCA", "'"+change.getIdDefaultCategory()+"'")
                 .replace("$IDUS","'"+ change.getIdUser()+"'");
         connection.connect();
         connection.commandSQL(sql);
@@ -69,9 +70,10 @@ public class ChangesInAssetsProvider {
             String description = resultSet.getString(resultSet.findColumn("description"));
             String date = resultSet.getString(resultSet.findColumn("date"));
             String frequency = resultSet.getString(resultSet.findColumn("frequency"));
-            int idCategory = Integer.parseInt(resultSet.getString(resultSet.findColumn("idCategory")));
+            int idUserCategory = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUserCategory")));
+            int idDefaultCategory = Integer.parseInt(resultSet.getString(resultSet.findColumn("idDefaultCategory")));
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
-            changesInAssets.add(new ChangeInAsset(id,value,description,DBConnection.format.parse(date), frequency, idCategory, idUser));
+            changesInAssets.add(new ChangeInAsset(id,value,description,DBConnection.format.parse(date), frequency, idUserCategory, idDefaultCategory, idUser));
         }
         return changesInAssets;
     }

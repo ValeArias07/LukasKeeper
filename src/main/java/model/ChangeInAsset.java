@@ -10,28 +10,30 @@ public class ChangeInAsset {
 	private String description;
 	private Date date;
 	private String frequency;
-	private int idCategory;
+	private int idUserCategory;
+	private int idDefaultCategory;
 	private int idUser;
-
 
 	public ChangeInAsset(){}
 
-	public ChangeInAsset(int id, double value, String description, Date date, String frequency, int idCategory, int idUser) {
+	public ChangeInAsset(int id, double value, String description, Date date, String frequency, int idUserCategory, int idDefaultCategory, int idUser) {
 		this.id = id;
 		this.value = value;
 		this.description = description;
 		this.date = date;
 		this.frequency = frequency;
-		this.idCategory = idCategory;
+		this.idUserCategory = idUserCategory;
+		this.idDefaultCategory = idDefaultCategory;
 		this.idUser = idUser;
 	}
 
-	public ChangeInAsset(double value, String description, Date date, String frequency, int idCategory, int idUser) {
+	public ChangeInAsset(double value, String description, Date date, String frequency, int idUserCategory, int idDefaultCategory, int idUser) {
 		this.value = value;
 		this.description = description;
 		this.date = date;
 		this.frequency = frequency;
-		this.idCategory = idCategory;
+		this.idUserCategory = idUserCategory;
+		this.idDefaultCategory = idDefaultCategory;
 		this.idUser = idUser;
 	}
 
@@ -59,14 +61,15 @@ public class ChangeInAsset {
 		return frequency;
 	}
 
-	public int getIdCategory() {
-		return idCategory;
+	public int getIdUserCategory() {
+		return idUserCategory;
 	}
+
+	public int getIdDefaultCategory()  { return idDefaultCategory; }
 
 	public int getIdUser() {
 		return idUser;
 	}
-
 
 	public void setNegativeValue(){
 		this.value *= (-1);
