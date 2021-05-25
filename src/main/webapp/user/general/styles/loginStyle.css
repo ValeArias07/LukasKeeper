@@ -19,7 +19,7 @@ body {
     margin-bottom: 5%;
 }
 
-#buttonRegist {
+#buttonSignUp {
     display: flex;
     width: 180px;
     height: 30px;
@@ -35,7 +35,7 @@ body {
     text-decoration: none;
 }
 
-#buttonRegist:hover {
+#buttonSignUp:hover {
     background-color: #a03c50;
     color: #FAEDE9;
 }
