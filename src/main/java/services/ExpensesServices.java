@@ -3,10 +3,12 @@ package services;
 import com.google.gson.Gson;
 import model.ChangeInAsset;
 import providers.ChangesInAssetsProvider;
+import providers.UserProvider;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 @Path("expenses")
 public class ExpensesServices {
@@ -17,15 +19,21 @@ public class ExpensesServices {
 	public Response add(@QueryParam("email") String email, String expense) {
 		try {
 			Gson gson = new Gson();
+			UserProvider user = new UserProvider();
+
 			ChangeInAsset expenseObj=gson.fromJson(expense, ChangeInAsset.class);
 			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
 			expenseObj.setNegativeValue();
+			expenseObj.settingsCategory();
+			int idUser = (user.getUser(email)).getId();
+			expenseObj.setUserId(idUser);
+
 			provider.addChangeInAsset(expenseObj);
 			return  Response
 					.status(200)
 					.header("Access-Control-Allow-Origin","*")
 					.build();
-		} catch (SQLException throwables) {
+		} catch (SQLException | ParseException throwables) {
 			throwables.printStackTrace();
 			return  Response
 					.status(500)

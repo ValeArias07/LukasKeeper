@@ -27,7 +27,7 @@ footer {
     font-weight: 500;
     color: #edf0f1;
     text-decoration: none;
-    text-align: baseline;
+    text-align: center;
 }
 
 .nav__links li {
@@ -102,6 +102,9 @@ article config
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+#expenseType{
     padding-bottom: 50px;
 }
 
