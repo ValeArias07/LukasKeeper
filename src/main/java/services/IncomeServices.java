@@ -6,10 +6,12 @@ import model.ChangeInAsset;
 import model.Debt;
 import providers.CategoryProvider;
 import providers.ChangesInAssetsProvider;
+import providers.UserProvider;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 @Path("incomes")
 public class IncomeServices{
@@ -17,17 +19,24 @@ public class IncomeServices{
 	@POST
 	@Consumes("application/json")
 	@Path("add")
-	public Response add(String income) {
+	public Response add(@QueryParam("email") String email,  String income) {
 		try {
 			Gson gson = new Gson();
+
 			ChangeInAsset incomeObj=gson.fromJson(income, ChangeInAsset.class);
+			UserProvider user = new UserProvider();
+			int idUser = (user.getUser(email)).getId();
+			incomeObj.setUserId(idUser);
+			incomeObj.settingsCategory();
+
 			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
 			provider.addChangeInAsset(incomeObj);
+
 			return  Response
 					.status(200)
 					.header("Access-Control-Allow-Origin","*")
 					.build();
-		} catch (SQLException throwables) {
+		} catch (SQLException | ParseException throwables) {
 			throwables.printStackTrace();
 			return  Response
 					.status(500)
