@@ -61,6 +61,8 @@ public class Debt {
 		return interest;
 	}
 
+	public void setIdUser(int idUser) { this.idUser = idUser; }
+
 	public int getIdUser() {
 		return idUser;
 	}

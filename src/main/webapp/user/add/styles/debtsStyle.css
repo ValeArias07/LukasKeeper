@@ -27,7 +27,7 @@ footer {
     font-weight: 500;
     color: #edf0f1;
     text-decoration: none;
-    text-align: baseline;
+    text-align: center;
 }
 
 .nav__links li {
@@ -59,16 +59,18 @@ footer {
 #own2 {
     color: #F87E96;
 }
+
+
 /*
 article config
 */
 
-.titleAD{
+.titleAG {
     color: #df7187;
-    padding-top:10px;
+    padding-top: 10px;
 }
 
-.imgPageD{
+.imgPageG {
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -100,9 +102,11 @@ article config
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-bottom: 50px;
 }
 
+#expenseType{
+    margin-bottom: 40px;
+}
 
 #title {
     font-family: 'Work Sans', sans-serif;
@@ -115,7 +119,7 @@ article config
     margin: 10px;
     text-align: right;
     justify-content: flex-end;
-    width: 200px;
+    width: 120px;
     color: #394d72;
 }
 
@@ -138,7 +142,7 @@ article config
     background-color: #F87E96;
     color: #394D72;
     transition: all 0.3s ease 0s;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 #fieldContainer {
@@ -171,6 +175,8 @@ article config
     padding-left: 12px;
     outline-width: 10px;
 }
+
+
 /*
 Sidebar consig
 */

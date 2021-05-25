@@ -3,10 +3,12 @@ package services;
 import com.google.gson.Gson;
 import model.Debt;
 import providers.DebtProvider;
+import providers.UserProvider;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 @Path("debts")
 public class DebtsServices {
@@ -17,14 +19,19 @@ public class DebtsServices {
 	public Response add(@QueryParam("email") String email, String debt) {
 		try {
 			Gson gson = new Gson();
+			UserProvider user = new UserProvider();
 			Debt debtObj=gson.fromJson(debt, Debt.class);
 			DebtProvider provider = new DebtProvider();
+			System.out.println(debt);
+			System.out.println(email);
+			int idUser = (user.getUser(email)).getId();
+			debtObj.setIdUser(idUser);
 			provider.addDebt(debtObj);
 			return  Response
 					.status(200)
 					.header("Access-Control-Allow-Origin","*")
 					.build();
-		} catch (SQLException throwables) {
+		} catch (SQLException | ParseException throwables) {
 			throwables.printStackTrace();
 			return  Response
 					.status(500)
