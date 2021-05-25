@@ -8,8 +8,6 @@ const bank = document.getElementById('bank');
 const occupation = document.getElementById('ocupation');
 const button = document.getElementById('buttonSignUp');
 
-
-
 const getSelectors=()=>{
     let index1= document.getElementById("occupation").selectedIndex;
     let index2= document.getElementById("bank").selectedIndex;

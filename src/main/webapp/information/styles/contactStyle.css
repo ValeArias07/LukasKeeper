@@ -33,7 +33,7 @@ body {
 
 .article {
     left: 0;
-    width: auto;
+    width: 800px;
     height: auto;
     transition-property: left;
     border-radius: 20px;
