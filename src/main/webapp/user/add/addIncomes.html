@@ -54,9 +54,16 @@
             <h2 class=titleAI>Agregar ingreso</h2>
             <img class="imgPageI" src="../../images/income1.png">
             <div class="fieldContainer">
-                <div class="field"><label>Cantidad: </label><input type="text" name="amount"></div>
-                <div class="field"><label>Descripción: </label><input type="text" name="description"></div>
-                <div class="field"><label>Frecuencia: </label><input type="text" name="frequency"></div>
+                <div class="field"><label>Cantidad: </label><input type="text" id="amount" ></div>
+                <div class="field"><label>Descripción: </label><input type="text" id="description"></div>
+                <div class="fieldSelect"><label>Frecuencia: </label><select name="frequencyType" id="frequencyType" class="selectFormat">
+                    <option value="1">Expontaneo</option>
+                    <option value="2">Semanal</option>
+                    <option value="3">Quincenal</option>
+                    <option value="4">Mensual</option>
+                </select></div>
+
+                <div class="field"><label>Fecha:</label><input type="date" id="date" /></div>
                 <div class="fieldSelect"><label>Tipo de ingreso: </label><select name="incomeType" id="incomeType" class="selectFormat">
                     <option value="1">Salario</option>
                     <option value="2">Extra</option>
@@ -86,4 +93,6 @@
     <!--footer end-->
 </body>
 
+<script src="js/income.js"></script>
+<script src="js/addIncome.js"></script>
 </html>
