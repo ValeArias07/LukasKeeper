@@ -11,7 +11,6 @@ public class UserProvider {
     public void addUser(User user) throws SQLException {
        DBConnection connection = new DBConnection();
        String date =DBConnection.format.format(user.getDateOfBirth());
-       System.out.println(user.getLastName());
        String sql = ("INSERT INTO users(name, lastname, email, password, dateOfbirth, bank, occupation) " +
                 "VALUES ($NAME,$LASTNAME,$EMAIL, $PASSWORD,$BORNDATE, $BANK,$OCCUPATION)")
                 .replace("$NAME","'"+user.getName()+"'")
@@ -29,7 +28,6 @@ public class UserProvider {
     public void updateUser(User user) throws SQLException {
         DBConnection connection = new DBConnection();
         String date =DBConnection.format.format(user.getDateOfBirth());
-        System.out.println(user.getLastName());
         String sql = ("UPDATE users SET name=$NAME, lastname=$LASTNAME, email=$EMAIL, password=$PASSWORD, dateOfbirth=$BORNDATE, bank=$BANK, occupation=$OCCUPATION WHERE email=$EMAIL")
                 .replace("$NAME","'"+user.getName()+"'")
                 .replace("$LASTNAME", "'"+user.getLastName()+"'")
@@ -46,21 +44,20 @@ public class UserProvider {
     public User getUser(String email) throws SQLException, ParseException {
         String sql = "SELECT * FROM users WHERE email = $EMAIL".replace("$EMAIL", "'" + email.trim() + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getUser(resultSet);
+
+        return getUser(sql,connection);
     }
 
     public User getUser(int UserId) throws SQLException, ParseException {
         String sql = "SELECT * FROM users WHERE id = $ID".replace("$ID", "'" + UserId + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        return  getUser(resultSet);
+
+        return  getUser(sql,connection);
     }
 
-    private User getUser(ResultSet resultSet) throws SQLException, ParseException{
+    private User getUser(String sql, DBConnection connection) throws SQLException, ParseException{
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
         User user = null;
         if(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
@@ -73,6 +70,7 @@ public class UserProvider {
             String occupation = resultSet.getString(resultSet.findColumn("occupation"));
             user = new User(id, name, lastName, dateOfBirth, email, password, bank, occupation);
         }
+        connection.disconnect();
         return user;
     }
 }
