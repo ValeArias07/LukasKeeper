@@ -60,7 +60,6 @@ public class UserProvider {
     private User getUser(String sql, DBConnection connection) throws SQLException, ParseException{
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
         User user = null;
         if(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
@@ -73,6 +72,7 @@ public class UserProvider {
             String occupation = resultSet.getString(resultSet.findColumn("occupation"));
             user = new User(id, name, lastName, dateOfBirth, email, password, bank, occupation);
         }
+        connection.disconnect();
         return user;
     }
 }
