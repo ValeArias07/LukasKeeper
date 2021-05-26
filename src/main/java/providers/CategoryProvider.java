@@ -24,34 +24,25 @@ public class CategoryProvider {
 
     public ArrayList<Category> getAllCategory(int idUser) throws SQLException {
         String sql = "SELECT user_categories.* FROM user_categories INNER JOIN users ON user_categories.idUser = users.id WHERE users.id = $ID".replace("$ID","'" + idUser + "'");
-        DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
         ArrayList<Category> categories = getAllDefaultCategories();
-        return getAllCategory(resultSet,categories);
+        return getAllCategory(sql,categories);
     }
 
     public ArrayList<Category> getAllCategory(String email) throws SQLException {
         String sql = "SELECT user_categories.* FROM user_categories INNER JOIN users ON user_categories.idUser = users.id WHERE users.email = $EMAIl".replace("$EMAIL","'" + email + "'");
-        DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
         ArrayList<Category> categories = getAllDefaultCategories();
-        return getAllCategory(resultSet,categories);
+        return getAllCategory(sql,categories);
     }
 
     private ArrayList<Category> getAllDefaultCategories()throws SQLException{
         String sql = "SELECT * FROM default_categories WHERE 1 ";
+        return getAllCategory(sql,null);
+    }
+
+    private ArrayList<Category> getAllCategory(String sql, ArrayList<Category> categories) throws SQLException {
         DBConnection connection = new DBConnection();
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getAllCategory(resultSet,null);
-    }
-
-    private ArrayList<Category> getAllCategory(ResultSet resultSet, ArrayList<Category> categories) throws SQLException {
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
             String name = resultSet.getString(resultSet.findColumn("name"));
@@ -59,6 +50,7 @@ public class CategoryProvider {
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
             if(id != ChangeInAsset.NULL_NUMBER)categories.add(new Category(id,name,type,idUser));
         }
+        connection.disconnect();
         return categories;
     }
 }
