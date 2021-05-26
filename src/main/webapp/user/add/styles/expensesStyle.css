@@ -105,7 +105,7 @@ article config
 }
 
 #expenseType{
-    padding-bottom: 50px;
+    margin-bottom: 35px;
 }
 
 #title {
@@ -142,7 +142,7 @@ article config
     background-color: #F87E96;
     color: #394D72;
     transition: all 0.3s ease 0s;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 #fieldContainer {
