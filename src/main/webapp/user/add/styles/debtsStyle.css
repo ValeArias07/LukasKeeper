@@ -65,14 +65,14 @@ footer {
 article config
 */
 
-.titleAG {
+.titleAD {
     color: #df7187;
     padding-top: 10px;
 }
 
-.imgPageG {
-    padding-top: 50px;
-    padding-bottom: 50px;
+.imgPageD {
+    padding-top: 35px;
+    padding-bottom: 35px;
 }
 
 .container {
@@ -119,7 +119,7 @@ article config
     margin: 10px;
     text-align: right;
     justify-content: flex-end;
-    width: 120px;
+    width: 180px;
     color: #394d72;
 }
 
@@ -142,7 +142,8 @@ article config
     background-color: #F87E96;
     color: #394D72;
     transition: all 0.3s ease 0s;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
+    margin-top: 25px;
 }
 
 #fieldContainer {
