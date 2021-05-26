@@ -68,6 +68,7 @@ article config
 .titleAI {
     color: #df7187;
     padding-top: 10px;
+
 }
 
 .imgPageI {
@@ -108,6 +109,7 @@ article config
     font-family: 'Work Sans', sans-serif;
     margin-bottom: 80px;
     font-size: larger;
+    font-weight: normal;
     color: #F87E96;
 }
 
@@ -140,8 +142,8 @@ article config
     background-color: #F87E96;
     color: #394D72;
     transition: all 0.3s ease 0s;
-    margin-bottom: 40px;
-    margin-top: 20px;
+    margin-bottom: 60px;
+    margin-top: 30px;
 }
 
 #fieldContainer {
