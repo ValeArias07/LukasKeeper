@@ -25,7 +25,6 @@ public class MonthlyPlanProvider{
         DBConnection connection = new DBConnection();
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
         MonthlyPlan monthlyPlan = null;
         if(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
@@ -35,6 +34,7 @@ public class MonthlyPlanProvider{
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
             monthlyPlan = new MonthlyPlan(id,budget,hasAlert,spendingPercentage,idUser);
         }
+        connection.disconnect();
         return monthlyPlan;
     }
 }
