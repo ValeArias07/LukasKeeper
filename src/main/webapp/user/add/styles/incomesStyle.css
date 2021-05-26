@@ -72,8 +72,8 @@ article config
 }
 
 .imgPageI {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 35px;
+    padding-bottom: 35px;
 }
 
 .container {
@@ -142,8 +142,8 @@ article config
     background-color: #F87E96;
     color: #394D72;
     transition: all 0.3s ease 0s;
-    margin-bottom: 60px;
-    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 #fieldContainer {
