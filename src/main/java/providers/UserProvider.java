@@ -46,21 +46,21 @@ public class UserProvider {
     public User getUser(String email) throws SQLException, ParseException {
         String sql = "SELECT * FROM users WHERE email = $EMAIL".replace("$EMAIL", "'" + email.trim() + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getUser(resultSet);
+
+        return getUser(sql,connection);
     }
 
     public User getUser(int UserId) throws SQLException, ParseException {
         String sql = "SELECT * FROM users WHERE id = $ID".replace("$ID", "'" + UserId + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        return  getUser(resultSet);
+
+        return  getUser(sql,connection);
     }
 
-    private User getUser(ResultSet resultSet) throws SQLException, ParseException{
+    private User getUser(String sql, DBConnection connection) throws SQLException, ParseException{
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        connection.disconnect();
         User user = null;
         if(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
