@@ -31,7 +31,6 @@ public class FeeProvider {
         DBConnection connection = new DBConnection();
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
         ArrayList<Fee> fees = null;
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
@@ -39,6 +38,7 @@ public class FeeProvider {
             String date = resultSet.getString(resultSet.findColumn("date"));
             fees.add(new Fee(id,value,DBConnection.format.parse(date), idSavingPlan, idDebts));
         }
+        connection.disconnect();
         return fees;
     }
 }

@@ -29,23 +29,19 @@ public class SavingPlanProvider {
         String sql = ("SELECT saving_plan.* FROM saving_plan INNER JOIN users ON saving_plan.idUser = users.id WHERE user.id = $ID")
                 .replace("$ID", "'" + idUser + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getAllSavingPlans(resultSet);
+        return getAllSavingPlans(sql,connection);
     }
 
     public ArrayList<SavingPlan> getAllSavingPlans(String userEmail) throws SQLException, ParseException {
         String sql = ("SELECT saving_plan.* FROM saving_plan INNER JOIN users ON saving_plan.idUser = users.id WHERE user.email = $EMAIl")
                 .replace("$EMAIL", "'" + userEmail.trim() + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getAllSavingPlans(resultSet);
+        return getAllSavingPlans(sql,connection);
     }
 
-    private ArrayList<SavingPlan> getAllSavingPlans(ResultSet resultSet) throws SQLException, ParseException {
+    private ArrayList<SavingPlan> getAllSavingPlans(String sql, DBConnection connection) throws SQLException, ParseException {
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
         ArrayList<SavingPlan> savingPlans = null;
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
@@ -57,6 +53,7 @@ public class SavingPlanProvider {
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
             savingPlans.add(new SavingPlan(id,goal,balance,total,DBConnection.format.parse(date),monthlyFee,idUser));
         }
+        connection.disconnect();
         return savingPlans;
     }
 }
