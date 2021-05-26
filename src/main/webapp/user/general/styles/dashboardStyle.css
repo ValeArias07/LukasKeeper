@@ -27,11 +27,12 @@ footer {
     font-weight: 500;
     color: #edf0f1;
     text-decoration: none;
-    text-align: baseline;
+    text-align: justify;
 }
 
 .nav__links li {
     padding: 0px 20px;
+    text-align: end;
 }
 
 .nav__links li a {
@@ -135,4 +136,14 @@ Sidebar consig
     border-radius: 100px;
     margin-bottom: 10px;
     align-items: center;
+}
+
+#logOutButton {
+    background-color: #394D72;
+    font-size: medium;
+    cursor: pointer;
+    border: none;
+    color: #ffff;
+    height: 10px;
+    width: 150px;
 }
