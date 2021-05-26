@@ -27,22 +27,18 @@ public class DebtProvider {
     public ArrayList<Debt> getAllDebts(int idUser) throws SQLException, ParseException {
         String sql = ("SELECT debts.* FROM debts INNER JOIN users ON debts.idUser = users.id WHERE users.id = $IDUSER").replace("$IDUSER", "'" + idUser + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getAllDebts(resultSet);
+        return getAllDebts(sql,connection);
     }
 
     public ArrayList<Debt> getAllDebts(String emailUser) throws SQLException, ParseException {
         String sql = ("SELECT debts.* FROM debts INNER JOIN users ON debts.idUser = users.id WHERE users.email = $EMAIL").replace("$EMAIL", "'" + emailUser.trim() + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getAllDebts(resultSet);
+        return getAllDebts(sql,connection);
     }
 
-    private ArrayList<Debt> getAllDebts(ResultSet resultSet) throws SQLException, ParseException {
+    private ArrayList<Debt> getAllDebts(String sql, DBConnection connection) throws SQLException, ParseException {
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
         ArrayList<Debt> debts = new ArrayList<>();
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
@@ -54,6 +50,7 @@ public class DebtProvider {
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
             debts.add(new Debt(id,value,description,(DBConnection.format.parse(date)),fee,interest,idUser));
         }
+        connection.disconnect();
         return debts;
     }
 }
