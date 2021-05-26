@@ -29,40 +29,30 @@ public class ChangesInAssetsProvider {
     public ArrayList<ChangeInAsset> getAllExpenses(String email) throws SQLException, ParseException {
         String sql = "SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.email = $EMAIL AND changes_in_assets.value<0".replace("$EMAIL", "'" + email.trim() + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getAllChangesInAssets(resultSet);
+        return getAllChangesInAssets(sql, connection);
     }
 
     public ArrayList<ChangeInAsset> getAllExpenses(int userId) throws SQLException, ParseException {
         String sql = "SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.id = $IDUSER AND changes_in_assets.value<0".replace("$IDUSER", "'" + userId + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getAllChangesInAssets(resultSet);
+        return getAllChangesInAssets(sql, connection);
     }
 
     public ArrayList<ChangeInAsset> getAllIncomes(String email) throws SQLException, ParseException {
         String sql = "SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.email = $EMAIL AND changes_in_assets.value>=0".replace("$EMAIL", "'" + email.trim() + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getAllChangesInAssets(resultSet);
+        return getAllChangesInAssets(sql, connection);
     }
 
     public ArrayList<ChangeInAsset> getAllIncomes(int userId) throws SQLException, ParseException {
         String sql = "SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.id = $IDUSER AND changes_in_assets.value>=0".replace("$IDUSER", "'" + userId + "'");
         DBConnection connection = new DBConnection();
-        connection.connect();
-        ResultSet resultSet =  connection.getDataBySQL(sql);
-        connection.disconnect();
-        return getAllChangesInAssets(resultSet);
+        return getAllChangesInAssets(sql, connection);
     }
 
-    private ArrayList<ChangeInAsset> getAllChangesInAssets(ResultSet resultSet) throws SQLException, ParseException {
+    private ArrayList<ChangeInAsset> getAllChangesInAssets(String sql, DBConnection connection) throws SQLException, ParseException {
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
         ArrayList<ChangeInAsset> changesInAssets = null;
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
@@ -75,6 +65,7 @@ public class ChangesInAssetsProvider {
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
             changesInAssets.add(new ChangeInAsset(id,value,description,DBConnection.format.parse(date), frequency, idUserCategory, idDefaultCategory, idUser));
         }
+        connection.disconnect();
         return changesInAssets;
     }
 }
