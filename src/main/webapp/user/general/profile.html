@@ -36,10 +36,10 @@
                     <h4>Hola, Jennifer! </h4>
                 </center>
                 <a href="dashboard.html"><img src="../../images/dashboard.png" class="icons" align="center"><span>Dashboard</span></a>
-                <a href="categories/incomes.html"><img src="../../images/income.png" class="icons" align="center"><span>Ingresos</span></a>
-                <a href="categories/expenses.html"><img src="../../images/expending.png" class="icons" align="center"><span>Gastos</span></a>
-                <a href="categories/debts.html"><img src="../../images/debt.png" class="icons" align="center"><span>Deudas</span></a>
-                <a href="categories/savings.html"><img src="../../images/saving.png" class="icons" align="center"><span>Ahorros</span></a>
+                <a href="../categories/incomes.html"><img src="../../images/income.png" class="icons" align="center"><span>Ingresos</span></a>
+                <a href="../categories/expenses.html"><img src="../../images/expending.png" class="icons" align="center"><span>Gastos</span></a>
+                <a href="../categories/debts.html"><img src="../../images/debt.png" class="icons" align="center"><span>Deudas</span></a>
+                <a href="../categories/savings.html"><img src="../../images/saving.png" class="icons" align="center"><span>Ahorros</span></a>
 
                 <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
             </div>
@@ -50,34 +50,49 @@
                 <div class="article" id="personalInfo">
                     <h2><br><h2>Información Personal</h2>
                     <br>
-                    <div class="field"> <label> Nombre:</label><input type="text" name="name " /></div>
-                    <div class="field"> <label> Apellido: </label><input type="text" name="lastname" /></div>
-                     <div class="field "><label> Fecha de Nacimiento: </label><input type="date" name="borndate" /></div>
-                     <div class="field"><label> Ocupación:</label><input type="text" name="ocupation" /></div>
-                     <br></br>
+                    <div class="field"> <label> Nombre:</label><input type="text" id="name" /></div>
+                    <div class="field"> <label> Apellido: </label><input type="text" id="lastname" /></div>
+                     <div class="field "><label> Fecha de Nacimiento: </label><input type="date" id="borndate" /></div>
+
+                        <div class="field "><label> Ocupación:</label>
+                            <select name="occupation" id="occupation" class="selectFormat">
+                                <option value="0">Estudiante</option>
+                                <option value="1">Profesor</option>
+                                <option value="2">Empleado</option>
+                                <option value="3">Independiente</option>
+                            </select>
+                        </div>
+
+                        <br>
                 </div>
 
                 <div class="article" id="contact">
                     <h2><br>Contacto</h2>
                     <br>
-                    <div class="field"><label> Correo Electrónico:</label><input type="email" name="email" /></div>
-                    <div class="field"><label> Número de contacto:</label><input type="text" name="telephone" /></div>
-                    <div class="field"><label> Dirección:</label><input type="text" name="direction" /></div>
-                    <div class="field"><label> Ciudad:</label><input type="text" name="city" /></div>
-                    <br></br>
+                    <div class="field"><label> Número de contacto:</label><input type="text" id="telephone" /></div>
+                    <div class="field"><label> Dirección:</label><input type="text" id="direction" /></div>
+                    <div class="field"><label> Ciudad:</label><input type="text" id="city" /></div>
+                    <br>
                 </div>
                 <div class="article" id="privacity">
                     <h2><br>Privacidad</h2>
                     <br>
-                    <div class="field"><label> Banco: </label><input type="text" name="bank" /></div>
-                    <div class="field"><label> Contraseña: </label><input type="password" name="password" /></div>
-                    <div class="field"><label> Confirmar contraseña:</label><input type="password" name="repassword" /></div>
+                    <div class="field "><label> Banco: </label >
+                        <select name="occupation" id="bank" class="selectFormat">
+                            <option value="0">Bancolombia</option>
+                            <option value="1">Davivienda</option>
+                            <option value="2">Colpatria</option>
+                            <option value="3">Falabella</option>
+                        </select>
+                    </div>
+                    <div class="field"><label> Contraseña: </label><input type="password" id="password" /></div>
+                    <div class="field"><label> Confirmar contraseña:</label><input type="password" id="repassword" /></div>
                     <br></br>
                 </div>
 
-                <a href="#" id=saveButton>
+                <button id=saveButton>
                     <h2>Guardar Cambios</h2>
-                </a>
+                </button>
             </center>
         </section>
 
@@ -97,5 +112,8 @@
     </footer>
     <!--footer end-->
 </body>
-
+<script src="js/checkCredentials.js"></script>
+<script src="js/session.js"></script>
+<script src="js/user.js"></script>
+<script src="js/profile.js"></script>
 </html>
