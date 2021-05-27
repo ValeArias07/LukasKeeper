@@ -46,6 +46,7 @@ const signUp=(bank, occupation)=>{
 
 button.addEventListener('click', verifyEmail=()=>{
     let xhr = new XMLHttpRequest();
+    let session = JSON.parse(window.localStorage.getItem('session'));
     xhr.addEventListener('readystatechange',()=>{
 
         if(xhr.readyState===4){
