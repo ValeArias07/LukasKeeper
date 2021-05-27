@@ -16,6 +16,6 @@ setName =()=>{
         xhr.send();
 
         console.log(localStorage.getItem('name'));
-    document.getElementById('nameModel').value=localStorage.getItem('name');
+    document.getElementById('nameModel').innerText=localStorage.getItem('name');
 }
 setName();
