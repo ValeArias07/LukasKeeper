@@ -46,6 +46,7 @@ public class UserServices {
 			UserProvider userProvider= new UserProvider();
 			User userObj= gson.fromJson(user,User.class);
 			userProvider.updateUser(userObj);
+
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		}
@@ -123,6 +124,8 @@ public class UserServices {
 			User user=userProvider.getUser(email);
 			Gson gson = new Gson();
 			json=gson.toJson(user);
+			System.out.println(json);
+			System.out.println(email);
 			return json;
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
