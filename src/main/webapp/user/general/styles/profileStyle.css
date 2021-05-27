@@ -139,6 +139,7 @@ section {
     margin: 10px;
     padding-left: 12px;
     justify-content: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 #personalInfo {
@@ -206,4 +207,16 @@ Sidebar consig
     border-radius: 100px;
     margin-bottom: 10px;
     align-items: center;
+}
+
+.selectFormat{
+    width: 300px;
+    border: 0;
+    background-color: #DADDE1;
+    border-radius: 10px;
+    outline-color: #f87e96cc;
+    margin: 10px;
+    padding-left: 12px;
+    outline-width: 10px;
+    font-family: 'Roboto', sans-serif;
 }
