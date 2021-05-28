@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #DADDE1;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+header,
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 2%;
+    background-color: #394D72;
+}
+
+.nav__links {
+    list-style: none;
+    display: flex;
+}
+
+.nav__links a {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #edf0f1;
+    text-decoration: none;
+    text-align: baseline;
+}
+
+.nav__links li {
+    padding: 0px 20px;
+}
+
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+    color: #F87E96;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+#choosed {
+    background-color: #1b2a4681;
+}
+
+.icons {
+    padding-right: 20px;
+    align-items: baseline;
+}
+
+#own1,
+#own2 {
+    color: #F87E96;
+}
+/*
+Sidebar consig
+*/
+
+.sidebar {
+    margin: 4% 2%;
+    padding: 30px 0 5px 0;
+    float: left;
+    width: 290px;
+    height: auto;
+    transition: 0.5s;
+    border-radius: 20px;
+    transition-property: left;
+    background-color: #394D72;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sidebar a {
+
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 50px;
+    text-decoration: none;
+    padding-left: 20px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+}
+
+.sidebar a:hover {
+    background: rgb(28, 39, 61);
+}
+
+.sidebar h4 {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.sidebar h5 {
+    padding: 10% 0 10px 0;
+    text-align: center;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sidebar .profile_image {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    align-items: center;
+}
