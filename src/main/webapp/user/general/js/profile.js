@@ -1,16 +1,16 @@
-const name = document.getElementById('name');
-const lastName = document.getElementById('lastname');
-const dateOfBirth = document.getElementById('borndate');
+var name = document.getElementById('name');
+var lastName = document.getElementById('lastname');
+var dateOfBirth = document.getElementById('borndate');
 
-const telephone = document.getElementById('telephone');
-const direction = document.getElementById('direction');
-const city = document.getElementById('city');
+var telephone = document.getElementById('telephone');
+var direction = document.getElementById('direction');
+var city = document.getElementById('city');
 
-const password = document.getElementById('password');
-const repassword = document.getElementById('repassword');
+var password = document.getElementById('password');
+var repassword = document.getElementById('repassword');
 
-const button = document.getElementById('saveButton');
-const session = JSON.parse(window.localStorage.getItem('session'));
+var button = document.getElementById('saveButton');
+var session = JSON.parse(window.localStorage.getItem('session'));
 
 
 const updateInfo=(bank, occupation)=>{
@@ -69,7 +69,9 @@ const initFields=()=>{
         if(xhr.readyState===4){
             let json = xhr.responseText;
             let response = JSON.parse(json);
+            document.getElementById('nameModel').innerHTML=""+response.name;
             selectors(response);
+
         }
     });
     xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/user/getUserInfo?email="+session.email);
