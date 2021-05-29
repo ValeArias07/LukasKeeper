@@ -11,6 +11,7 @@ var repassword = document.getElementById('repassword');
 
 var button = document.getElementById('saveButton');
 var session = JSON.parse(window.localStorage.getItem('session'));
+const checkCredentials = new CheckCredentials();
 
 
 const updateInfo=(bank, occupation)=>{
@@ -88,4 +89,6 @@ const verifyPassword =()=>{
 }
 
 initFields();
+checkCredentials.authSession("login.html");
+checkCredentials.logOut();
 button.addEventListener('click', verifyPassword);

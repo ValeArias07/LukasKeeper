@@ -4,24 +4,6 @@
     padding: 0;
 }
 
-.article{
-    margin: 4% 1%;
-    padding: 30px 0;
-    height: auto;
-    width: 70%;
-    float: right;
-    text-align: center;
-    border-radius: 20px;
-    font-family: 'Work Sans', sans-serif;
-    background: aliceblue;
-}
-
-.container {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-}
-
 .nav__links {
     list-style: none;
     display: flex;
