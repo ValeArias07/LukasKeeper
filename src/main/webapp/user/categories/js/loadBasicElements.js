@@ -19,8 +19,6 @@ loadElements=()=>{
         '    </nav>\n' +
         '    </header>';
 
-
-
     footer.innerHTML= '<footer>\n' +
         '    <a class=" logo " href="/ "><img src="../../images/logo.png " alt="logo " width="200px "> </a>\n' +
         '    <nav>\n' +
