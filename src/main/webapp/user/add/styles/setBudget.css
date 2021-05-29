@@ -70,18 +70,140 @@ article config
     height: 100%;
 }
 
+/*
+ Start all about article----------------------------------------------
+*/
 .article {
     position: sticky;
-    margin: 4% 2%;
+    margin: 4% 15%;
     padding-top: 30px;
-    width: auto;
+    width: 40%;
     float: right;
     text-align: center;
     border-radius: 20px;
-    background-color: #394D72;
+    background-color: #FAEDE9;
     font-family: 'Roboto', sans-serif;
+    align-content: center;
 }
 
+.article *{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+#title{
+    color: #F87E96;
+}
+
+#img{
+    width: auto;
+    height: auto;
+}
+
+#budget{
+    text-align: center;
+    background-color: rgb(218, 221, 225);
+    color: black;
+    border-radius: 10px;
+    font-size: large;
+    border: 1px solid rgb(218, 221, 225);;
+}
+
+#spends{
+    border-radius: 10px;
+    background-color: rgb(218, 221, 225);
+    font-size: large;
+    border: 1px solid rgb(218, 221, 225);
+}
+
+#btSave{
+    background-color: #F87E96;
+    font-size: 25px;
+    margin-top: 60px;
+    border-radius: 10px;
+    color: black;
+    border: 1px solid #fff;
+}
+
+#percentageAlert{
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+
+#btMetaPorAhorros{
+    border-radius: 10px;
+    background-color: rgb(165, 149, 255);
+    color: white;
+    margin-bottom: 0;
+    font-size: medium;
+    border: 1px solid #fff;
+}
+
+.rangeContainer{
+    position: relative;
+    height: 60px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+#spends{
+    text-align: center;
+}
+
+.rangeContainer .field{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 60px 5px 30px;
+}
+
+.rangeContainer .field .value{
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: #664AFF;
+}
+
+.rangeContainer .field .sliderValue{
+    top:-25%;
+}
+
+.rangeContainer .field .value.left{
+    left: 5px;
+    top:25%;
+}
+
+.rangeContainer .field .value.right{
+    right: 5px;
+    top:25%;
+}
+
+.rangeContainer .field input{
+    -webkit-appearance: none;
+    height: 3px;
+    width: 100%;
+    top:30%;
+    background-color: #ddd;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.rangeContainer .field input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #664AFF;
+    border-radius: 50%;
+    border: 1px solid #664AFF;
+    cursor: pointer;
+}
+/*
+ Ends all about article----------------------------------------------
+*/
 
 /*
 Sidebar consig

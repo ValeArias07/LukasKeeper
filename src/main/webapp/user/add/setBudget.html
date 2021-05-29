@@ -52,10 +52,45 @@
             </div>
         </aside>
 
-        <div class="article ">
-            <h2>Titulo</h2>
-        </div>
+        <!--content start-->
+        <div class = "article">
+            <h2 id = "title">Establecer presupuesto mensual</h2>
+            <img id= img src="../../images/setBudget.png ">
+            <div>
+                <label>Presupuesto mensual:</label>
+                <input id="budget" type = "number" step="100000" min="100000">
+            </div>
+            <div class ="checkbox"> 
+                <label>Alerta al llegar al:</label>
+                <select name="percentage" id="alertPercentage">
+                    <option>50%</option>
+                    <option>60%</option>
+                    <option>70%</option>
+                    <option>80%</option>
+                    <option>90%</option>
+                    <option>95%</option>
+                    <option>Off</option>
+                </select>
+                <label>de la meta</label>
+            </div>
 
+            <div>
+                <button id = "btMetaPorAhorros">Calcular meta por ahorros</button>
+            </div>
+
+            <div class="rangeContainer">
+
+                <div class="field">
+                    <lab id= "percentage">70%</lab>
+                    <div class="value left">0%</div>
+                    <input id= "range" type="range" min="0" max="100" value = "70" steps = "1">
+                    <div class="value right">100%</div>
+                </div>
+                <input id="spends" type = "text" disabled=true>
+            </div>
+
+            <button id="btSave">Guardar</button>
+        </div>
     </div>
 
     <!--footer start-->
@@ -76,5 +111,6 @@
     </footer>
     <!--footer end-->
 </body>
-
+<script src="js/monthlyPlan.js"></script>
+<script src="js/setBudget.js"></script>
 </html>

@@ -72,16 +72,20 @@ article config
 
 .article {
     position: sticky;
-    margin: 4% 2%;
+    margin: 4% 15%;
     padding-top: 30px;
-    width: auto;
+    width: 40%;
     float: right;
     text-align: center;
     border-radius: 20px;
-    background-color: #394D72;
+    background-color: #FAEDE9;
     font-family: 'Roboto', sans-serif;
 }
 
+.article *{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 /*
 Sidebar consig
@@ -135,4 +139,37 @@ Sidebar consig
     border-radius: 100px;
     margin-bottom: 10px;
     align-items: center;
+}
+
+#title{
+    color: #F87E96;
+}
+
+#img{
+    width: auto;
+    height: auto;
+}
+
+.fields{
+    align-content: center;
+    align-items: center;
+}
+
+.fields input{
+    text-align: center;
+    background-color: rgb(218, 221, 225);
+    color: black;
+    border-radius: 10px;
+    font-size: large;
+    border: 1px solid rgb(218, 221, 225);
+    height: 25px;
+}
+
+#btSave{
+    background-color: #F87E96;
+    font-size: 25px;
+    margin-top: 60px;
+    border-radius: 10px;
+    color: black;
+    border: 1px solid #fff;
 }
