@@ -7,63 +7,33 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/dashboardStyle.css">
+    <link rel="stylesheet" href="styles/general.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
     <!--header start-->
-    <header>
-        <a class="logo" href="/"><img src="../../images/logo.png" alt="logo" width="200px"> </a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="profile.html">Perfil</a></li>
-                <li><a href="../about/contact.html">Contactanos</a></li>
-                <li><a href="../about/help.html">Ayuda</a></li>
-                <li><a href="# ">Cerrar Sesión</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="header"> </div>
     <!--header end-->
 
     <!--article start-->
     <div class="container">
-
-
-        <aside>
-            <div class="sidebar">
-                <center>
-                    <img src="../../images/model.jpg" class="profile_image" alt="">
-                    <h4>Hola, Jennifer! </h4>
-                </center>
-                <a href="../categories/incomes.html"><img src="../../images/income.png" class="icons" align="center"><span>Ingresos</span></a>
-                <a href="../categories/expenses.html"><img src="../../images/expending.png" class="icons" align="center"><span>Gastos</span></a>
-                <a href="../categories/debts.html"><img src="../../images/debt.png" class="icons" align="center"><span>Deudas</span></a>
-                <a href="../categories/savings.html"><img src="../../images/saving.png" class="icons" align="center"><span>Ahorros</span></a>
-
-                <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
-            </div>
-        </aside>
-
-        <div class="article">
-            <h2>Titulo</h2>
-        </div>
-
+        <div id="sidebar"></div>
+        <div class="article"></div>
     </div>
+    <!--article end-->
 
     <!--footer start-->
-    <footer>
-        <a class=" logo " href="/ "><img src="../../images/logo.png " alt="logo " width="200px "> </a>
-        <nav>
-            <ul class="nav__links ">
-                <li><a href="profile.html">Perfil</a></li>
-                <li><a href="../about/contact.html">Contactanos</a></li>
-                <li><a href="../about/help.html">Ayuda</a></li>
-                <li><a href="# ">Cerrar Sesión</a></li>
-            </ul>
-        </nav>
-    </footer>
+    <div id="footer"></div>
     <!--footer end-->
-</body>
 
+</body>
+<script src="../../js/session.js"></script>
+<script src="../../js/checkCredentials.js"></script>
+<script src="js/loadSideBar.js"></script>
+<script src="js/loadBasicElements.js"></script>
+<script src="../../js/logOut.js"></script>
+<script src="../../js/setName.js"></script>
 </html>
