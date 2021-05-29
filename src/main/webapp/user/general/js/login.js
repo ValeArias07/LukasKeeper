@@ -15,16 +15,16 @@ const verifyUser= ()=>{
             let response = JSON.parse(json);
             console.log(response);
             if(response===true){
-                console.log(JSON.stringify(session))
                 window.localStorage.setItem('session', JSON.stringify(session));
                 window.location.href = 'dashboard.html'
             }else{
-                alert("No existe una cuenta vinculada");
+                alert("Contraseña incorrecta");
             }
         }
     });
 
     xhr.setRequestHeader('Content-Type', 'application/json');
+    console.log(JSON.stringify(session));
     xhr.send(JSON.stringify(session));
 }
 
