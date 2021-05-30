@@ -13,38 +13,22 @@
 
 <body>
 <!--header start-->
-<header>
-    <a class="logo" href="/"><img src="../../images/logo.png" alt="logo" width="200px"> </a>
-    <nav>
-        <ul class="nav__links">
-            <li><a href="../general/dashboard.html ">Dashboard</a></li>
-            <li><a href="../categories/incomes.html">Ingresos</a></li>
-            <li><a href="../categories/expenses.html">Gastos</a></li>
-            <li><a id="own1">Deudas</a></li>
-            <li><a href="../categories/savings.html">Ahorros</a></li>
-            <li><a href="../about/help.html ">Ayuda </a></li>
-            <li><a href="../about/contact.html ">Contactanos</a></li>
-            <li><a href="# ">Cerrar sesion</a></li>
-        </ul>
-    </nav>
-</header>
+<div id="header"></div>
 <!--header end-->
 
 <!--article start-->
 <div class="container">
-
-
     <aside>
         <div class="sidebar">
             <center>
                 <img src="../../images/model.jpg" class="profile_image" alt="">
-                <h4>Hola, Jennifer! </h4>
+                <h4>Hola, <label id="nameModel"></label>! </h4>\
             </center>
-            <a id="choosed"><img src="../../images/addDebts.png" class="icons" align="center"><span>Agregar Deuda</span></a>
-            <a href="#"><img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></a>
-            <a href="#"><img src="../../images/timeline.png" class="icons" align="center"><span>Comparar en el tiempo</span></a>
-            <a href="#"><img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></a>
-            <a href="#"><img src="../../images/indicators.png" class="icons" align="center"><span>Ver indicadores</span></a>
+            <button class="optionsButton" id="addBtn" href="../add/addDebt.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar Deudas</span></button>
+            <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
+            <button class="optionsButton" id="timelineBtn"> <img src="../../images/timeline.png" class="icons" align="center"><span>Comparar en el tiempo</span></button>
+            <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
+            <button class="optionsButton" id="indicatorsBtn"> <img src="../../images/indicators.png" class="icons" align="center"><span>Ver indicadores</span></button>
 
             <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
         </div>
@@ -68,24 +52,14 @@
 </div>
 
 <!--footer start-->
-<footer>
-    <a class=" logo " href="/ "><img src="../../images/logo.png " alt="logo " width="200px "> </a>
-    <nav>
-        <ul class="nav__links ">
-            <li><a href="../general/dashboard.html">Dashboard</a></li>
-            <li><a href="../categories/incomes.html">Ingresos</a></li>
-            <li><a href="../categories/expenses.html">Gastos</a></li>
-            <li><a id="own2">Deudas</a></li>
-            <li><a href="../categories/savings.html">Ahorros</a></li>
-            <li><a href="../about/help.html ">Ayuda </a></li>
-            <li><a href="../about/contact.html ">Contactanos</a></li>
-            <li><a href="# ">Cerrar sesion</a></li>
-        </ul>
-    </nav>
-</footer>
+<div id="footer"></div>
 <!--footer end-->
 </body>
-<script src="../general/js/session.js"></script>
+<script src="../../js/user.js"></script>
+<script src="../../js/session.js"></script>
+<script src="js/loadBasicElements.js"></script>
+<script src="../../js/logOut.js"></script>
+<script src="../../js/setName.js"></script>
 <script src="js/debt.js"></script>
 <script src="js/addDebt.js"></script>
 </html>

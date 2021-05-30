@@ -19,3 +19,31 @@ const addDebt=()=>{
 }
 
 button.addEventListener('click', addDebt);
+
+loadContainerPeriod = () => {
+    window.location="../categories/debts.html";
+}
+
+loadContainerTimeLine = () => {
+    window.location="../categories/debts.html";
+}
+
+loadContainerCompare = () => {
+    window.location="../categories/debts.html";
+}
+
+loadContainerIndicador = () => {
+    window.location="../categories/debts.html";
+}
+
+authSession=()=> {
+    if (localStorage.getItem('session') === null) {
+        window.location="../general/login.html";
+    }
+}
+
+authSession();
+periodBtn.addEventListener('click', loadContainerPeriod);
+timelineBtn.addEventListener('click', loadContainerTimeLine);
+compareBtn.addEventListener('click', loadContainerCompare);
+indicatorsBtn.addEventListener('click', loadContainerIndicador);
