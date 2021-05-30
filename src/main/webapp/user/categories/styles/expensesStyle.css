@@ -136,3 +136,41 @@ Sidebar consig
     margin-bottom: 10px;
     align-items: center;
 }
+#logOutButton {
+    background-color: #394D72;
+    font-size: medium;
+    cursor: pointer;
+    border: none;
+    color: #ffff;
+    height: 10px;
+    width: 150px;
+}
+
+.optionsButton {
+    color: #fff;
+    display: block;
+    width: 290px;
+    line-height: 50px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+    background-color: #394D72;
+    border: none;
+    cursor: pointer;
+}
+
+.optionsButton:hover {
+    color: #ffff;
+    background-color: #2f323a;
+    text-decoration: none;
+}
+
+#canvas {
+    height: 50%;
+    width: 100%;
+    float: right;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #2f323a;
+    font-family: 'Work Sans', sans-serif;
+}

@@ -27,3 +27,20 @@ const addExpense = (idCategory, frequencyType) => {
 }
 
 button.addEventListener('click', getSelectors);
+
+sendBack=()=> {
+    window.location = "../categories/expenses.html";
+}
+
+authSession=()=> {
+    if (localStorage.getItem('session') === null) {
+        window.location="../general/login.html";
+    }
+}
+
+authSession();
+addBtn.addEventListener('click', sendBack);
+periodBtn.addEventListener('click', sendBack);
+timelineBtn.addEventListener('click', sendBack);
+compareBtn.addEventListener('click', sendBack);
+indicatorsBtn.addEventListener('click', sendBack);
