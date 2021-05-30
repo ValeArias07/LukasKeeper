@@ -7,27 +7,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/incomesStyle.css">
+    <link rel="stylesheet" href="styles/general.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <!--header start-->
-    <header>
-        <a class="logo" href="/"><img src="../../images/logo.png" alt="logo" width="200px"> </a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="../general/dashboard.html ">Dashboard</a></li>
-                <li><a id="own1">Ingresos</a></li>
-                <li><a href="expenses.html">Gastos</a></li>
-                <li><a href="debts.html">Deudas</a></li>
-                <li><a href="savings.html">Ahorros</a></li>
-                <li><a href="../about/help.html ">Ayuda </a></li>
-                <li><a href="../about/contact.html ">Contactanos</a></li>
-                <li><a href="../../index.html  ">Cerrar sesion</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="header"> </div>
     <!--header end-->
 
     <!--article start-->
@@ -36,7 +23,7 @@
             <div class="sidebar">
                 <center>
                     <img src="../../images/model.jpg" class="profile_image" alt="">
-                    <h4>Hola, Jennifer! </h4>
+                    <h4>Hola, <label id="nameModel"></label>! </h4>\
                 </center>
                 <button class="optionsButton" id="addBtn" href="../add/addIncomes.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar ingreso</span></button>
                 <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
@@ -58,23 +45,13 @@
     </div>
 
     <!--footer start-->
-    <footer>
-        <a class=" logo " href="/ "><img src="../../images/logo.png " alt="logo " width="200px "> </a>
-        <nav>
-            <ul class="nav__links ">
-                <li><a href="../general/dashboard.html ">Dashboard</a></li>
-                <li><a id="own2">Ingresos</a></li>
-                <li><a href="expenses.html">Gastos</a></li>
-                <li><a href="debts.html">Deudas</a></li>
-                <li><a href="savings.html">Ahorros</a></li>
-                <li><a href="../about/help.html ">Ayuda </a></li>
-                <li><a href="../about/contact.html ">Contactanos</a></li>
-                <li><a href="../../index.html  ">Cerrar sesion</a></li>
-            </ul>
-        </nav>
-    </footer>
+    <div id="footer"></div>
     <!--footer end-->
 </body>
-<script src="js/loadButtons.js"></script>
-
+<script src="js/incomeConfig.js"></script>
+<script src="../../js/session.js"></script>
+<script src="../../js/checkCredentials.js"></script>
+<script src="js/loadBasicElements.js"></script>
+<script src="../../js/logOut.js"></script>
+<script src="../../js/setName.js"></script>
 </html>
