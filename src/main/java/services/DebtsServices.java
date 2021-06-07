@@ -1,7 +1,9 @@
 package services;
 
 import com.google.gson.Gson;
+import db.DBConnection;
 import model.Debt;
+import model.User;
 import providers.DebtProvider;
 import providers.UserProvider;
 
@@ -9,6 +11,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 @Path("debts")
 public class DebtsServices {
@@ -65,9 +68,25 @@ public class DebtsServices {
 		return null;
 	}
 
-	@GET
+	@POST
+	@Consumes("application/json")
 	@Path("list")
-	public Response getList() {return null;  }
+	public Response getList(User user) {
+		try {
+			DebtProvider provider = new DebtProvider();
+			ArrayList<Debt> debts = provider.getAllDebts(user.getEmail());
+			return Response.ok(debts)
+					.header("Content-Type","application/json")
+					.build();
+		} catch (SQLException | ParseException exception) {
+			exception.printStackTrace();
+			return Response
+					.status(500)
+					.entity(new String("Operación Fallida"))
+					.header("Content-Type","application/json")
+					.build();
+		}
+	}
 
 	@GET
 	@Path("delete")
