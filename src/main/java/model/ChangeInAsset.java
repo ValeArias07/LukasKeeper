@@ -16,8 +16,14 @@ public class ChangeInAsset {
 	private int idUserCategory;
 	private int idDefaultCategory;
 	private int idUser;
+	private String sDate;
 
 	public ChangeInAsset(){}
+
+	public ChangeInAsset(double value, String date ) {
+		this.value = value;
+		this.sDate = date;
+	}
 
 	public ChangeInAsset(int id, double value, String description, Date date, String frequency, int idDefaultCategory, int idUserCategory, int idUser) {
 		this.id = id;
@@ -89,6 +95,14 @@ public class ChangeInAsset {
 
 	public void setUserId(int idUser){
 		this.idUser=idUser;
+	}
+
+	public String getsDate() {
+		return sDate;
+	}
+
+	public void setsDate(String sDate) {
+		this.sDate = sDate;
 	}
 
 	@Override

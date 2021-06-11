@@ -98,4 +98,25 @@ public class IncomeServices{
 	public Response deleteItem(@QueryParam("id") int id) {
 		return null;
 	}
+
+
+	@GET
+	@Produces("application/json")
+	@Path("pair/{email}")
+	public Response getPair(@PathParam("email") String email) {
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			return  Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.entity(provider.getAllIncomesP(email))
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
 }

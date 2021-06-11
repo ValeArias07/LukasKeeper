@@ -2,6 +2,7 @@ package providers;
 
 import db.DBConnection;
 import model.ChangeInAsset;
+import model.Pair;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,6 +65,25 @@ public class ChangesInAssetsProvider {
             int idDefaultCategory = Integer.parseInt(resultSet.getString(resultSet.findColumn("idDefaultCategory")));
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
             changesInAssets.add(new ChangeInAsset(id,value,description,DBConnection.format.parse(date), frequency, idUserCategory, idDefaultCategory, idUser));
+        }
+        connection.disconnect();
+        return changesInAssets;
+    }
+
+    public ArrayList<Pair> getAllIncomesP(String email) throws SQLException, ParseException {
+        String sql = "SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.email = $EMAIL AND changes_in_assets.value>=0".replace("$EMAIL", "'" + email.trim() + "'");
+        DBConnection connection = new DBConnection();
+        return getAllIncomesPairList(sql, connection);
+    }
+
+    private ArrayList<Pair> getAllIncomesPairList(String sql, DBConnection connection) throws SQLException, ParseException {
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        ArrayList<Pair> changesInAssets = new ArrayList<Pair>();
+        while(resultSet.next()) {
+            double value =Double.parseDouble(resultSet.getString(resultSet.findColumn("value")));
+            String date = resultSet.getString(resultSet.findColumn("date"));
+            changesInAssets.add(new Pair(date, value));
         }
         connection.disconnect();
         return changesInAssets;
