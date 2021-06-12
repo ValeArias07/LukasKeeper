@@ -7,7 +7,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 @Path("savings")
-public class SavingServices implements GeneralServicesInterface {
+public class SavingServices{
 
 	@POST
 	@Path("add")
@@ -22,20 +22,8 @@ public class SavingServices implements GeneralServicesInterface {
 	}
 
 	@GET
-	@Path("timeline")
-	public Response getTimeline() {
-		return null;
-	}
-
-	@GET
 	@Path("comparation")
 	public Response getComparation(@QueryParam("type") String type) {
-		return null;
-	}
-
-	@GET
-	@Path("indicator")
-	public Response getIndicators() {
 		return null;
 	}
 
