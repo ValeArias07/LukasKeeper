@@ -36,7 +36,13 @@
         </aside>
 
         <div class="article ">
-            <h2>Titulo</h2>
+            <h2 id = "title">Agregar ahorro</h2>
+            <img id= img src="../../images/saving.jpg "/>
+            <div class="fields">
+                <div><lab>Cantidad: </lab><input id ="txtAmount" type="number" step="10000" min="1000"></div>
+                <div><lab>Plan de ahorro: </lab><select name="Planes" id="planSelecter"></select></div>
+            </div>
+            <button id="btAdd">Ahorrar</button>
         </div>
 
     </div>
@@ -47,7 +53,7 @@
     </footer>
     <!--footer end-->
 </body>
-
+<script src="js/addSaving.js"></script>
 <script src="js/loadButtonsSavings.js"></script>
 <script src="js/loadBasicElements.js"></script>
 </html>
