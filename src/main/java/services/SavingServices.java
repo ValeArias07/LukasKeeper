@@ -12,14 +12,14 @@ public class SavingServices{
 	@POST
 	@Consumes("application/json")
 	@Path("addPlan")
-	public Response addPlan(SavingPlan Saving) {
+	public Response addPlan(@QueryParam("email") String email, SavingPlan Saving) {
 		return null;
 	}
 
 	@POST
 	@Consumes("application/json")
 	@Path("addSaving")
-	public Response addSaving(Fee fee) {
+	public Response addSaving(@QueryParam("email") String email, Fee fee) {
 		return null;
 	}
 
@@ -35,7 +35,7 @@ public class SavingServices{
 
 	@GET
 	@Path("delete")
-	public Response deleteItem(@QueryParam("id") int id) {
+	public Response deleteItem(@QueryParam("email") String email) {
 		return null;
 	}
 

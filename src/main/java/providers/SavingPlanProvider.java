@@ -12,11 +12,11 @@ public class SavingPlanProvider {
     public void addSavingPlan(SavingPlan savingPlan) throws SQLException {
         DBConnection connection = new DBConnection();
         String date =DBConnection.format.format(savingPlan.getDate());
-        String sql = ("INSERT INTO saving_plan(goal, balance, total, date, monthlyFee, idUser) " +
-                "VALUES ($GOAL,$BALANCE,$TOTAL, $DATE, $MONTHLYFEE, $IDUSER)")
+        String sql = ("INSERT INTO saving_plan(goal, description, total, date, monthlyFee, idUser) " +
+                "VALUES ($GOAL,$DESCRIPTION,$TOTAL, $DATE, $MONTHLYFEE, $IDUSER)")
                 .replace("$GOAL","'"+savingPlan.getGoal()+"'")
-                .replace("$BALANCE","'"+savingPlan.getBalance()+"'")
-                .replace("$TOTAL", "'"+savingPlan.getTotal()+"'")
+                .replace("$DESCRPTION", "'"+savingPlan.getDescription()+"'")
+                .replace("$TOTAL", "'"+savingPlan.getTotalFee()+"'")
                 .replace("$DATE","'"+ date+"'")
                 .replace("$MONTHLYFEE","'"+savingPlan.getMonthlyFee()+"'")
                 .replace("$IDUSER","'"+savingPlan.getIdUser()+"'");
@@ -46,12 +46,12 @@ public class SavingPlanProvider {
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
             double goal =Double.parseDouble(resultSet.getString(resultSet.findColumn("goal")));
-            double balance =Double.parseDouble(resultSet.getString(resultSet.findColumn("balance")));
-            double total =Double.parseDouble(resultSet.getString(resultSet.findColumn("total")));
+            String description =resultSet.getString(resultSet.findColumn("description"));
+            double total =Double.parseDouble(resultSet.getString(resultSet.findColumn("totalFee")));
             String date = resultSet.getString(resultSet.findColumn("date"));
             int monthlyFee = Integer.parseInt(resultSet.getString(resultSet.findColumn("monthlyFee")));
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
-            savingPlans.add(new SavingPlan(id,goal,balance,total,DBConnection.format.parse(date),monthlyFee,idUser));
+            savingPlans.add(new SavingPlan(id,goal,description,total,DBConnection.format.parse(date),monthlyFee,idUser));
         }
         connection.disconnect();
         return savingPlans;

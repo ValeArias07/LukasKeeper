@@ -1,8 +1,8 @@
 class SavingPlan{
 
-    constructor(datail, cost, date){
-        this.detail = datail;
-        this.cost = cost;
-        this.date = deta;
+    constructor(description, goal, date){
+        this.description = description;
+        this.goal = goal;
+        this.date = date;
     }
 }
