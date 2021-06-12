@@ -56,4 +56,22 @@ public class SavingPlanProvider {
         connection.disconnect();
         return savingPlans;
     }
+
+    public ArrayList<SavingPlan> getAllSavingPlansNames(String userEmail) throws SQLException, ParseException {
+        String sql = ("SELECT saving_plan.* FROM saving_plan INNER JOIN users ON saving_plan.idUser = users.id WHERE users.email = "+"'"+userEmail+"'");
+        DBConnection connection = new DBConnection();
+        return getAllSavingPlansNames(sql,connection);
+    }
+
+    private ArrayList<SavingPlan> getAllSavingPlansNames(String sql, DBConnection connection) throws SQLException, ParseException {
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        ArrayList<SavingPlan> savingPlans= new ArrayList<SavingPlan>();
+        while(resultSet.next()) {
+            String description =resultSet.getString(resultSet.findColumn("description"));
+            savingPlans.add(new SavingPlan(description));
+        }
+        connection.disconnect();
+        return savingPlans;
+    }
 }

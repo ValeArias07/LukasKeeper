@@ -14,6 +14,10 @@ public class SavingPlan {
 	public SavingPlan() {
 
 	}
+
+	public SavingPlan( String description) {
+		this.description = description;
+	}
 	public SavingPlan(double goal, String description, Date date, int monthlyFee, int idUser) {
 		this.goal = goal;
 		this.description = description;

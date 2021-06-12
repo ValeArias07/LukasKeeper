@@ -1,22 +1,20 @@
 const amount = document.getElementById('txtAmount');
 const planSelecter = document.getElementById('planSelecter');
-
-btAdd.addEventListener('click', toRegister);
-
-function toRegister(){
-    let saving = {amount = amount.value, plan = planSelecter.selectedIndex};
+const btAdd = document.getElementById("btAdd");
+ toRegister=()=>{
+    let saving = {
+        amount: amount.value,
+        plan: planSelecter.options[planSelecter.selectedIndex].value,
+        date: (new Date(Date.now)).toLocaleDateString()
+    };
 
     //POST
     let xhr = new XMLHttpRequest();
-    xhr.addEventListener('readystatechange', ()=>{
-        console.log(xhr.responseText);
-    });
     xhr.open('POST', "url");
     xhr.setRequestHeader('Content-type', 'application/json');
     xhr.send(JSON.stringify(saving)); //toJson
 }
-
-function loadOptionsOfPlanSelecter(){
+ loadOptionsOfPlanSelecter=()=>{
 
     let xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', ()=>{
@@ -27,7 +25,8 @@ function loadOptionsOfPlanSelecter(){
             for(let i=0; response.length; i++){
                 let plan = response[i];
                 var option = document.createElement("option");
-                option.text = plan;
+                option.value=i;
+                option.innerHTML=plan;
                 planSelecter.add(option);
             }
         }
@@ -37,3 +36,4 @@ function loadOptionsOfPlanSelecter(){
 }
 
 loadOptionsOfPlanSelecter();
+btAdd.addEventListener('click', toRegister);
