@@ -1,41 +1,31 @@
 package services;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import model.Fee;
+import model.SavingPlan;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 @Path("savings")
-public class SavingServices implements GeneralServicesInterface {
+public class SavingServices{
 
 	@POST
-	@Path("add")
-	public Response add(String Saving) {
+	@Consumes("application/json")
+	@Path("addPlan")
+	public Response addPlan(SavingPlan Saving) {
 		return null;
 	}
 
-	@GET
-	@Path("balance")
-	public Response balance() {
-		return null;
-	}
-
-	@GET
-	@Path("timeline")
-	public Response getTimeline() {
+	@POST
+	@Consumes("application/json")
+	@Path("addSaving")
+	public Response addSaving(Fee fee) {
 		return null;
 	}
 
 	@GET
 	@Path("comparation")
 	public Response getComparation(@QueryParam("type") String type) {
-		return null;
-	}
-
-	@GET
-	@Path("indicator")
-	public Response getIndicators() {
 		return null;
 	}
 
@@ -48,4 +38,11 @@ public class SavingServices implements GeneralServicesInterface {
 	public Response deleteItem(@QueryParam("id") int id) {
 		return null;
 	}
+
+	@GET
+	@Path("balance")
+	public Response balance() {
+		return null;
+	}
+
 }
