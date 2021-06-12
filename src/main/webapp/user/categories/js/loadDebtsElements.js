@@ -1,34 +1,34 @@
-class loadIncomeElements{
+class loadDebtsElements{
 
-    constructor(income){
-        this.income = income;
+    constructor(debts){
+        this.debts = debts;
         this.onDeleteFinish = null;
     }
 
     render = () =>{
         let component = document.createElement('div'); //<div></div>
-        component.className = 'income' + this.income.id;
+        component.className = 'debts' + this.debts.id;
 
         let fieldCantidad = document.createElement('div'); //<div></div>
         component.className = 'field';
         let cantidadLabel = document.createElement('p'); //<p></p>
         cantidad.className = 'cantidadLabel'; 
-        let cantidadIncome =document.createElement('p');
-        cantidadIncome.id = "cantidadIncome";
+        let cantidadDebts =document.createElement('p');
+        cantidadDebts.id = "cantidadDebts";
 
         let fieldDescripcion = document.createElement('div'); //<div></div>
         component.className = 'field';
         let descripcionLabel = document.createElement('p'); //<small></small>
         descripcion.className = 'descripcionLabel';
-        let descripcionIncome =document.createElement('p');
-        descripcionIncome.id = "descripcionIncome";
+        let descripcionDebts =document.createElement('p');
+        descripcionDebts.id = "descripcionDebts";
         
         let fieldFecha = document.createElement('div'); //<div></div>
         component.className = 'field';
         let fechaLabel = document.createElement('p'); //<small></small>
         fechaLabel.className = 'fechaLabel';
-        let fechaIncome =document.createElement('p');
-        fechaIncome.id = "fechaIncome";
+        let fechaDebts =document.createElement('p');
+        fechaDebts.id = "fechaDebts";
 
         let delBtn = document.createElement('button');
         delBtn.innerHTML = 'Eliminar';
@@ -37,9 +37,9 @@ class loadIncomeElements{
         cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
         descripcionLabel.innerHTML = "Descripción";
         fechaLabel.innerHTML = "Fecha";
-        cantidadIncome.innerHTML = this.income.value;
-        descripcionIncome.innerHTML = this.income.description;
-        fechaIncome.innerHTML = this.income.date;
+        cantidadDebts.innerHTML = this.Debts.value;
+        descripcionDebts.innerHTML = this.Debts.description;
+        fechaDebts.innerHTML = this.Debts.date;
 
         component.appendChild(fieldCantidad); //<div><p></p></div>
         component.appendChild(fieldDescripcion); //div<p></p><small></small></div>
@@ -47,11 +47,11 @@ class loadIncomeElements{
         component.appendChild(delBtn);
 
         fieldCantidad.appendChild(cantidadLabel);
-        fieldCantidad.appendChild(cantidadIncome);
+        fieldCantidad.appendChild(cantidadDebts);
         fieldDescripcion.appendChild(descripcionLabel);
-        fieldDescripcion.appendChild(descripcionIncome);
+        fieldDescripcion.appendChild(descripcionDebts);
         fieldFecha.appendChild(fechaLabel);
-        fieldFecha.appendChild(fechaIncome);
+        fieldFecha.appendChild(fechaDebts);
         
         delBtn.addEventListener('click', this.deleteNote);
 
