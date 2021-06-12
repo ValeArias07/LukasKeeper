@@ -2,6 +2,7 @@ package providers;
 
 import db.DBConnection;
 import model.ChangeInAsset;
+import model.Debt;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,6 +49,22 @@ public class ChangesInAssetsProvider {
         String sql = "SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.id = $IDUSER AND changes_in_assets.value>=0".replace("$IDUSER", "'" + userId + "'");
         DBConnection connection = new DBConnection();
         return getAllChangesInAssets(sql, connection);
+    }
+
+    public ArrayList<ChangeInAsset> getAllMonthExpenses(String email, String yearMonth) throws SQLException, ParseException {
+        String sql = ("SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE changes_in_assets.date LIKE %DATE AND users.email = %EMAIl AND changes_in_assets.value<0")
+                .replace("$EMAIL", "'" + email.trim() + "'")
+                .replace("%DATE", "'" + yearMonth + "-%'");
+        DBConnection connection = new DBConnection();
+        return getAllChangesInAssets(sql,connection);
+    }
+
+    public ArrayList<ChangeInAsset> getAllMonthIncomes(String email, String yearMonth) throws SQLException, ParseException {
+        String sql = ("SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE changes_in_assets.date LIKE %DATE AND users.email = %EMAIl AND changes_in_assets.value>=0")
+                .replace("$EMAIL", "'" + email.trim() + "'")
+                .replace("%DATE", "'" + yearMonth + "-%'");
+        DBConnection connection = new DBConnection();
+        return getAllChangesInAssets(sql,connection);
     }
 
     private ArrayList<ChangeInAsset> getAllChangesInAssets(String sql, DBConnection connection) throws SQLException, ParseException {
