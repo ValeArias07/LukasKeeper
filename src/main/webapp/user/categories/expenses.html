@@ -56,12 +56,27 @@
     <!--footer end-->
 
 </body>
-<script src="js/loadButtonsExpenses.js"></script>
 <script src="js/expensesChart.js"></script>
 <script src="../../js/session.js"></script>
 <script src="../../js/checkCredentials.js"></script>
 <script src="js/loadBasicElements.js"></script>
 <script src="../../js/logOut.js"></script>
 <script src="../../js/setName.js"></script>
+<script>
+    const addBtn = document.getElementById('addBtn');
+    const periodBtn = document.getElementById('periodBtn');
+    const compareBtn = document.getElementById('compareBtn');
 
+    goToAdd=()=>{
+        window.location="../add/addExpenses.html";
+    }
+
+    goToMain = () => {
+        window.location="../add/addExpenses.html";
+    }
+
+    addBtn.addEventListener('click', goToAdd);
+    periodBtn.addEventListener('click', goToMain);
+    compareBtn.addEventListener('click', goToMain);
+</script>
 </html>
