@@ -91,13 +91,31 @@ public class IncomeServices{
 	}
 
 	@GET
-	@Path("list")
-	public Response getList() {return null;  }
-
-	@GET
 	@Path("delete")
 	public Response deleteItem(@QueryParam("id") int id) {
 		return null;
+	}
+
+
+	@GET
+	@Produces("application/json")
+	@Path("list")
+	public Response getList(@QueryParam("email") String email) {
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			ArrayList<ChangeInAsset> list = provider.getAllIncomes(email);
+			return Response.ok()
+					.entity(list)
+					.header("Content-Type","application/json")
+					.build();
+		} catch (SQLException | ParseException exception) {
+			exception.printStackTrace();
+			return Response
+					.status(500)
+					.entity(new String("Operación Fallida"))
+					.header("Content-Type","application/json")
+					.build();
+		}
 	}
 
 	@GET
