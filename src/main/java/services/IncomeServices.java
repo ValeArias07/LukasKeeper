@@ -12,6 +12,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 @Path("incomes")
 public class IncomeServices{
@@ -97,5 +98,31 @@ public class IncomeServices{
 	@Path("delete")
 	public Response deleteItem(@QueryParam("id") int id) {
 		return null;
+	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getMonthlyData")
+	public Response getData(@QueryParam("email") String email, @QueryParam("date") String date) {
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllMonthIncomes(email, date))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
 	}
 }
