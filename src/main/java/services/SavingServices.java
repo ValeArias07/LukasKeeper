@@ -10,6 +10,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 @Path("savings")
 public class SavingServices {
@@ -53,9 +54,23 @@ public class SavingServices {
 	}
 
 	@GET
+	@Produces("application/json")
 	@Path("list")
-	public Response getList() {
-		return null;
+	public Response getList(@QueryParam("email") String email) {
+		try {
+			SavingPlanProvider provider = new SavingPlanProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllSavingPlans(email))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
 	}
 
 	@GET

@@ -32,7 +32,7 @@ public class SavingPlanProvider {
     }
 
     public ArrayList<SavingPlan> getAllSavingPlans(String userEmail) throws SQLException, ParseException {
-        String sql = ("SELECT saving_plan.* FROM saving_plan INNER JOIN users ON saving_plan.idUser = users.id WHERE user.email = $EMAIl")
+        String sql = ("SELECT saving_plan.* FROM saving_plan INNER JOIN users ON saving_plan.idUser = users.id WHERE users.email = $EMAIL")
                 .replace("$EMAIL", "'" + userEmail.trim() + "'");
         DBConnection connection = new DBConnection();
         return getAllSavingPlans(sql,connection);
@@ -41,7 +41,7 @@ public class SavingPlanProvider {
     private ArrayList<SavingPlan> getAllSavingPlans(String sql, DBConnection connection) throws SQLException, ParseException {
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        ArrayList<SavingPlan> savingPlans = null;
+        ArrayList<SavingPlan> savingPlans = new ArrayList<>();
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
             double goal =Double.parseDouble(resultSet.getString(resultSet.findColumn("goal")));
@@ -50,7 +50,8 @@ public class SavingPlanProvider {
             String date = resultSet.getString(resultSet.findColumn("date"));
             int monthlyFee = Integer.parseInt(resultSet.getString(resultSet.findColumn("monthlyFee")));
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
-            savingPlans.add(new SavingPlan(id,goal,description,total,date,monthlyFee,idUser));
+            SavingPlan plan = new SavingPlan(id,goal,description,total,date,monthlyFee,idUser);
+            savingPlans.add(plan);
         }
         connection.disconnect();
         return savingPlans;

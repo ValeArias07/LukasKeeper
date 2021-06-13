@@ -94,4 +94,17 @@ public class SavingPlan {
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
+
+	@Override
+	public String toString() {
+		return "SavingPlan{" +
+				"id=" + id +
+				", goal=" + goal +
+				", description='" + description + '\'' +
+				", totalFee=" + totalFee +
+				", date='" + date + '\'' +
+				", monthlyFee=" + monthlyFee +
+				", idUser=" + idUser +
+				'}';
+	}
 }
