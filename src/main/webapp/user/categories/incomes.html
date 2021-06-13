@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/general.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
             <div class="sidebar">
                 <center>
                     <img src="../../images/model.jpg" class="profile_image" alt="">
-                    <h4>Hola, <label id="nameModel"></label>! </h4>\
+                    <h4>Hola, <label id="nameModel"></label>! </h4>
                 </center>
                 <button class="optionsButton" id="addBtn" href="../add/addIncomes.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar ingreso</span></button>
                 <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
@@ -37,7 +38,7 @@
 
         <div class="article" id="canvasContainer">
             <div id="canvas">
-
+                <canvas id="myChart" width="870" height="430"></canvas>
             </div>
         </div>
 
@@ -48,6 +49,7 @@
     <div id="footer"></div>
     <!--footer end-->
 </body>
+<script src="js/charts.js"></script>
 <script src="js/incomeConfig.js"></script>
 <script src="../../js/session.js"></script>
 <script src="../../js/checkCredentials.js"></script>
