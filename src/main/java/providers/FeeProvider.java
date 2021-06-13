@@ -42,4 +42,12 @@ public class FeeProvider {
         connection.disconnect();
         return fees;
     }
+
+    public void deleteById(int id) throws SQLException {
+        String sql = "DELETE FROM fee WHERE id="+id;
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        connection.commandSQL(sql);
+        connection.disconnect();
+    }
 }

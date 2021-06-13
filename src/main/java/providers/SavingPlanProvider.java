@@ -74,4 +74,12 @@ public class SavingPlanProvider {
         connection.disconnect();
         return savingPlans;
     }
+
+    public void deleteById(int id) throws SQLException {
+        String sql = "DELETE FROM saving_plan WHERE id="+id;
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        connection.commandSQL(sql);
+        connection.disconnect();
+    }
 }

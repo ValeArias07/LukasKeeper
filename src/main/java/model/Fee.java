@@ -66,4 +66,5 @@ public class Fee {
     public void setIdDebts(int idDebts) {
         this.idDebts = idDebts;
     }
+
 }

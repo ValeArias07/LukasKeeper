@@ -89,10 +89,42 @@ public class SavingServices {
 		}
 	}
 
-	@GET
-	@Path("delete")
-	public Response deleteItem(@QueryParam("email") String email) {
-		return null;
+	@DELETE
+	@Path("deletePlan")
+	public Response deletePlan(@QueryParam("id") int id) {
+		try {
+			SavingPlanProvider provider = new SavingPlanProvider();
+			provider.deleteById(id);
+			return  Response
+					.ok()
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
+
+	@DELETE
+	@Path("deleteSaving")
+	public Response deleteSaving(@QueryParam("id") int id) {
+		try {
+			FeeProvider provider = new FeeProvider();
+			provider.deleteById(id);
+			return  Response
+					.ok()
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
 	}
 
 	@GET
