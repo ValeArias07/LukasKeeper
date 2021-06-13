@@ -3,6 +3,7 @@ package services;
 import model.Fee;
 import model.SavingPlan;
 import model.User;
+import providers.FeeProvider;
 import providers.SavingPlanProvider;
 import providers.UserProvider;
 
@@ -11,6 +12,7 @@ import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Path("savings")
 public class SavingServices {
@@ -43,8 +45,22 @@ public class SavingServices {
 	@POST
 	@Consumes("application/json")
 	@Path("addSaving")
-	public Response addSaving(@QueryParam("email") String email, Fee fee) {
-		return null;
+	public Response addSaving(Fee fee) {
+		try {
+			FeeProvider provider = new FeeProvider();
+			fee.setDate(new Date());
+			provider.addFee(fee);
+			return  Response
+					.ok()
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (Exception throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
 	}
 
 	@GET

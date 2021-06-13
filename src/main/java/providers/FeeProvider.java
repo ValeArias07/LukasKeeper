@@ -16,16 +16,17 @@ public class FeeProvider {
                 "VALUES ($VALUE,$DATE,$IDSP, $IDD)")
                 .replace("$VALUE","'"+fee.getValue()+"'")
                 .replace("$DATE","'"+date+"'")
-                .replace("$IDSP", "'"+fee.getIdSavingPlan()+"'")
-                .replace("$IDD","'"+ fee.getIdDebts()+"'");
+                .replace("$IDSP", (fee.getIdSavingPlan()!=0)?"'"+fee.getIdSavingPlan()+"'":"NULL")
+                .replace("$IDD",(fee.getIdDebts()!=0)?"'"+ fee.getIdDebts()+"'":"NULL");
         connection.connect();
+        System.out.println(sql);
         connection.commandSQL(sql);
         connection.disconnect();
     }
 
     public ArrayList<Fee> getAllFee(int idSavingPlan, int idDebts) throws SQLException, ParseException {
-        String sql = ("SELECT fee.* FROM fee INNER JOIN $TABLE ON fee.$IDNAME = $TABLE.id WHERE $TABLE.id = $ID")
-                .replace("$ID", (idSavingPlan!=-1)?"'" + idSavingPlan + "'":"'" + idDebts + "'")
+        String sql = ("SELECT fee.* FROM fee INNER JOIN $TABLE ON fee.$IDNAME = $TABLE.id WHERE $TABLE.id = $IDD")
+                .replace("$IDD", (idSavingPlan!=-1)?"'" + idSavingPlan + "'":"'" + idDebts + "'")
                 .replace("$TABLE", (idSavingPlan!=-1)?"'savingPlan'":"'debts'")
                 .replace("$IDNAME", (idSavingPlan!=-1)?"'idSavingPlan'":"'idDebts'");
         DBConnection connection = new DBConnection();

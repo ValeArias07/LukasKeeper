@@ -5,13 +5,25 @@ toRegister = () => {
     let saving = {
         value: amount.value,
         idSavingPlan: planSelecter.options[planSelecter.selectedIndex].value,
-        date: '2021-06-12' // El back se encarga de ponerle la fecha actual
+        // El back se encarga de ponerle la fecha actual
     };
-
+    console.log(saving)
     //POST
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', "url");
+    let baseUrl = window.location.origin + '/' + location.pathname.split('/')[1] + '/';
+    xhr.open('POST', baseUrl + "api/savings/addSaving");
     xhr.setRequestHeader('Content-type', 'application/json');
+
+    xhr.onload = () => {
+        let textAdd = 'Ocurrio un error al agregar el ahorro';
+        if(xhr.status === 200){
+            textAdd = 'Ahorro agregado exitosamente'
+            amount.value = '';
+            planSelecter.selectedIndex = 0;
+        }
+        alert(textAdd)
+    }
+
     xhr.send(JSON.stringify(saving)); //toJson
 }
 loadOptionsOfPlanSelecter = () => {

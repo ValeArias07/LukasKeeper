@@ -27,27 +27,43 @@ public class Fee {
         this.idDebts = idDebts;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getValue() {
         return value;
     }
 
+    public void setValue(double value) {
+        this.value = value;
+    }
+
     public Date getDate() {
         return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getIdSavingPlan() {
         return idSavingPlan;
     }
 
+    public void setIdSavingPlan(int idSavingPlan) {
+        this.idSavingPlan = idSavingPlan;
+    }
+
     public int getIdDebts() {
         return idDebts;
+    }
+
+    public void setIdDebts(int idDebts) {
+        this.idDebts = idDebts;
     }
 }
