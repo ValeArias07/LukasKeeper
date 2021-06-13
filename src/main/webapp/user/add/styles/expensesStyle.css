@@ -27,7 +27,7 @@ footer {
     font-weight: 500;
     color: #edf0f1;
     text-decoration: none;
-    text-align: baseline;
+    text-align: center;
 }
 
 .nav__links li {
@@ -76,12 +76,14 @@ article config
 }
 
 .container {
-    overflow: auto;
     height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .article {
-    margin: 4% 2%;
+    margin: 4% 3%;
     padding-top: 30px;
     height: auto;
     width: 65%;
@@ -102,7 +104,10 @@ article config
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-bottom: 50px;
+}
+
+#expenseType{
+    margin-bottom: 35px;
 }
 
 #title {
@@ -139,7 +144,7 @@ article config
     background-color: #F87E96;
     color: #394D72;
     transition: all 0.3s ease 0s;
-    margin-bottom: 60px;
+    margin: 40px;
 }
 
 #fieldContainer {
@@ -180,7 +185,7 @@ Sidebar consig
 
 .sidebar {
     background: #2f323a;
-    margin: 4% 2%;
+    margin: 20% 2%;
     padding: 30px 0 5px 0;
     float: left;
     width: 290px;
@@ -226,4 +231,34 @@ Sidebar consig
     border-radius: 100px;
     margin-bottom: 10px;
     align-items: center;
+}
+
+#logOutButton {
+    background-color: #394D72;
+    font-size: medium;
+    cursor: pointer;
+    border: none;
+    color: #ffff;
+    height: 10px;
+    width: 150px;
+}
+
+
+.optionsButton {
+    color: #fff;
+    display: block;
+    width: 290px;
+    line-height: 50px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+    background-color: #394D72;
+    border: none;
+    cursor: pointer;
+}
+
+.optionsButton:hover {
+    color: #ffff;
+    background-color: #2f323a;
+    text-decoration: none;
 }
