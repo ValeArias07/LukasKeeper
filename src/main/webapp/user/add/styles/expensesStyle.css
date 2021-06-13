@@ -144,7 +144,7 @@ article config
     background-color: #F87E96;
     color: #394D72;
     transition: all 0.3s ease 0s;
-    margin-top: 40px;
+    margin: 40px;
 }
 
 #fieldContainer {

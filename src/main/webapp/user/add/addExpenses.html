@@ -26,11 +26,10 @@
                     <img src="../../images/model.jpg" class="profile_image" alt="">
                     <h4>Hola, <label id="nameModel"></label>! </h4>
                 </center>
-                <button class="optionsButton" id="addBtn" "><img src="../../images/addIncome.png " class="icons " align="center "><span>Agregar gasto</span></button>
-                <button class="optionsButton " id="periodBtn "> <img src="../../images/period.png " class="icons " align="center "><span>Ver por periodo</span></button>
-                <button class="optionsButton " id="timelineBtn "> <img src="../../images/timeline.png " class="icons " align="center "><span>Comparar en el tiempo</span></button>
-                <button class="optionsButton " id="compareBtn "> <img src="../../images/compare.png " class="icons " align="center "><span>Comparar entre categorias</span></button>
-                <button class="optionsButton " id="indicatorsBtn "> <img src="../../images/indicators.png " class="icons " align="center "><span>Ver indicadores</span></button>
+                <button class="optionsButton" id="addBtn" href="../add/addExpense.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar gasto</span></button>
+                <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
+                <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
+
                 <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
             </div>
         </aside>
@@ -74,11 +73,21 @@
 
 <script src="../../js/session.js"></script>
 <script src="js/expense.js "></script>
-<script src="../../js/session.js "></script>
 <script src="../../js/checkCredentials.js "></script>
 <script src="js/loadBasicElements.js "></script>
 <script src="../../js/logOut.js "></script>
 <script src="../../js/setName.js "></script>
+<script>
+    const periodBtn = document.getElementById('periodBtn');
+    const compareBtn = document.getElementById('compareBtn');
 
+    goToMain = () => {
+    window.location="../categories/expenses.html";
+    }
+
+    compareBtn.addEventListener('click', goToMain);
+    periodBtn.addEventListener('click', goToMain);
+
+</script>
 
 </html>
