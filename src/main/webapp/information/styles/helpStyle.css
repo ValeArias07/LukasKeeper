@@ -70,6 +70,9 @@ header {
 
 #ayudatitle{
     font-size: 70px;
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
 .card{
@@ -90,13 +93,51 @@ header {
     margin: 0 auto;
 }
 
-#div2{
+#biggertable{
     margin: 0 auto;
 
 }
 
-#tablerow{
-    color: #F87E96;
+#centraltable{
+    margin: 0 auto;
+
+}
+
+.divimg1{
+    height: 700px;
+    width: 300px;
+    position: relative;
+    top: 20%;
+    left: 25%;
+    overflow: hidden;
+}
+
+#imgleft{
+    display: flex;
+    justify-content:flex-start;
+}
+
+.divimg2{
+    height: 700px;
+    width: 350px;
+    position: relative;
+    bottom: 20%;
+    left: 5%;
+    overflow: hidden;
+}
+#imgright{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.cardcontainer1{
+    padding-bottom: 20px;
+    padding-right: 20px;
+}
+
+.cardcontainer2{
+    padding-bottom: 20px;
 }
 
 /*
