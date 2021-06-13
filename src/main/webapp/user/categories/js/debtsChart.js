@@ -8,24 +8,19 @@ const callData = () => {
         if (xhr.readyState === 4) {
             let json = xhr.responseText;
             let response = JSON.parse(json);
-            console.log(response);
-            dataArray[0]=10000;
-            labelArray[0]="   ";
+            
             for (let i = 0; i < response.length; i++) {
                 let dot = response[i];
-                console.log(response);
                 dataArray[i]=dot.value;
-                dateSplit = dot.date.split("-");
-                labelArray[i]="Dia " +dateSplit[2];
+                labelArray[i]="Dia " +dot.date.substring(8,10);
                 background[i]="rgb(248, 126, 150)";
+                
             }
             init();
-            
         }
     });
     let session = JSON.parse(window.localStorage.getItem('session'));
-    console.log("http://localhost:8081/LukasKeeper_war/api/debts/getMonthlyData?email="+session.email+"&date=2021-05");
-
+    
     xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/debts/getMonthlyData?email="+session.email+"&date=2021-05");
 
     xhr.send();
@@ -34,15 +29,13 @@ const callData = () => {
 var ctx = document.getElementById("myChart").getContext("2d");
 
 const init = () => {
-    //console.log(dataArray);
-    
     var myChart = new Chart(ctx, {
         type: "line",
         plugins: [plugin],
         data: {
             labels: labelArray,
             datasets: [{
-                label: 'Deudas',
+                label: 'Gastos',
                 fill: false,
                 lineTension: 0.5,
                 data: dataArray,
