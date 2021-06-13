@@ -8,9 +8,10 @@ const callData = () => {
         if (xhr.readyState === 4) {
             let json = xhr.responseText;
             let response = JSON.parse(json);
+            console.log(response);
             dataArray[0]=10000;
             labelArray[0]="   ";
-            for (let i = 1; i < response.length; i++) {
+            for (let i = 0; i < response.length; i++) {
                 let dot = response[i];
                 console.log(response);
                 dataArray[i]=dot.value;
