@@ -48,7 +48,8 @@ public class CacheProvider {
             double savingBalance = Double.parseDouble(resultSet.getString(resultSet.findColumn("savingBalance")));
             double expendingBalance = Double.parseDouble(resultSet.getString(resultSet.findColumn("expendingBalance")));
             double debtsBalance = Double.parseDouble(resultSet.getString(resultSet.findColumn("debtsBalance")));
-            cache = new Cache(id, monthlyBalance, savingBalance, expendingBalance, debtsBalance, idUser);
+            double incomeBalance = Double.parseDouble(resultSet.getString(resultSet.findColumn("incomeBalance")));
+            cache = new Cache(id, monthlyBalance, savingBalance, expendingBalance, debtsBalance, idUser, incomeBalance);
         }
         connection.disconnect();
         return cache;

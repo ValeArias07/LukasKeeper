@@ -7,24 +7,29 @@ public class Cache {
 	private double savingBalance;
 	private double expendingBalance;
 	private double debtsBalance;
+	private double incomeBalance;
 	private int idUser;
 
 	public Cache() {}
 
-	public Cache(int id, double monthlyBalance, double savingBalance, double expendingBalance, double debtsBalance, int idUser) {
+	public Cache(int id, double monthlyBalance, double savingBalance, double expendingBalance, double debtsBalance, int idUser,
+				 double incomeBalance) {
 		this.id = id;
 		this.monthlyBalance = monthlyBalance;
 		this.savingBalance = savingBalance;
 		this.expendingBalance = expendingBalance;
 		this.debtsBalance = debtsBalance;
 		this.idUser = idUser;
+		this.incomeBalance = incomeBalance;
 	}
 
-	public Cache(double monthlyBalance, double savingBalance, double expendingBalance, double debtsBalance, int idUser) {
+	public Cache(double monthlyBalance, double savingBalance, double expendingBalance, double debtsBalance, int idUser,
+				 double incomeBalance) {
 		this.monthlyBalance = monthlyBalance;
 		this.savingBalance = savingBalance;
 		this.expendingBalance = expendingBalance;
 		this.debtsBalance = debtsBalance;
+		this.incomeBalance = incomeBalance;
 		this.idUser = idUser;
 	}
 
