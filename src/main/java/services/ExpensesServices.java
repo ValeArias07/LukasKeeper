@@ -75,4 +75,30 @@ public class ExpensesServices {
 	public Response deleteItem(@QueryParam("id") int id) {
 		return null;
 	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getMonthlyData")
+	public Response getData(@QueryParam("email") String email, @QueryParam("date") String date) {
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllMonthExpenses(email, date))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
 }

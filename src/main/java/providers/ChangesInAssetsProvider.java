@@ -52,17 +52,17 @@ public class ChangesInAssetsProvider {
     }
 
     public ArrayList<ChangeInAsset> getAllMonthExpenses(String email, String yearMonth) throws SQLException, ParseException {
-        String sql = ("SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE changes_in_assets.date LIKE %DATE AND users.email = %EMAIl AND changes_in_assets.value<0")
-                .replace("$EMAIL", "'" + email.trim() + "'")
-                .replace("%DATE", "'" + yearMonth + "-%'");
+        String sql = ("SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE changes_in_assets.date LIKE $DATE AND users.email ="+"'"+email+"'"+"AND changes_in_assets.value<0")
+                .replace("$DATE", "'" + yearMonth + "-%'")
+                .replace("$EMAIL", "'" + email+ "'");
         DBConnection connection = new DBConnection();
         return getAllChangesInAssets(sql,connection);
     }
 
     public ArrayList<ChangeInAsset> getAllMonthIncomes(String email, String yearMonth) throws SQLException, ParseException {
-        String sql = ("SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE changes_in_assets.date LIKE %DATE AND users.email = %EMAIl AND changes_in_assets.value>=0")
-                .replace("$EMAIL", "'" + email.trim() + "'")
-                .replace("%DATE", "'" + yearMonth + "-%'");
+        String sql = ("SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE changes_in_assets.date LIKE $DATE AND users.email = "+"'"+email+"'"+" AND changes_in_assets.value>=0")
+                .replace("$EMAIl", "'" + email +"'")
+                .replace("$DATE", "'" + yearMonth + "-%'");
         DBConnection connection = new DBConnection();
         return getAllChangesInAssets(sql,connection);
     }
@@ -70,7 +70,7 @@ public class ChangesInAssetsProvider {
     private ArrayList<ChangeInAsset> getAllChangesInAssets(String sql, DBConnection connection) throws SQLException, ParseException {
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        ArrayList<ChangeInAsset> changesInAssets = null;
+        ArrayList<ChangeInAsset> changesInAssets = new  ArrayList<ChangeInAsset>();
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
             double value =Double.parseDouble(resultSet.getString(resultSet.findColumn("value")));
