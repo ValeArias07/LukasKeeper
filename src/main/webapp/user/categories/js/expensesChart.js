@@ -11,7 +11,7 @@ const callData = () => {
             
             for (let i = 0; i < response.length; i++) {
                 let dot = response[i];
-                dataArray[i]=dot.value;
+                dataArray[i]= (-1)*dot.value;
                 labelArray[i]="Dia " +dot.date.substring(8,10);
                 background[i]="rgb(248, 126, 150)";
                 
