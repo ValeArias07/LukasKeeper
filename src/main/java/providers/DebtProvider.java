@@ -61,4 +61,13 @@ public class DebtProvider {
         connection.disconnect();
         return debts;
     }
+
+
+    public void deleteById(int id) throws SQLException {
+        String sql = "DELETE FROM debts WHERE id ="+id;
+        DBConnection connection =  new DBConnection();
+        connection.connect();
+        connection.commandSQL(sql);
+        connection.disconnect();
+    }
 }
