@@ -37,7 +37,7 @@ public class DebtProvider {
     }
 
     public ArrayList<Debt> getAllMonthDebts(String email, String yearMonth) throws SQLException, ParseException {
-        String sql = ("SELECT debts.* FROM debts INNER JOIN users ON debts.idUser = users.id WHERE debts.date LIKE %DATE AND users.email = %EMAIl")
+        String sql = ("SELECT debts.* FROM debts INNER JOIN users ON debts.idUser = users.id WHERE debts.date LIKE %DATE AND users.email ="+"'"+email+"'")
                 .replace("$EMAIL", "'" + email.trim() + "'")
                 .replace("%DATE", "'" + yearMonth + "-%'");
         DBConnection connection = new DBConnection();
@@ -47,7 +47,7 @@ public class DebtProvider {
     private ArrayList<Debt> getAllDebts(String sql, DBConnection connection) throws SQLException, ParseException {
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        ArrayList<Debt> debts = new ArrayList<>();
+        ArrayList<Debt> debts = new ArrayList<Debt>();
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
             double value = Double.parseDouble(resultSet.getString(resultSet.findColumn("value")));
