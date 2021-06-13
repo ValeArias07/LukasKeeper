@@ -4,6 +4,8 @@ const date = document.getElementById('date');
 const fee = document.getElementById('numFee');
 const interest = document.getElementById('interestPer');
 const button = document.getElementById('button');
+const periodBtn = document.getElementById('periodBtn');
+const compareBtn = document.getElementById('compareBtn');
 
 const addDebt=()=>{
 
@@ -20,19 +22,7 @@ const addDebt=()=>{
 
 button.addEventListener('click', addDebt);
 
-loadContainerPeriod = () => {
-    window.location="../categories/debts.html";
-}
-
-loadContainerTimeLine = () => {
-    window.location="../categories/debts.html";
-}
-
-loadContainerCompare = () => {
-    window.location="../categories/debts.html";
-}
-
-loadContainerIndicador = () => {
+goToMain = () => {
     window.location="../categories/debts.html";
 }
 
@@ -43,7 +33,5 @@ authSession=()=> {
 }
 
 authSession();
-periodBtn.addEventListener('click', loadContainerPeriod);
-timelineBtn.addEventListener('click', loadContainerTimeLine);
-compareBtn.addEventListener('click', loadContainerCompare);
-indicatorsBtn.addEventListener('click', loadContainerIndicador);
+periodBtn.addEventListener('click', goToMain);
+compareBtn.addEventListener('click', goToMain);

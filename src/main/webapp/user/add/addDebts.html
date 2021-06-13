@@ -26,9 +26,7 @@
             </center>
             <button class="optionsButton" id="addBtn" href="../add/addDebt.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar Deudas</span></button>
             <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
-            <button class="optionsButton" id="timelineBtn"> <img src="../../images/timeline.png" class="icons" align="center"><span>Comparar en el tiempo</span></button>
             <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
-            <button class="optionsButton" id="indicatorsBtn"> <img src="../../images/indicators.png" class="icons" align="center"><span>Ver indicadores</span></button>
 
             <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
         </div>
@@ -44,7 +42,6 @@
             <div class="field"><label>Número de cuotas: </label><input type="text" id="numFee"></div>
             <div class="field"><label>Porcentaje de interes: </label><input type="text" id="interestPer"></div>
         </div>
-
         <div class="buttonContainer"><button id="button" href="../categories/debts.hmtl"> Guardar </button></div>
 
     </div>
@@ -62,4 +59,16 @@
 <script src="../../js/setName.js"></script>
 <script src="js/debt.js"></script>
 <script src="js/addDebt.js"></script>
+
+<script>
+    const periodBtn = document.getElementById('periodBtn');
+    const compareBtn = document.getElementById('compareBtn');
+
+    goToMain = () => {
+        window.location="../categories/debts.html";
+    }
+
+    compareBtn.addEventListener('click', goToMain);
+    periodBtn.addEventListener('click', goToMain);
+</script>
 </html>
