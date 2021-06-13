@@ -11,13 +11,12 @@ import java.util.ArrayList;
 public class SavingPlanProvider {
     public void addSavingPlan(SavingPlan savingPlan) throws SQLException {
         DBConnection connection = new DBConnection();
-        String date =DBConnection.format.format(savingPlan.getDate());
-        String sql = ("INSERT INTO saving_plan(goal, description, total, date, monthlyFee, idUser) " +
+        String sql = ("INSERT INTO saving_plan(goal, description, totalFee, date, monthlyFee, idUser) " +
                 "VALUES ($GOAL,$DESCRIPTION,$TOTAL, $DATE, $MONTHLYFEE, $IDUSER)")
                 .replace("$GOAL","'"+savingPlan.getGoal()+"'")
-                .replace("$DESCRPTION", "'"+savingPlan.getDescription()+"'")
+                .replace("$DESCRIPTION", "'"+savingPlan.getDescription()+"'")
                 .replace("$TOTAL", "'"+savingPlan.getTotalFee()+"'")
-                .replace("$DATE","'"+ date+"'")
+                .replace("$DATE","'"+ savingPlan.getDate()+"'")
                 .replace("$MONTHLYFEE","'"+savingPlan.getMonthlyFee()+"'")
                 .replace("$IDUSER","'"+savingPlan.getIdUser()+"'");
         connection.connect();
@@ -51,7 +50,7 @@ public class SavingPlanProvider {
             String date = resultSet.getString(resultSet.findColumn("date"));
             int monthlyFee = Integer.parseInt(resultSet.getString(resultSet.findColumn("monthlyFee")));
             int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
-            savingPlans.add(new SavingPlan(id,goal,description,total,DBConnection.format.parse(date),monthlyFee,idUser));
+            savingPlans.add(new SavingPlan(id,goal,description,total,date,monthlyFee,idUser));
         }
         connection.disconnect();
         return savingPlans;

@@ -1,5 +1,6 @@
 package model;
 
+import javax.json.bind.annotation.JsonbDateFormat;
 import java.util.Date;
 
 public class SavingPlan {
@@ -8,7 +9,8 @@ public class SavingPlan {
 	private double goal;
 	private String description;
 	private double totalFee;
-	private Date date;
+
+	private String date;
 	private int monthlyFee;
 	private int idUser;
 	public SavingPlan() {
@@ -18,7 +20,7 @@ public class SavingPlan {
 	public SavingPlan( String description) {
 		this.description = description;
 	}
-	public SavingPlan(double goal, String description, Date date, int monthlyFee, int idUser) {
+	public SavingPlan(double goal, String description, String date, int monthlyFee, int idUser) {
 		this.goal = goal;
 		this.description = description;
 		this.totalFee = totalFee;
@@ -27,7 +29,7 @@ public class SavingPlan {
 		this.idUser = idUser;
 	}
 
-	public SavingPlan(int id, double goal, String description, double total, Date date, int monthlyFee, int idUser) {
+	public SavingPlan(int id, double goal, String description, double total, String date, int monthlyFee, int idUser) {
 		this.id = id;
 		this.goal = goal;
 		this.description = description;
@@ -69,11 +71,11 @@ public class SavingPlan {
 		this.totalFee = totalFee;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
