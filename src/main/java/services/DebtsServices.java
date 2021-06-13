@@ -68,14 +68,15 @@ public class DebtsServices {
 		return null;
 	}
 
-	@POST
-	@Consumes("application/json")
+	@GET
+	@Produces("application/json")
 	@Path("list")
-	public Response getList(User user) {
+	public Response getList(@QueryParam("email") String email) {
 		try {
 			DebtProvider provider = new DebtProvider();
-			ArrayList<Debt> debts = provider.getAllDebts(user.getEmail());
-			return Response.ok(debts)
+			ArrayList<Debt> debts = provider.getAllDebts(email);
+			return Response.ok()
+					.entity(debts)
 					.header("Content-Type","application/json")
 					.build();
 		} catch (SQLException | ParseException exception) {
