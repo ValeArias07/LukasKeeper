@@ -15,6 +15,8 @@ public class IncomeServices implements GeneralServicesInterface{
 		return null;
 	}
 
+	
+
 	@GET
 	@Path("balance")
 	public Response balance() {

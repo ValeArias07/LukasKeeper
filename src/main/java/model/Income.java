@@ -23,4 +23,6 @@ public class Income {
 		this.idCategory = idCategory;
 		this.idUser = idUser;
 	}
+	
+
 }

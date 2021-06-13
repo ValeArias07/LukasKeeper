@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/debtsStyle.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 </head>
 
 <body>
@@ -36,9 +37,26 @@
             </div>
         </aside>
 
-        <div class="article" id="canvasContainer">
-            <div id="canvas">
+        <div class="article">
+            <div class="graph">
+                <canvas id="myChart" width="870" height="430"></canvas>
+            </div>
 
+            <div class="information">
+                <div id="formalesInformation">
+                    <h2 class="elementsTitle">Formales</h2>
+                    <div class="field "> <label> Cantidad </label><input type="text" id="x" /></div>
+                    <div class="field "> <label> Descripción </label><input type="text" id="y" /></div>
+                    <div class="field "><label> Fecha: </label><input type="date" id="z" /></div>
+                    <div class="buttonContainer"><button id="buttonDeleteExtra">  </button></div>
+                </div>
+                <div id="informalesInformation">
+                    <h2 class="elementsTitle">Informales</h2>
+                    <div class="field "> <label> Cantidad </label><input type="text" id="cantidadSalario" /></div>
+                    <div class="field "> <label> Descripción </label><input type="text" id="descripcionSalario" /></div>
+                    <div class="field "><label> Fecha: </label><input type="date" id="dateSalario" /></div>
+                    <div class="buttonContainer"><button id="buttonDeleteSalario"> Eliminar </button></div>
+                </div>
             </div>
         </div>
 
@@ -48,10 +66,15 @@
   <div id="footer"></div>
     <!--footer end-->
 </body>
+<<<<<<< HEAD
 <script src="../../js/user.js"></script>
 <script src="../../js/session.js"></script>
 <script src="js/loadBasicElements.js"></script>
 <script src="../../js/logOut.js"></script>
 <script src="../../js/setName.js"></script>
 <script src="js/debtConfig.js"></script>
+=======
+<script src="js/chart.js"></script>
+<script src="js/closeSession.js"></script>
+>>>>>>> 5403d453259e15549db8b77895770a8c02e3f272
 </html>
