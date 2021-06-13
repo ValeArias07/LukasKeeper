@@ -67,10 +67,26 @@ public class ExpensesServices {
 		return null;
 	}
 
-	@GET
-	@Path("delete")
-	public Response deleteItem(@QueryParam("id") int id) {
-		return null;
+	@DELETE
+	@Path("delete/{id}")
+	@Produces("application/json")
+	public Response delete(@PathParam("id") int id){
+
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			provider.deleteById(id);
+			return Response
+					.ok(new String("Operación Exitosa"))
+					.header("Content-Type","application/json")
+					.build();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response
+					.status(500)
+					.entity(new String("Operación Fallida"))
+					.header("Content-Type","application/json")
+					.build();
+		}
 	}
 
 	@GET

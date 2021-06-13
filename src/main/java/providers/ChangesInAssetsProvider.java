@@ -85,4 +85,12 @@ public class ChangesInAssetsProvider {
         connection.disconnect();
         return changesInAssets;
     }
+
+    public void deleteById(int id) throws SQLException {
+        String sql = "DELETE FROM changes_in_assets WHERE id ="+id;
+        DBConnection connection =  new DBConnection();
+        connection.connect();
+        connection.commandSQL(sql);
+        connection.disconnect();
+    }
 }
