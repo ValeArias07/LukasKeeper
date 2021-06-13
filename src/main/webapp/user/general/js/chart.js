@@ -38,7 +38,7 @@ const init = () => {
         data: {
             labels: labelArray,
             datasets: [{
-                label: 'Ingresos y Gastos',
+                label: 'Deudas',
                 fill: false,
                 lineTension: 0.5,
                 data: dataArray,
