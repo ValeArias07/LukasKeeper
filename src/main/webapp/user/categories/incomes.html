@@ -34,20 +34,29 @@
         </aside>
 
         <div class="article" id="canvasContainer">
+
             <div id="canvas">
                 <canvas id="myChart" width="870" height="430"></canvas>
             </div>
 
-            <div id="listContainer">
-                <div id="listExtra">
+            <div class="information">
+                <div id="extraInformation">
+                    <h2 class="elementsTitle">Extra</h2>
+                    <div class="field "> <label> Cantidad </label><input type="text" id="x" /></div>
+                    <div class="field "> <label> Descripción </label><input type="text" id="y" /></div>
+                    <div class="field "><label> Fecha: </label><input type="date" id="z" /></div>
+                    <div class="buttonContainer"><button id="buttonDeleteExtra" class="btnAction">Eliminar</button></div>
                 </div>
-
-                <div id="listSalary">
+                <div id="salarioInformation">
+                    <h2 class="elementsTitle">Salario</h2>
+                    <div class="field "> <label> Cantidad </label><input type="text" id="cantidadSalario" /></div>
+                    <div class="field "> <label> Descripción </label><input type="text" id="descripcionSalario" /></div>
+                    <div class="field "><label> Fecha: </label><input type="date" id="dateSalario" /></div>
+                    <div class="buttonContainer"><button id="buttonDeleteSalario" class="btnAction"> Eliminar </button></div>
                 </div>
             </div>
-        </div>
     </div>
-
+    </div>
     <!--footer start-->
     <div id="footer"></div>
     <!--footer end-->

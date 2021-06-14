@@ -1,34 +1,34 @@
+const addBtn = document.getElementById('addBtn');
 
-var canvasA = document.getElementById('canvas');
-const addBtn=document.getElementById('addBtn');
-const periodBtn = document.getElementById('periodBtn');
-const timelineBtn = document.getElementById('timelineBtn');
-const compareBtn = document.getElementById('compareBtn');
-const indicatorsBtn = document.getElementById('indicatorsBtn');
+const extraInformationContainer = document.getElementById('extraInformation');
+const salarioInformationContainer = document.getElementById('salarioInformation');
 
+const getAllIncomes = () =>{
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener('readystatechange', ()=>{
+        if(xhr.readyState === 4){
+            let json = xhr.responseText;
+            let response = JSON.parse(json);
+            console.log(response);
+            extraInformationContainer.innerHTML = '';
+            for(let i = 0; i<response.length;i++){
+                let income = response[i];
+                let view = new loadIncomeElements(income);
+                view.onDeleteFinish = () =>{
+                    extraInformationContainer.removeChild(document.getElementById('toDoComponent' + income.id));
+                };
+            }
+        }
+    });
+    xhr.open('GET', 'http://localhost:8080/LukasKeeper/api/incomes/all');
+    xhr.send();
+};
+
+getAllIncomes();
 
 loadContainerAdd=()=>{
     window.location="../add/addIncomes.html";
     console.log("add");
-}
-
-loadContainerPeriod = () => {
-    canvasA.innerHTML = "<h2>Period</h2>";
-    console.log("period");
-}
-
-loadContainerTimeLine = () => {
-    canvasA.innerHTML = "<h2>Timeline</h2>";
-    console.log("time");
-}
-
-loadContainerCompare = () => {
-    canvasA.innerHTML = "<h2>Compare</h2>";
-    console.log("com");
-}
-
-loadContainerIndicador = () => {
-    canvasA.innerHTML = "<h2>Indicadores</h2>";
 }
 
 authSession=()=> {
@@ -39,7 +39,3 @@ authSession=()=> {
 
 authSession();
 addBtn.addEventListener('click', loadContainerAdd);
-periodBtn.addEventListener('click', loadContainerPeriod);
-timelineBtn.addEventListener('click', loadContainerTimeLine);
-compareBtn.addEventListener('click', loadContainerCompare);
-indicatorsBtn.addEventListener('click', loadContainerIndicador);

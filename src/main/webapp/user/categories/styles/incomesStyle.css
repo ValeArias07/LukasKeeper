@@ -54,11 +54,11 @@ article config
     padding-bottom: 35px;
 }
 
-.container {
-    overflow: auto;
-    height: 100%;
+.field {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-
 
 
 .field {
@@ -179,4 +179,47 @@ Sidebar consig
     background: #2f323a;
     width: 450px;
     margin: 20px;
+}
+.information{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#extraInformation{
+    border-radius: 16px;
+    width: 350px;
+    height: auto;
+    background: #FAEDE9;
+    margin: 20px;
+}
+#salarioInformation{
+    border-radius: 16px;
+    background: #FAEDE9;
+    width: 350px;
+    height: auto;
+    background: #FAEDE9;
+    margin: 20px;
+
+}
+
+.elementsTitle{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #F87E96;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/*
+Elements config
+*/
+
+.btnAction{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 60px;
+    height: 37px;
+    border-color: #FAEDE9;
 }
