@@ -2,6 +2,7 @@ package providers;
 
 import db.DBConnection;
 import model.Cache;
+import model.Debt;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,8 +11,9 @@ import java.text.ParseException;
 public class CacheProvider {
     public void addCache(Cache cache) throws SQLException {
         DBConnection connection = new DBConnection();
-        String sql = ("INSERT INTO user_cache(monthlyBalance, savingBalance, expendingBalance, debtsBalance, idUser) " +
-                "VALUES ($MB,$SB,$EB, $DB,$IDUSER)")
+        String sql = ("INSERT INTO user_cache(incomeBalance, monthlyBalance, savingBalance, expendingBalance, debtsBalance, idUser) " +
+                "VALUES ($IB, $MB,$SB,$EB, $DB,$IDUSER)")
+                .replace("$IB", "'" + cache.getIncomeBalance()+"'")
                 .replace("$MB","'"+cache.getMonthlyBalance()+"'")
                 .replace("$SB", "'"+cache.getSavingBalance()+"'")
                 .replace("$EB","'"+cache.getExpendingBalance()+"'")
@@ -24,8 +26,10 @@ public class CacheProvider {
 
     public void updateCache(Cache cache) throws SQLException {
         DBConnection connection = new DBConnection();
-        String sql = ("UPDATE user_cache SET monthlyBalance=$MB, savingBalance=$SB, expendingBalance=$EB, debtsBalance=$DB, idUser=$IDUSER WHERE id=$ID")
+        String sql = ("UPDATE user_cache SET incomeBalance=$IB, monthlyBalance=$MB, savingBalance=$SB, expendingBalance=$EB, debtsBalance=$DB, " +
+                "idUser=$IDUSER WHERE id=$ID")
                 .replace("$ID","'" + cache.getId() + "'")
+                .replace("$IB", "'"+cache.getIncomeBalance()+"'")
                 .replace("$MB","'"+cache.getMonthlyBalance()+"'")
                 .replace("$SB", "'"+cache.getSavingBalance()+"'")
                 .replace("$EB","'"+cache.getExpendingBalance()+"'")
@@ -54,4 +58,5 @@ public class CacheProvider {
         connection.disconnect();
         return cache;
     }
+
 }

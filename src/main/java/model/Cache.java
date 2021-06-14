@@ -64,4 +64,6 @@ public class Cache {
 	public double getDebtsBalance() {
 		return debtsBalance;
 	}
+
+	public double getIncomeBalance() { return incomeBalance; }
 }
