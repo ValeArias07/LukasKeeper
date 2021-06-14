@@ -9,25 +9,12 @@
     <link rel="stylesheet" href="styles/expensesStyle.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 </head>
 
 <body>
     <!--header start-->
-    <header>
-        <a class="logo" href="/"><img src="../../images/logo.png" alt="logo" width="200px"> </a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="../dashboard.html ">Dashboard</a></li>
-                <li><a href="incomes.html">Ingresos</a></li>
-                <li><a id="own1">Gastos</a></li>
-                <li><a href="debts.html">Deudas</a></li>
-                <li><a href="savings.html">Ahorros</a></li>
-                <li><a href="../about/help.html ">Ayuda </a></li>
-                <li><a href="../about/contact.html ">Contactanos</a></li>
-                <li><a href="# ">Cerrar sesion</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="header"></div>
     <!--header end-->
 
     <!--article start-->
@@ -38,41 +25,58 @@
             <div class="sidebar">
                 <center>
                     <img src="../../images/model.jpg" class="profile_image" alt="">
-                    <h4>Hola, Jennifer! </h4>
+                    <h4>Hola, <label id="nameModel"></label>! </h4>
                 </center>
-                <a href="../add/addExpenses.html"><img src="../../images/addExpense.png" class="icons" align="center"><span>Agregar gasto</span></a>
-                <a href="#"><img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></a>
-                <a href="#"><img src="../../images/timeline.png" class="icons" align="center"><span>Comparar en el tiempo</span></a>
-                <a href="#"><img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></a>
-                <a href="#"><img src="../../images/indicators.png" class="icons" align="center"><span>Ver indicadores</span></a>
+                <button class="optionsButton" id="addBtn" href="../add/addExpense.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar gasto</span></button>
+                <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
+                <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
 
                 <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
             </div>
         </aside>
 
+        
         <div class="article">
-            <h2>Titulo</h2>
-        </div>
+            <canvas id="myChart" width="870" height="430"></canvas>
 
+            <div id="listContainer">
+                <div id="list1">
+                </div>
+
+                <div id="list2">
+                </div>
+            </div>
+        </div>
+        
     </div>
 
-    <!--footer start-->
-    <footer>
-        <a class=" logo " href="/ "><img src="../../images/logo.png " alt="logo " width="200px "> </a>
-        <nav>
-            <ul class="nav__links ">
-                <li><a href="../dashboard.html ">Dashboard</a></li>
-                <li><a href="incomes.html">Ingresos</a></li>
-                <li><a id="own2">Gastos</a></li>
-                <li><a href="debts.html">Deudas</a></li>
-                <li><a href="savings.html">Ahorros</a></li>
-                <li><a href="../about/help.html ">Ayuda </a></li>
-                <li><a href="../about/contact.html ">Contactanos</a></li>
-                <li><a href="# ">Cerrar sesion</a></li>
-            </ul>
-        </nav>
-    </footer>
-    <!--footer end-->
-</body>
 
+    <!--footer start-->
+    <div id="footer"></div>
+    <!--footer end-->
+
+</body>
+<script src="js/expensesChart.js"></script>
+<script src="../../js/session.js"></script>
+<script src="../../js/checkCredentials.js"></script>
+<script src="js/loadBasicElements.js"></script>
+<script src="../../js/logOut.js"></script>
+<script src="../../js/setName.js"></script>
+<script>
+    const addBtn = document.getElementById('addBtn');
+    const periodBtn = document.getElementById('periodBtn');
+    const compareBtn = document.getElementById('compareBtn');
+
+    goToAdd=()=>{
+        window.location="../add/addExpenses.html";
+    }
+
+    goToMain = () => {
+        window.location="../add/addExpenses.html";
+    }
+
+    addBtn.addEventListener('click', goToAdd);
+    periodBtn.addEventListener('click', goToMain);
+    compareBtn.addEventListener('click', goToMain);
+</script>
 </html>

@@ -52,9 +52,9 @@ public class ChangesInAssetsProvider {
     }
 
     public ArrayList<ChangeInAsset> getAllMonthExpenses(String email, String yearMonth) throws SQLException, ParseException {
-        String sql = ("SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE changes_in_assets.date LIKE $DATE AND users.email = $EMAIl AND changes_in_assets.value<0")
-                .replace("$EMAIL", "'" + email.trim() + "'")
-                .replace("$DATE", "'" + yearMonth + "-%'");
+        String sql = ("SELECT changes_in_assets.* FROM changes_in_assets INNER JOIN users ON changes_in_assets.idUser = users.id WHERE changes_in_assets.date LIKE $DATE AND users.email ="+"'"+email+"'"+"AND changes_in_assets.value<0")
+                .replace("$DATE", "'" + yearMonth + "-%'")
+                .replace("$EMAIL", "'" + email+ "'");
         DBConnection connection = new DBConnection();
         return getAllChangesInAssets(sql,connection);
     }
