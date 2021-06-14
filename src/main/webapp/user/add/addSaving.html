@@ -30,7 +30,7 @@
                 <<button class="optionsButton" id="addBtn" href="addPlan.html"><img src="../../images/addPlan.png" class="icons" align="center"><span>Crear Plan</span></button>
                 <button class="optionsButton" id="addSaving" href="addSaving.html"> <img src="../../images/saving.png" class="icons" align="center"><span>Agregar Ahorro</span></button>
                 <button class="optionsButton" id="setBudget" href="setBudget.html"> <img src="../../images/setBudget.png" class="icons" align="center"><span>Establecer presupuesto</span></button>
-                <button class="optionsButton" id="compareBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
+                <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
                 <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
             </div>
         </aside>
@@ -55,6 +55,29 @@
 </body>
 <script src="../../js/session.js"></script>
 <script src="js/addSaving.js"></script>
-<script src="js/loadButtonsSavings.js"></script>
 <script src="js/loadBasicElements.js"></script>
+<script src="../../js/setName.js"></script>
+<script>
+    const setBudget = document.getElementById('setBudget');
+    const addPlan = document.getElementById('addBtn');
+    const periodBtn = document.getElementById('periodBtn');
+
+    goToBudget=()=>{
+        window.location.href="setBudget.html";
+    }
+
+    goToAddPlan=()=>{
+        window.location.href="addPlan.html";
+    }
+
+    goToMain=()=>{
+        window.location.href="../categories/savings.html";
+    }
+
+
+
+    addPlan.addEventListener('click', goToAddPlan);
+    setBudget.addEventListener('click', goToBudget);
+    periodBtn.addEventListener('click', goToMain);
+</script>
 </html>
