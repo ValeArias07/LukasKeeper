@@ -1,6 +1,6 @@
 let dataArrayIncome = [];
 let dataArrayExpenses = [];
-let labelArray = [];
+
 let backgroundIncome =[];
 let backgroundExpenses =[];
 
@@ -14,20 +14,21 @@ const callData = (chooseService) => {
             for (let i = 0; i < response.length; i++) {
                 let dot = response[i];
                 if(chooseService === 1){
-                    dataArrayExpenses[i]= (-1)* dot.value;
+                    dataArrayExpenses.push({x:dot.date.substring(8,10),y: (-1)*dot.value});
                     backgroundExpenses[i]="rgb(57, 77, 114)";
                 } else{
-                    dataArrayIncome[i]=dot.value;
+                    dataArrayIncome.push({x:dot.date.substring(8,10),y:dot.value});
                     backgroundIncome[i]="rgb(248, 126, 150)";
                 }
                 
-                labelArray[i]="Dia " +dot.date.substring(8,10);
+                
                 
                 
             }
             init();
         }
     });
+    
     let session = JSON.parse(window.localStorage.getItem('session'));
     let url = "http://localhost:8081/LukasKeeper_war/api/incomes/getMonthlyData?email="+session.email+"&date=2021-06"
 
@@ -43,10 +44,10 @@ var ctx = document.getElementById("myChart").getContext("2d");
 
 const init = () => {
     var myChart = new Chart(ctx, {
-        type: "line",
+        type: "scatter",
         plugins: [plugin],
         data: {
-            labels: labelArray,
+            
             datasets: 
             [
                 {
@@ -54,6 +55,7 @@ const init = () => {
                   fill: false,
                   lineTension: 0.5,
                   data: dataArrayIncome,
+                  showLine: true,
                   backgroundColor: backgroundIncome
                 },
                 {
@@ -61,19 +63,27 @@ const init = () => {
                     fill: false,
                     lineTension: 0.5,
                     data: dataArrayExpenses,
+                    showLine: true,
                     backgroundColor: backgroundExpenses
                 }
               ]
 
-        }, options:{
-            scales:{
-                YAxes:{
-                    ticks:{
-                        beginAtZero:true
-                    }
+        }, options : {
+            scales: {
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Pesos $'
                 }
+              }],
+              xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Dia del mes'
+                }
+              }]
             }
-        }
+          }
     });
 }
 
