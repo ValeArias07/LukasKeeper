@@ -28,7 +28,7 @@ public class FeeProvider {
     public ArrayList<Fee> getAllFee(int idSavingPlan, int idDebts) throws SQLException, ParseException {
         String sql = ("SELECT fee.* FROM fee INNER JOIN $TABLE ON fee.$IDNAME = $TABLE.id WHERE $TABLE.id = $IDD")
                 .replace("$IDD", (idSavingPlan!=-1)?"'" + idSavingPlan + "'":"'" + idDebts + "'")
-                .replace("$TABLE", (idSavingPlan!=-1)?"'savingPlan'":"'debts'")
+                .replace("$TABLE", (idSavingPlan!=-1)?"'saving_plan'":"'debts'")
                 .replace("$IDNAME", (idSavingPlan!=-1)?"'idSavingPlan'":"'idDebts'");
         DBConnection connection = new DBConnection();
         return getAll(connection, sql);
