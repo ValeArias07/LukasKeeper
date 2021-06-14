@@ -1,6 +1,37 @@
+const periodBtn = document.getElementById('periodBtn');
+const compareBtn = document.getElementById('compareBtn');
+
 let dataArray = [];
 let labelArray = [];
+
+let dataAditionalArray = [];
+let labelAditionalArray = [];
+
 let background =[];
+let backgroundAditional =[];
+
+const callAditionalData = () => {
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener('readystatechange', () => {
+        if (xhr.readyState === 4) {
+            let json = xhr.responseText;
+            let response = JSON.parse(json);
+
+            for (let i = 0; i < response.length; i++) {
+                let dot = response[i];
+                dataAditionalArray[i]=dot.value;
+                labelAditionalArray[i]="Dia " +dot.date.substring(8,10);
+                backgroundAditional[i]="rgb(57, 77,114)";
+            }
+            initDoubleChart();
+        }
+    });
+    let session = JSON.parse(window.localStorage.getItem('session'));
+
+    xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/expenses/getMonthlyData?email="+session.email+"&date=2021-06");
+
+    xhr.send();
+};
 
 const callData = () => {
     let xhr = new XMLHttpRequest();
@@ -53,6 +84,36 @@ const init = () => {
     });
 }
 
+const initDoubleChart = () => {
+    var myChart = new Chart(ctx, {
+        type: "line",
+        plugins: [plugin],
+        data: {
+            datasets: [{
+                label: 'Ingresos',
+                fill: false,
+                lineTension: 0.5,
+                data: dataArray,
+                backgroundColor: background
+            },{
+                label: 'Gastos',
+                fill: false,
+                lineTension: 0.5,
+                data: dataAditionalArray,
+                backgroundColor: backgroundAditional
+            }]
+        }, options:{
+            scales:{
+                YAxes:{
+                    ticks:{
+                        beginAtZero:true
+                    }
+                }
+            }
+        }
+    });
+}
+
 const plugin = {
     id: 'custom_canvas_background_color',
     beforeDraw: (chart) => {
@@ -65,4 +126,8 @@ const plugin = {
     }
 };
 
+periodBtn.addEventListener('click', init);
+compareBtn.addEventListener('click', callAditionalData);
+
 callData();
+callAditionalData();
