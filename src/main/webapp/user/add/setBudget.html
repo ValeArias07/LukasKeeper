@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/setBudget.css">
+    <link rel="stylesheet" href="styles/general.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
@@ -14,19 +15,7 @@
 <body>
     <!--header start-->
     <header>
-        <a class="logo" href="/"><img src="../../images/logo.png" alt="logo" width="200px"> </a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="../dashboard.html ">Dashboard</a></li>
-                <li><a href="../categories/incomes.html">Ingresos</a></li>
-                <li><a href="../categories/expenses.html">Gastos</a></li>
-                <li><a href="../categories/debts.html">Deudas</a></li>
-                <li><a id="own1">Ahorros</a></li>
-                <li><a href="../about/help.html ">Ayuda </a></li>
-                <li><a href="../about/contact.html ">Contactanos</a></li>
-                <li><a href="# ">Cerrar sesion</a></li>
-            </ul>
-        </nav>
+        <div id="header"></div>
     </header>
     <!--header end-->
 
@@ -37,44 +26,68 @@
         <aside>
             <div class="sidebar ">
                 <center>
-                    <img src="../../images/model.jpg " class="profile_image " alt=" ">
-                    <h4>Hola, Jennifer! </h4>
+                    <img src="../../images/model.jpg" class="profile_image" alt="">
+                    <h4>Hola, <label id="nameModel"></label>! </h4>
                 </center>
-                <a href="addPlan.html"><img src="../../images/addPlan.png" class="icons" align="center"><span>Crear plan</span></a>
-                <a href="addSaving.html"><img src="../../images/saving.png" class="icons " align="center"><span>Agregar Ahorro</span></a>
-                <a id="choosed"><img src="../../images/setBudget.png" class="icons" align="center"><span>Establecer presupuesto</span></a>
-                <a href="# "><img src="../../images/period.png " class="icons" align="center"><span>Ver por periodo</span></a>
-                <a href="# "><img src="../../images/timeline.png " class="icons" align="center"><span>Comparar en el tiempo</span></a>
-                <a href="# "><img src="../../images/compare.png " class="icons" align="center"><span>Comparar entre categorias</span></a>
-                <a href="# "><img src="../../images/indicators.png " class="icons" align="center"><span>Ver indicadores</span></a>
+                <<button class="optionsButton" id="addBtn" href="addPlan.html"><img src="../../images/addPlan.png" class="icons" align="center"><span>Crear Plan</span></button>
+                <button class="optionsButton" id="addSaving" href="addSaving.html"> <img src="../../images/saving.png" class="icons" align="center"><span>Agregar Ahorro</span></button>
+                <button class="optionsButton" id="setBudget" href="setBudget.html"> <img src="../../images/setBudget.png" class="icons" align="center"><span>Establecer presupuesto</span></button>
+                <button class="optionsButton" id="compareBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
 
                 <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
             </div>
         </aside>
 
-        <div class="article ">
-            <h2>Titulo</h2>
-        </div>
+        <!--content start-->
+        <div class = "article">
+            <h2 id = "title">Establecer presupuesto mensual</h2>
+            <img id= img src="../../images/setBugetB.png">
+            <div>
+                <label>Presupuesto mensual:</label>
+                <input id="budget" type = "number" step="100000" min="100000">
+            </div>
+            <div class ="checkbox"> 
+                <label>Alerta al llegar al:</label>
+                <select name="percentage" id="alertPercentage">
+                    <option>50%</option>
+                    <option>60%</option>
+                    <option>70%</option>
+                    <option>80%</option>
+                    <option>90%</option>
+                    <option>95%</option>
+                    <option>Off</option>
+                </select>
+                <label>de la meta</label>
+            </div>
 
+            <div>
+                <button id = "btMetaPorAhorros">Calcular meta por ahorros</button>
+            </div>
+
+            <div class="rangeContainer">
+
+                <div class="field">
+                    <lab id= "percentage">70%</lab>
+                    <div class="value left">0%</div>
+                    <input id= "range" type="range" min="0" max="100" value = "70" steps = "1">
+                    <div class="value right">100%</div>
+                </div>
+                <input id="spends" type = "text" disabled=true>
+            </div>
+
+            <button id="btSave">Guardar</button>
+        </div>
     </div>
 
     <!--footer start-->
     <footer>
-        <a class=" logo " href="/ "><img src="../../images/logo.png " alt="logo " width="200px "> </a>
-        <nav>
-            <ul class="nav__links ">
-                <li><a href="../dashboard.html ">Dashboard</a></li>
-                <li><a href="../categories/incomes.html ">Ingresos</a></li>
-                <li><a href="../categories/expenses.html ">Gastos</a></li>
-                <li><a href="../categories/debts.html ">Deudas</a></li>
-                <li><a id="own2">Ahorros</a></li>
-                <li><a href="../about/help.html ">Ayuda </a></li>
-                <li><a href="../about/contact.html ">Contactanos</a></li>
-                <li><a href="# ">Cerrar sesion</a></li>
-            </ul>
-        </nav>
+        <div id="footer"></div>
     </footer>
     <!--footer end-->
 </body>
-
+<script src="../../js/session.js"></script>
+<script src="js/loadButtonsSavings.js"></script>
+<script src="js/loadBasicElements.js"></script>
+<script src="js/monthlyPlan.js"></script>
+<script src="js/setBudget.js"></script>
 </html>
