@@ -1,5 +1,3 @@
-const addBtn = document.getElementById('addBtn');
-
 const extraInformationContainer = document.getElementById('extraInformation');
 const salarioInformationContainer = document.getElementById('salarioInformation');
 
@@ -20,22 +18,11 @@ const getAllIncomes = () =>{
             }
         }
     });
-    xhr.open('GET', 'http://localhost:8080/LukasKeeper/api/incomes/all');
+    xhr.open('GET', 'http://localhost:8080/LukasKeeper/api/incomes/list');
     xhr.send();
 };
 
 getAllIncomes();
 
-loadContainerAdd=()=>{
-    window.location="../add/addIncomes.html";
-    console.log("add");
-}
 
-authSession=()=> {
-    if (localStorage.getItem('session') === null) {
-        window.location="../general/login.html";
-    }
-}
 
-authSession();
-addBtn.addEventListener('click', loadContainerAdd);
