@@ -1,8 +1,22 @@
 class loadDebtsElements{
 
-    constructor(debts){
-        this.debts = debts;
+    constructor(debt){
+        this.debt = debt;
         this.onDeleteFinish = null;
+    }
+
+    deleteDebt = () =>{
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', ()=>{
+            if(xhr.readyState == 4){
+                console.log(xhr.responseText);
+                if(this.onDeleteFinish!=null){
+                    this.onDeleteFinish();
+                }
+            }
+        });
+        xhr.open('DELETE', 'http://localhost:8080/LukasKeeper_war/api/debts/delete/'+this.debt.id);
+        xhr.send();
     }
 
     render = () =>{
@@ -53,8 +67,7 @@ class loadDebtsElements{
         fieldFecha.appendChild(fechaLabel);
         fieldFecha.appendChild(fechaDebts);
         
-        delBtn.addEventListener('click', this.deleteNote);
-
+        delBtn.addEventListener('click', this.deleteDebt);
         return component;
     }
 }
