@@ -15,7 +15,8 @@ body {
 
 .article {
     margin: 2% 4% 2% 4%;
-    padding-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     left: 0;
     width: auto;
     height: auto;
@@ -102,4 +103,86 @@ footer {
 
 .nav_links li a:hover {
     color: #F87E96;
+}
+
+hr{
+    color: #ff7c94;
+}
+
+article {
+    padding: 10px;
+    margin: 10px;
+    background: #e0dce4;
+    flex: 1 100px;
+    justify-content: center;
+    height: auto;
+    width: auto;
+    text-align: center;
+    border-radius: 30px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+section{
+    display: flex;
+    flex-direction: row;
+}
+
+.contTask{
+    height: 30%;
+    padding-bottom: 20px;
+}
+
+.fieldContainer{
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.title{
+    color: #ff7c94;
+}
+
+#contContac{
+    padding: 10px;
+    margin: 10px;
+    flex: 1 100px;
+    background-color: #FAEDE9;
+    justify-content: center;
+    height: auto;
+    width: auto;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.contactContainer{
+    color:#394D72;
+}
+
+.correoContainer{
+    color:#394D72;
+    text-align: right;
+    padding-top: 10px;
+    margin-right: 140px;
+}
+
+.instagram{
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.whatsApp{
+    padding-top: 10px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.Lukas{
+    text-align: left;
+    font-size: x-large;
+    padding-top: 10px;
+    margin-left: 120px;
+    padding-bottom: 50px;
 }
