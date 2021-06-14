@@ -1,30 +1,40 @@
-let dataArray = [];
+let dataArrayIncome = [];
+let dataArrayExpenses = [];
 let labelArray = [];
-let background =[];
+let backgroundIncome =[];
+let backgroundExpenses =[];
 
-const callData = () => {
+const callData = (chooseService) => {
     let xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', () => {
         if (xhr.readyState === 4) {
             let json = xhr.responseText;
             let response = JSON.parse(json);
-            dataArray[0]=10000;
-            labelArray[0]="   ";
-            for (let i = 1; i < response.length; i++) {
+            
+            for (let i = 0; i < response.length; i++) {
                 let dot = response[i];
-                dataArray[i]=dot.value;
-                dateSplit = dot.date.split("-");
-                labelArray[i]="Dia " +dateSplit[2];
-                background[i]="rgb(248, 126, 150)";
+                if(chooseService === 1){
+                    dataArrayExpenses[i]= (-1)* dot.value;
+                    backgroundExpenses[i]="rgb(57, 77, 114)";
+                } else{
+                    dataArrayIncome[i]=dot.value;
+                    backgroundIncome[i]="rgb(248, 126, 150)";
+                }
+                
+                labelArray[i]="Dia " +dot.date.substring(8,10);
+                
+                
             }
-            Console.log()
             init();
         }
     });
-    
-    // SERVICE URL DOES NOT WORK, NEEDS CHANGE FOR THE SERVICE THAT WORKS
+    let session = JSON.parse(window.localStorage.getItem('session'));
+    let url = "http://localhost:8081/LukasKeeper_war/api/incomes/getMonthlyData?email="+session.email+"&date=2021-06"
 
-    xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/incomes/pair/domi1990@gmail.com");
+    if(chooseService === 1){
+        url = "http://localhost:8081/LukasKeeper_war/api/expenses/getMonthlyData?email="+session.email+"&date=2021-05"
+    }
+    xhr.open("GET", url);
 
     xhr.send();
 };
@@ -37,13 +47,24 @@ const init = () => {
         plugins: [plugin],
         data: {
             labels: labelArray,
-            datasets: [{
-                label: 'Deudas',
-                fill: false,
-                lineTension: 0.5,
-                data: dataArray,
-                backgroundColor: background
-            }]
+            datasets: 
+            [
+                {
+                  label: 'Ingresos',
+                  fill: false,
+                  lineTension: 0.5,
+                  data: dataArrayIncome,
+                  backgroundColor: backgroundIncome
+                },
+                {
+                    label: 'Gastos',
+                    fill: false,
+                    lineTension: 0.5,
+                    data: dataArrayExpenses,
+                    backgroundColor: backgroundExpenses
+                }
+              ]
+
         }, options:{
             scales:{
                 YAxes:{
@@ -68,4 +89,5 @@ const plugin = {
     }
 };
 
-callData();
+callData(0);
+callData(1);
