@@ -3,6 +3,7 @@ package providers;
 import db.DBConnection;
 import model.Fee;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -27,16 +28,28 @@ public class FeeProvider {
     public ArrayList<Fee> getAllFee(int idSavingPlan, int idDebts) throws SQLException, ParseException {
         String sql = ("SELECT fee.* FROM fee INNER JOIN $TABLE ON fee.$IDNAME = $TABLE.id WHERE $TABLE.id = $IDD")
                 .replace("$IDD", (idSavingPlan!=-1)?"'" + idSavingPlan + "'":"'" + idDebts + "'")
-                .replace("$TABLE", (idSavingPlan!=-1)?"'savingPlan'":"'debts'")
+                .replace("$TABLE", (idSavingPlan!=-1)?"'saving_plan'":"'debts'")
                 .replace("$IDNAME", (idSavingPlan!=-1)?"'idSavingPlan'":"'idDebts'");
         DBConnection connection = new DBConnection();
+        return getAll(connection, sql);
+    }
+
+    public ArrayList<Fee> getAllSavingsFee() throws SQLException, ParseException {
+        String sql = ("SELECT fee.* FROM fee WHERE idDebts IS NULL");
+        DBConnection connection = new DBConnection();
+        return getAll(connection, sql);
+    }
+
+    private ArrayList<Fee> getAll(DBConnection connection, String sql) throws SQLException, ParseException{
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
-        ArrayList<Fee> fees = null;
+        ArrayList<Fee> fees = new ArrayList<>();
         while(resultSet.next()) {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
             double value =Double.parseDouble(resultSet.getString(resultSet.findColumn("value")));
             String date = resultSet.getString(resultSet.findColumn("date"));
+            int idSavingPlan = Integer.parseInt(resultSet.getString(resultSet.findColumn("idSavingPlan")));
+            int idDebts = Integer.parseInt(resultSet.getString(resultSet.findColumn("idDebts")));
             fees.add(new Fee(id,value,DBConnection.format.parse(date), idSavingPlan, idDebts));
         }
         connection.disconnect();

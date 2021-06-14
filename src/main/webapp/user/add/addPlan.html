@@ -7,7 +7,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/addPlan.css">
-    <link rel="stylesheet" href="styles/general.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
@@ -32,7 +31,7 @@
                 <<button class="optionsButton" id="addBtn" href="addPlan.html"><img src="../../images/addPlan.png" class="icons" align="center"><span>Crear Plan</span></button>
                 <button class="optionsButton" id="addSaving" href="addSaving.html"> <img src="../../images/saving.png" class="icons" align="center"><span>Agregar Ahorro</span></button>
                 <button class="optionsButton" id="setBudget" href="setBudget.html"> <img src="../../images/setBudget.png" class="icons" align="center"><span>Establecer presupuesto</span></button>
-                <button class="optionsButton" id="compareBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
+                <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver periodo</span></button>
 
                 <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
             </div>
@@ -58,10 +57,30 @@
     <!--footer end-->
 </body>
 <script src="../../js/session.js"></script>
-<script src="js/loadButtonsSavings.js"></script>
 <script src="js/loadBasicElements.js"></script>
 <script src="js/SavingPlan.js"></script>
 <script src="js/addPlan.js"></script>
-<script src="js/savingPlanScreen.js"></script>
+<script src="../../js/setName.js"></script>
+<script>
+    const setBudget = document.getElementById('setBudget');
+    const addSaving = document.getElementById('addSaving');
+    const periodBtn = document.getElementById('periodBtn');
 
+    goToBudget=()=>{
+        window.location.href="setBudget.html";
+    }
+
+    goToAddSaving=()=>{
+        window.location.href="addSaving.html";
+    }
+
+    goToMain=()=>{
+        window.location.href="../categories/savings.html";
+    }
+
+
+    addSaving.addEventListener('click', goToAddSaving);
+    setBudget.addEventListener('click', goToBudget);
+    periodBtn.addEventListener('click', goToMain);
+</script>
 </html>
