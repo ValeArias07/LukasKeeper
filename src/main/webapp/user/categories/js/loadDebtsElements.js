@@ -15,7 +15,7 @@ class loadDebtsElements{
                 }
             }
         });
-        xhr.open('DELETE', 'http://localhost:8080/LukasKeeper_war/api/debts/delete/'+this.debt.id);
+        xhr.open('DELETE', 'http://localhost:8081/LukasKeeper_war/api/debts/delete/'+this.debt.id);
         xhr.send();
     }
 
