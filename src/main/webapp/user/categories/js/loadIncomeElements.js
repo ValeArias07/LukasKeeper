@@ -15,7 +15,7 @@ class loadIncomeElements{
                 }
             }
         });
-        xhr.open('DELETE', 'http://localhost:8080/LukasKeeper/api/incomes/delete/'+this.income.id);
+        xhr.open('DELETE', 'http://localhost:8081/LukasKeeper/api/incomes/delete/'+this.income.id);
         xhr.send();
     }
 

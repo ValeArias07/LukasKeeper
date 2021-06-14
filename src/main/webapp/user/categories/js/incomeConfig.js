@@ -30,7 +30,7 @@ const getAllIncomes = () =>{
             }
         }
     });
-    xhr.open('GET', 'http://localhost:8080/LukasKeeper_war/api/incomes/list');
+    xhr.open('GET', 'http://localhost:8081/LukasKeeper_war/api/incomes/list');
     xhr.send();
 };
 
