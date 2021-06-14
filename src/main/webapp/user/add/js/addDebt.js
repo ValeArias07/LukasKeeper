@@ -4,8 +4,6 @@ const date = document.getElementById('date');
 const fee = document.getElementById('numFee');
 const interest = document.getElementById('interestPer');
 const button = document.getElementById('button');
-const periodBtn = document.getElementById('periodBtn');
-const compareBtn = document.getElementById('compareBtn');
 
 const addDebt=()=>{
 
@@ -21,11 +19,6 @@ const addDebt=()=>{
 }
 
 button.addEventListener('click', addDebt);
-
-goToMain = () => {
-    window.location="../categories/debts.html";
-}
-
 authSession=()=> {
     if (localStorage.getItem('session') === null) {
         window.location="../general/login.html";
@@ -33,5 +26,4 @@ authSession=()=> {
 }
 
 authSession();
-periodBtn.addEventListener('click', goToMain);
-compareBtn.addEventListener('click', goToMain);
+
