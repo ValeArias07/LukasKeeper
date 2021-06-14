@@ -1,39 +1,65 @@
+const periodBtn = document.getElementById('periodBtn');
+const compareBtn = document.getElementById('compareBtn');
+
 let dataArray = [];
 let labelArray = [];
+
+let sumDebts=0;
+let sumSavings=0;
+
 let background =[];
+var canvas = document.getElementById("canvas");
 
 const callData = () => {
-    let xhr = new XMLHttpRequest();
-    xhr.addEventListener('readystatechange', () => {
-        if (xhr.readyState === 4) {
-            let json = xhr.responseText;
-            let response = JSON.parse(json);
-            
-            for (let i = 0; i < response.length; i++) {
-                let dot = response[i];
-                dataArray[i]=dot.value;
-                labelArray[i]="Dia " +dot.date.substring(8,10);
-                background[i]="rgb(248, 126, 150)";
-                
-            }
-            init();
-        }
-    });
-    let session = JSON.parse(window.localStorage.getItem('session'));
-    
-    xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/debts/getMonthlyData?email="+session.email+"&date=2021-05");
+    if(labelArray.length ===0) {
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', () => {
+            if (xhr.readyState === 4) {
+                let json = xhr.responseText;
+                let response = JSON.parse(json);
 
-    xhr.send();
+                for (let i = 0; i < response.length; i++) {
+                    let dot = response[i];
+                    dataArray[i] = dot.value;
+                    labelArray[i] = "Dia " + dot.date.substring(8, 10);
+                    sumDebts += dot.value;
+                    background[i] = "rgb(248, 126, 150)";
+                }
+                init();
+            }
+        });
+        let session = JSON.parse(window.localStorage.getItem('session'));
+
+        xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/debts/getMonthlyData?email=" + session.email + "&date=2021-06");
+
+        xhr.send();
+        return labelArray;
+    }else{
+        return labelArray;
+    }
 };
 
-var ctx = document.getElementById("myChart").getContext("2d");
+const plugin = {
+
+    id: 'custom_canvas_background_color',
+    beforeDraw: (chart) => {
+        const ctx = chart.canvas.getContext('2d');
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, chart.width, chart.height);
+        ctx.restore();
+    }
+};
 
 const init = () => {
+    canvas.innerHTML='<h2> Comparacion en el tiempo</h2> <canvas id="myChart" width="870" height="430"></canvas>';
+    var ctx = document.getElementById("myChart").getContext("2d");
     var myChart = new Chart(ctx, {
         type: "line",
         plugins: [plugin],
         data: {
-            labels: labelArray,
+            labels: callData(),
             datasets: [{
                 label: 'Deudas',
                 fill: false,
@@ -53,16 +79,48 @@ const init = () => {
     });
 }
 
-const plugin = {
-    id: 'custom_canvas_background_color',
-    beforeDraw: (chart) => {
-        const ctx = chart.canvas.getContext('2d');
-        ctx.save();
-        ctx.globalCompositeOperation = 'destination-over';
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, chart.width, chart.height);
-        ctx.restore();
+const initDoubleChart = () => {
+    canvas.innerHTML='<h2> Comparacion con respecto a los ahorros </h2> <canvas id="myChart" width="870" height="430"></canvas>';
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: "pie",
+        plugins: [plugin],
+        data: {
+            labels:['Deudas','Ahorros'],
+            datasets: [{
+                label: 'Comparacion',
+                data: [sumDebts, sumSavings],
+                backgroundColor: ["rgb(248, 126, 150)","rgb(57, 77, 114)"]
+            }]
+        }
+    });
+}
+
+const callAditionalData = () => {
+    if(sumSavings==0){
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', () => {
+            if (xhr.readyState === 4) {
+                let json = xhr.responseText;
+                let response = JSON.parse(json);
+
+                for (let i = 0; i < response.length; i++) {
+                    let dot = response[i];
+                    sumSavings+=dot.value;
+                    console.log(sumSavings);
+                }
+                initDoubleChart();
+            }
+        });
+        let session = JSON.parse(window.localStorage.getItem('session'));
+        xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/savings/getMonthlyData?email="+session.email+"&date=2021-06");
+        xhr.send();
+    }else{
+        initDoubleChart();
     }
 };
 
-callData();
+periodBtn.addEventListener('click', init);
+compareBtn.addEventListener('click', callAditionalData);
+
+init();
