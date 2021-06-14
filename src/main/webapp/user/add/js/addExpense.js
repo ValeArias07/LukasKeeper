@@ -8,8 +8,8 @@ const getSelectors = () => {
     let index1 = document.getElementById("expenseType").selectedIndex;
     let idCategory = document.getElementById("expenseType").options[index1].value;
 
-    let index2 = document.getElementById("frequencyType").selectedIndex;
-    let frequencyType = document.getElementById("frequencyType").options[index2].text;
+    let index2 = frequency.selectedIndex;
+    let frequencyType = frequency.options[index2].text;
 
     addExpense(idCategory, frequencyType);
 }

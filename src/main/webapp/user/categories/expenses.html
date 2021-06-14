@@ -35,19 +35,18 @@
             </div>
         </aside>
 
-        
-        <div class="article">
-            <canvas id="myChart" width="870" height="430"></canvas>
+        <div class="mayorContainer">
+            <div class="article" id="canvas"> </div>
 
-            <div id="listContainer">
-                <div id="list1">
-                </div>
+                <div id="listContainer">
+                    <div id="list1">
 
-                <div id="list2">
+                    </div>
+
+                    <div id="list2">
+                    </div>
                 </div>
             </div>
-        </div>
-        
     </div>
 
 
@@ -64,19 +63,10 @@
 <script src="../../js/setName.js"></script>
 <script>
     const addBtn = document.getElementById('addBtn');
-    const periodBtn = document.getElementById('periodBtn');
-    const compareBtn = document.getElementById('compareBtn');
-
     goToAdd=()=>{
         window.location="../add/addExpenses.html";
     }
-
-    goToMain = () => {
-        window.location="../add/addExpenses.html";
-    }
-
     addBtn.addEventListener('click', goToAdd);
-    periodBtn.addEventListener('click', goToMain);
-    compareBtn.addEventListener('click', goToMain);
+
 </script>
 </html>
