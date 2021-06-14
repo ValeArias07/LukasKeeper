@@ -9,16 +9,28 @@ const getAllIncomes = () =>{
             let response = JSON.parse(json);
             console.log(response);
             extraInformationContainer.innerHTML = '';
+            salarioInformationContainer.innerHTML = '';
             for(let i = 0; i<response.length;i++){
                 let income = response[i];
                 let view = new loadIncomeElements(income);
+
                 view.onDeleteFinish = () =>{
-                    extraInformationContainer.removeChild(document.getElementById('toDoComponent' + income.id));
+                    if(income.idDefaultCategory === 90000011){
+                        salarioInformationContainer.removeChild(document.getElementById('income' + income.id));
+                    } else{
+                        extraInformationContainer.removeChild(document.getElementById('income' + income.id));
+                    }
+
                 };
+                if(income.idDefaultCategory === 90000011){
+                    salarioInformationContainer.appendChild(view.render());
+                } else{
+                    extraInformationContainer.appendChild(view.render());
+                }
             }
         }
     });
-    xhr.open('GET', 'http://localhost:8080/LukasKeeper/api/incomes/list');
+    xhr.open('GET', 'http://localhost:8080/LukasKeeper_war/api/incomes/list');
     xhr.send();
 };
 

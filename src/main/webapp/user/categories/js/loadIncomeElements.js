@@ -5,9 +5,25 @@ class loadIncomeElements{
         this.onDeleteFinish = null;
     }
 
+    deleteIncome = () =>{
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', ()=>{
+            if(xhr.readyState === 4){
+                console.log(xhr.responseText);
+                if(this.onDeleteFinish!=null){
+                    this.onDeleteFinish();
+                }
+            }
+        });
+        xhr.open('DELETE', 'http://localhost:8080/LukasKeeper/api/incomes/delete/'+this.income.id);
+        xhr.send();
+    }
+
+
+
     render = () =>{
         let component = document.createElement('div'); //<div></div>
-        component.className = 'income' + id;
+        component.className = 'income' + this.income.id;
 
         let fieldCantidad = document.createElement('div'); //<div></div>
         component.className = 'field';
@@ -53,9 +69,7 @@ class loadIncomeElements{
         fieldFecha.appendChild(fechaLabel);
         fieldFecha.appendChild(fechaIncome);
 
-        delBtn.addEventListener('click', this.deleteNote);
-        advanceBtn.addEventListener('click', this.nextState);
-        backBtn.addEventListener('click', this.backState);
+        delBtn.addEventListener('click', this.deleteIncome);
 
         return component;
     }
