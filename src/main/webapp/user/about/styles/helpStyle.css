@@ -23,6 +23,7 @@ body {
     border-radius: 20px;
     font-family: 'Roboto', sans-serif;
     text-align: center;
+    color: #F87E96;
 }
 
 header {
@@ -62,10 +63,82 @@ header {
     color: #F87E96;
 }
 
-#own {
+#own1,
+#own2 {
     color: #F87E96;
 }
 
+#ayudatitle{
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.card{
+    background-color: #f8f8f8;
+    color: #394D72;
+    width: 300px;
+    height: 300px;
+    padding-top: 110px;
+    font-weight: 700;
+    border-radius: 20px;
+    
+}
+
+#centralblocks{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    align-content: center;
+    margin: 0 auto;
+}
+
+#biggertable{
+    margin: 0 auto;
+
+}
+
+#centraltable{
+    margin: 0 auto;
+
+}
+
+.divimg1{
+    height: 700px;
+    width: 300px;
+    position: relative;
+    top: 20%;
+    left: 25%;
+    overflow: hidden;
+}
+
+#imgleft{
+    display: flex;
+    justify-content:flex-start;
+}
+
+.divimg2{
+    height: 700px;
+    width: 350px;
+    position: relative;
+    bottom: 20%;
+    left: 5%;
+    overflow: hidden;
+}
+#imgright{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.cardcontainer1{
+    padding-bottom: 20px;
+    padding-right: 20px;
+}
+
+.cardcontainer2{
+    padding-bottom: 20px;
+}
 
 /*
 Footer Config
