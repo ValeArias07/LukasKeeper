@@ -4,4 +4,3 @@ bLogOut.addEventListener('click',   logut=() => {
     window.localStorage.removeItem('name');
     window.location.href = '../../index.html';
 });
-

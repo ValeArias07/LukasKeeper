@@ -66,6 +66,7 @@ public class IncomeServices{
 					.build();
 		}
 	}
+
 	@GET
 	@Path("balance")
 	public Response balance() {
