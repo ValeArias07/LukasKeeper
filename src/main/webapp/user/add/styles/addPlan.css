@@ -17,53 +17,6 @@ footer {
     background-color: #394D72;
 }
 
-.nav__links {
-    list-style: none;
-    display: flex;
-}
-
-.nav__links a {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    color: #edf0f1;
-    text-decoration: none;
-    text-align: baseline;
-}
-
-.nav__links li {
-    padding: 0px 20px;
-}
-
-.nav__links li a {
-    transition: all 0.3s ease 0s;
-}
-
-.nav__links li a:hover {
-    color: #F87E96;
-}
-
-.logo {
-    margin-right: auto;
-}
-
-.choosed {
-    background-color: #1b2a4681;
-}
-
-.icons {
-    padding-right: 20px;
-    align-items: baseline;
-}
-
-#own1,
-#own2 {
-    color: #F87E96;
-}
-
-
-/*
-article config
-*/
 
 .container {
     overflow: auto;
@@ -72,16 +25,20 @@ article config
 
 .article {
     position: sticky;
-    margin: 4% 2%;
+    margin: 4%;
     padding-top: 30px;
-    width: auto;
+    width: 895px;
     float: right;
     text-align: center;
     border-radius: 20px;
-    background-color: #394D72;
+    background-color: #FAEDE9;
     font-family: 'Roboto', sans-serif;
 }
 
+.article *{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 /*
 Sidebar consig
@@ -113,26 +70,37 @@ Sidebar consig
     transition-property: background;
 }
 
-.sidebar a:hover {
-    background: rgb(28, 39, 61);
+#title{
+    color: #F87E96;
 }
 
-.sidebar h4 {
-    color: #ccc;
-    margin-bottom: 20px;
+#img{
+    width: auto;
+    height: auto;
+    margin: 53px;
 }
 
-.sidebar h5 {
-    padding: 10% 0 10px 0;
-    text-align: center;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-}
-
-.sidebar .profile_image {
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-    margin-bottom: 10px;
+.fields{
+    align-content: center;
     align-items: center;
+    justify-content: flex-end;
+}
+
+.fields input{
+    text-align: center;
+    background-color: rgb(218, 221, 225);
+    color: black;
+    border-radius: 10px;
+    font-size: large;
+    border: 1px solid rgb(218, 221, 225);
+    height: 25px;
+}
+
+#btSave{
+    background-color: #F87E96;
+    font-size: 25px;
+    margin: 40px 0;
+    border-radius: 10px;
+    color: black;
+    border: 1px solid #fff;
 }
