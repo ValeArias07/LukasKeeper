@@ -47,7 +47,7 @@ class loadIncomeElements{
         fechaIncome.id = "fechaIncome";
 
         let delBtn = document.createElement('button');
-        delBtn.innerHTML = ' ';
+        delBtn.innerHTML = 'Eliminar';
         delBtn.className = 'delBtn';
 
         cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
