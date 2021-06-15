@@ -192,19 +192,28 @@ Sidebar consig
 
 #extraInformation{
     border-radius: 16px;
-    width: 350px;
+    width: 400px;
     height: auto;
     background: #FAEDE9;
-    margin: 20px;
+
 }
+
 #salarioInformation{
     border-radius: 16px;
-    background: #FAEDE9;
-    width: 350px;
+    width: 400px;
     height: auto;
     background: #FAEDE9;
-    margin: 20px;
+    margin-left: 50px;
 
+}
+
+.elementsComponent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #848181;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .elementsTitle{
@@ -212,6 +221,18 @@ Sidebar consig
     margin-bottom: 10px;
     color: #F87E96;
     font-family: 'Roboto', sans-serif;
+}
+
+.buttonDelete{
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    font-weight: 10;
+    background-color: #F87E96;
+    color: #394D72;
+    transition: all 0.3s ease 0s;
+    margin-bottom: 10px;
+    width: 100px;
 }
 
 
