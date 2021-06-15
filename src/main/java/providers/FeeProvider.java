@@ -36,7 +36,7 @@ public class FeeProvider {
 
     public ArrayList<Fee> getAllSavingsFee(String email) throws SQLException, ParseException {
         String sql = ("SELECT fee.* FROM (fee INNER JOIN saving_plan ON fee.idSavingPlan = saving_plan.id) " +
-                "INNER JOIN users ON users.id = saving_plan.idUSer WHERE users.email = $EMAIL AND fee.idDebts IS NULL").replace("EMAIL", "'" + email + "'");
+                "INNER JOIN users ON users.id = saving_plan.idUSer WHERE users.email = $EMAIL AND fee.idDebts IS NULL").replace("$EMAIL", "'" + email + "'");
         DBConnection connection = new DBConnection();
         return getAll(connection, sql);
     }
@@ -49,8 +49,10 @@ public class FeeProvider {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
             double value =Double.parseDouble(resultSet.getString(resultSet.findColumn("value")));
             String date = resultSet.getString(resultSet.findColumn("date"));
-            int idSavingPlan = Integer.parseInt(resultSet.getString(resultSet.findColumn("idSavingPlan")));
-            int idDebts = Integer.parseInt(resultSet.getString(resultSet.findColumn("idDebts")));
+            String ids = resultSet.getString(resultSet.findColumn("idSavingPlan"));
+            String idd = resultSet.getString(resultSet.findColumn("idDebts"));
+            int idDebts = (idd!=null)?Integer.parseInt(idd):0;
+            int idSavingPlan = (ids!=null)?Integer.parseInt(ids):0;
             fees.add(new Fee(id,value,DBConnection.format.parse(date), idSavingPlan, idDebts));
         }
         connection.disconnect();
