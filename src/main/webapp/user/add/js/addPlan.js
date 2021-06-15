@@ -44,4 +44,10 @@ checkFields = () => {
     }
 }
 
+authSession=()=> {
+    if (localStorage.getItem('session') === null) {
+        window.location="../general/login.html";
+    }
+}
+
 btSave.addEventListener('click', checkFields);

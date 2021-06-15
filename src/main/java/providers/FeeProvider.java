@@ -34,10 +34,24 @@ public class FeeProvider {
         return getAll(connection, sql);
     }
 
-    public ArrayList<Fee> getAllSavingsFee() throws SQLException, ParseException {
-        String sql = ("SELECT fee.* FROM fee WHERE idDebts IS NULL");
+    public ArrayList<Fee> getAllSavingsFee(String email) throws SQLException, ParseException {
+        String sql = ("SELECT fee.* FROM (fee INNER JOIN saving_plan ON fee.idSavingPlan = saving_plan.id) " +
+                "INNER JOIN users ON users.id = saving_plan.idUSer WHERE users.email = $EMAIL AND fee.idDebts IS NULL").replace("$EMAIL", "'" + email + "'");
         DBConnection connection = new DBConnection();
         return getAll(connection, sql);
+    }
+
+    public double getAllSumSavingsFee(String email) throws SQLException, ParseException {
+        String sql = ("SELECT SUM(fee.value) AS suma FROM (fee INNER JOIN saving_plan ON fee.idSavingPlan = saving_plan.id) " +
+                "INNER JOIN users ON users.id = saving_plan.idUSer WHERE users.email = $EMAIL AND fee.idDebts IS NULL").replace("$EMAIL", "'" + email + "'");
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        double suma = -1;
+        if(resultSet.next()) {
+            suma = resultSet.getDouble(resultSet.findColumn("suma"));
+        }
+        return suma;
     }
 
     private ArrayList<Fee> getAll(DBConnection connection, String sql) throws SQLException, ParseException{
@@ -48,8 +62,10 @@ public class FeeProvider {
             int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
             double value =Double.parseDouble(resultSet.getString(resultSet.findColumn("value")));
             String date = resultSet.getString(resultSet.findColumn("date"));
-            int idSavingPlan = Integer.parseInt(resultSet.getString(resultSet.findColumn("idSavingPlan")));
-            int idDebts = Integer.parseInt(resultSet.getString(resultSet.findColumn("idDebts")));
+            String ids = resultSet.getString(resultSet.findColumn("idSavingPlan"));
+            String idd = resultSet.getString(resultSet.findColumn("idDebts"));
+            int idDebts = (idd!=null)?Integer.parseInt(idd):0;
+            int idSavingPlan = (ids!=null)?Integer.parseInt(ids):0;
             fees.add(new Fee(id,value,DBConnection.format.parse(date), idSavingPlan, idDebts));
         }
         connection.disconnect();
