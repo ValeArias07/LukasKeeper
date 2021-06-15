@@ -8,7 +8,11 @@ const getAllDebts = () =>{
             let json = xhr.responseText;
             let response = JSON.parse(json);
             console.log(response);
+            let component = document.createElement('label'); //<div></div>
+            component.className = 'elementsTitle';
+            component.innerHTML = "Deudas";
             debtsInformation.innerHTML = '';
+            debtsInformation.appendChild(component);
 
             for(let i = 0; i<response.length;i++){
                 let debts = response[i];
