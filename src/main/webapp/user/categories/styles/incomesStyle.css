@@ -58,15 +58,9 @@ article config
     padding-bottom: 35px;
 }
 
-.field {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
 
 .field {
-    display: flex;
+    padding: 5px;
     flex-direction: row;
     justify-content: center;
 }
@@ -208,7 +202,6 @@ Sidebar consig
 }
 
 .elementsComponent{
-    display: flex;
     flex-direction: column;
     justify-content: center;
     border: 2px solid #848181;
@@ -218,7 +211,8 @@ Sidebar consig
 
 .elementsTitle{
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 35px;
     color: #F87E96;
     font-family: 'Roboto', sans-serif;
 }
