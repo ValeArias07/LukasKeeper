@@ -52,5 +52,11 @@ loadOptionsOfPlanSelecter = () => {
     xhr.send();
 }
 
+authSession=()=> {
+    if (localStorage.getItem('session') === null) {
+        window.location="../general/login.html";
+    }
+}
+
 btAdd.addEventListener('click', toRegister);
 loadOptionsOfPlanSelecter();
