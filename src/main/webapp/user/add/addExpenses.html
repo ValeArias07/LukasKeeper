@@ -28,7 +28,6 @@
                 </center>
                 <button class="optionsButton" id="addBtn" href="../add/addExpense.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar gasto</span></button>
                 <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
-                <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
 
                 <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
             </div>
@@ -40,11 +39,11 @@
             <div class="fieldContainer ">
                 <div class="field "><label>Cantidad: </label><input type="text " id="amount " ></div>
                 <div class="field "><label>Descripción: </label><input type="text " id="description "></div>
-                <div class="field "><label>Fecha: </label><input type="date " id="date " /></div>
+                <div class="field "><label>Fecha: </label><input type="date" id="date" /></div>
                 <div class="fieldSelect "><label>Frecuencia: </label><select name="frequencyType " id="frequencyType " class="selectFormat ">
-                    <option value="1 ">Expontaneo</option>
-                    <option value="2 ">Quincenal</option>
-                    <option value="3 ">Mensual</option>
+                    <option value="1">Espontáneo</option>
+                    <option value="2">Quincenal</option>
+                    <option value="3">Mensual</option>
                 </select></div>
                 <div class="fieldSelect "><label>Tipo de gasto: </label><select name="expenseType " id="expenseType " class="selectFormat ">
                     <option value="90000001 ">Alimentacion</option>
@@ -79,13 +78,10 @@
 <script src="../../js/setName.js "></script>
 <script>
     const periodBtn = document.getElementById('periodBtn');
-    const compareBtn = document.getElementById('compareBtn');
-
     goToMain = () => {
     window.location="../categories/expenses.html";
     }
 
-    compareBtn.addEventListener('click', goToMain);
     periodBtn.addEventListener('click', goToMain);
 
 </script>

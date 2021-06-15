@@ -50,10 +50,6 @@ public class IncomeServices{
 		}
 	}
 
-<<<<<<< HEAD
-	
-
-=======
 	@POST
 	@Path("addCategory")
 	public Response addCategory(String category) {
@@ -74,7 +70,7 @@ public class IncomeServices{
 					.build();
 		}
 	}
->>>>>>> income-services
+
 	@GET
 	@Path("balance")
 	public Response balance() {

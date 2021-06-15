@@ -59,7 +59,6 @@ public class CacheProvider {
         connection.disconnect();
         return cache;
     }
-
     /**
      *
      * @param debt Registro de la tabla que se va a modificar
