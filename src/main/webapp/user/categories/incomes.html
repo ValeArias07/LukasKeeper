@@ -7,69 +7,58 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/incomesStyle.css">
+    <link rel="stylesheet" href="styles/general.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 </head>
 
 <body>
-<!--header start-->
-<header>
-    <a class="logo" href="/"><img src="../../images/logo.png" alt="logo" width="200px"> </a>
-    <nav>
-        <ul class="nav__links">
-            <li><a href="../dashboard.html">Dashboard</a></li>
-            <li><a id="own1">Ingresos</a></li>
-            <li><a href="expenses.html">Gastos</a></li>
-            <li><a href="debts.html">Deudas</a></li>
-            <li><a href="savings.html">Ahorros</a></li>
-            <li><a href="../about/help.html ">Ayuda </a></li>
-            <li><a href="../about/contact.html ">Contactanos</a></li>
-            <li><a href="# ">Cerrar sesión</a></li>
-        </ul>
-    </nav>
-</header>
-<!--header end-->
-
+    <!--header start-->
+    <div id="header"> </div>
+    <!--header end-->
 
     <!--article start-->
-    <div class="container">
-        <aside>
-            <div class="sidebar">
-                <center>
-                    <img src="../../images/model.jpg" class="profile_image" alt="">
-                    <h4>Hola, <label id="nameModel"></label>! </h4>
-                </center>
-                <button class="optionsButton" id="addBtn" href="../add/addIncomes.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar ingreso</span></button>
-                <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
-                <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
-                <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
-            </div>
-        </aside>
-
-        <div class="article" id="canvasContainer">
-
-            <div id="canvas">
-                <canvas id="myChart" width="870" height="430"></canvas>
-            </div>
-
-            <div class="information">
-                <div id="extraInformation">
-                    <h2 class="elementsTitle">Extra</h2>
-                    <div class="field "> <label> Cantidad </label><input type="text" id="x" /></div>
-                    <div class="field "> <label> Descripción </label><input type="text" id="y" /></div>
-                    <div class="field "><label> Fecha: </label><input type="date" id="z" /></div>
-                    <div class="buttonContainer"><button id="buttonDeleteExtra" class="btnAction">Eliminar</button></div>
+        <div class="container">
+            <aside>
+                <div class="sidebar">
+                    <center>
+                        <img src="../../images/model.jpg" class="profile_image" alt="">
+                        <h4>Hola, <label id="nameModel"></label>! </h4>
+                    </center>
+                    <button class="optionsButton" id="addBtn"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar ingreso</span></button>
+                    <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
+                    <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
+                    <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
                 </div>
-                <div id="salarioInformation">
-                    <h2 class="elementsTitle">Salario</h2>
-                    <div class="field "> <label> Cantidad </label><input type="text" id="cantidadSalario" /></div>
-                    <div class="field "> <label> Descripción </label><input type="text" id="descripcionSalario" /></div>
-                    <div class="field "><label> Fecha: </label><input type="date" id="dateSalario" /></div>
-                    <div class="buttonContainer"><button id="buttonDeleteSalario" class="btnAction"> Eliminar </button></div>
+            </aside>
+<div class="mayorContainer">
+            <div class="article" id="canvasContainer">
+
+                <div id="canvas">
+
                 </div>
             </div>
+            <div class="article" id="information">
+                <div class="information">
+                    <div id="extraInformation">
+                        <h2 class="elementsTitle">Extra</h2>
+                        <div class="field "> <label> Cantidad </label><input type="text" id="x" /></div>
+                        <div class="field "> <label> Descripción </label><input type="text" id="y" /></div>
+                        <div class="field "><label> Fecha: </label><input type="date" id="z" /></div>
+                        <div class="buttonContainer"><button id="buttonDeleteExtra" class="btnAction">Eliminar</button></div>
+                    </div>
+                    <div id="salarioInformation">
+                        <h2 class="elementsTitle">Salario</h2>
+                        <div class="field "> <label> Cantidad </label><input type="text" id="cantidadSalario" /></div>
+                        <div class="field "> <label> Descripción </label><input type="text" id="descripcionSalario" /></div>
+                        <div class="field "><label> Fecha: </label><input type="date" id="dateSalario" /></div>
+                        <div class="buttonContainer"><button id="buttonDeleteSalario" class="btnAction"> Eliminar </button></div>
+                    </div>
+                </div>
+        </div>
     </div>
-    </div>
+        </div>
     <!--footer start-->
     <div id="footer"></div>
     <!--footer end-->
@@ -81,4 +70,22 @@
 <script src="js/loadBasicElements.js"></script>
 <script src="../../js/logOut.js"></script>
 <script src="../../js/setName.js"></script>
+
+<script>
+    const addBtn = document.getElementById('addBtn');
+
+    goToAdd=()=>{
+        window.location="../add/addIncomes.html";
+        console.log("add");
+    }
+
+    authSession=()=> {
+        if (localStorage.getItem('session') === null) {
+            window.location="../general/login.html";
+        }
+    }
+
+    authSession();
+    addBtn.addEventListener('click', goToAdd);
+</script>
 </html>
