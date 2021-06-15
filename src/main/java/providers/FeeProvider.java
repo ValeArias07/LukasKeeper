@@ -34,8 +34,9 @@ public class FeeProvider {
         return getAll(connection, sql);
     }
 
-    public ArrayList<Fee> getAllSavingsFee() throws SQLException, ParseException {
-        String sql = ("SELECT fee.* FROM fee WHERE idDebts IS NULL");
+    public ArrayList<Fee> getAllSavingsFee(String email) throws SQLException, ParseException {
+        String sql = ("SELECT fee.* FROM (fee INNER JOIN saving_plan ON fee.idSavingPlan = saving_plan.id) " +
+                "INNER JOIN users ON users.id = saving_plan.idUSer WHERE users.email = $EMAIL AND fee.idDebts IS NULL").replace("EMAIL", "'" + email + "'");
         DBConnection connection = new DBConnection();
         return getAll(connection, sql);
     }
