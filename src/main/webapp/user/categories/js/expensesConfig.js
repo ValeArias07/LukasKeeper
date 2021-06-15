@@ -4,8 +4,8 @@ const periodBtn = document.getElementById('periodBtn');
 const timelineBtn = document.getElementById('timelineBtn');
 const compareBtn = document.getElementById('compareBtn');
 const indicatorsBtn = document.getElementById('indicatorsBtn');
-const entretenimientoInformacion = document.getElementById('entretenimientoInformacion');
-const saludInformacion = document.getElementById('saludInformacion');
+const entretenimientoInformation = document.getElementById('entretenimientoInformation');
+const saludInformation = document.getElementById('saludInformation');
 
 const getAllExpenses = () =>{
     let session = JSON.parse(window.localStorage.getItem('session'));
@@ -15,23 +15,23 @@ const getAllExpenses = () =>{
             let json = xhr.responseText;
             let response = JSON.parse(json);
             console.log(response);
-            entretenimientoInformacion.innerHTML = '';
-            saludInformacion.innerHTML = '';
+            entretenimientoInformation.innerHTML = '';
+            saludInformation.innerHTML = '';
 
             for(let i = 0; i<response.length;i++){
                 let expenses = response[i];
-                let view = new loadExpensesElements(debts);
+                let view = new loadExpensesElements(expenses);
                 view.onDeleteFinish = () =>{
                     if(expenses.idDefaultCategory === 90000008) {
-                        saludInformacion.removeChild(document.getElementById('expenses' + expenses.id));
+                        saludInformation.removeChild(document.getElementById('expenses' + expenses.id));
                     } else{
-                        entretenimientoInformacion.removeChild(document.getElementById('expenses' + expenses.id));
+                        entretenimientoInformation.removeChild(document.getElementById('expenses' + expenses.id));
                     }
                 };
                 if(expenses.idDefaultCategory === 90000008) {
                     saludInformacion.appendChild(view.render());
                 } else {
-                    entretenimientoInformacion.appendChild(view.render());
+                    entretenimientoInformation.appendChild(view.render());
                 }
 
             }

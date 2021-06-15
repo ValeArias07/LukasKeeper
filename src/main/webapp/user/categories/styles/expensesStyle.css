@@ -65,8 +65,10 @@ article config
 */
 
 .container {
-    overflow: auto;
     height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .article {
@@ -84,18 +86,36 @@ article config
 }
 
 
+.graph{
+    border-radius: 16px;
+    width: 900px;
+    height: 444px;
+    background: #FAEDE9;
+    margin-bottom: 20px;
+}
+
 .information{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-#debtsInformation{
+#saludInformation{
     border-radius: 16px;
     width: auto;
     height: auto;
     background: #FAEDE9;
     outline: black;
+
+}
+
+#entretenimientoInformation{
+    border-radius: 16px;
+    width: auto;
+    height: auto;
+    background: #FAEDE9;
+    outline: black;
+    margin-left: 250px;
 
 }
 
@@ -115,12 +135,25 @@ article config
 
 
 /*
+Elements config
+*/
+.buttonPropt{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 60px;
+    height: 37px;
+    border-color: #FAEDE9;
+}
+
+
+/*
 Sidebar consig
 */
 
 .sidebar {
     background: #2f323a;
-    margin: 4% 2%;
+    margin: 12% 2%;
     padding: 30px 0 5px 0;
     float: left;
     width: 290px;
@@ -197,34 +230,16 @@ Sidebar consig
 }
 
 #canvas {
-    height: 520px;
+    height: 50%;
+    width: 100%;
+    float: right;
     text-align: center;
     border-radius: 20px;
     background-color: #FAEDE9;
     font-family: 'Work Sans', sans-serif;
 }
-
-#listContainer{
-    display:flex;
-    flex-direction: row;
-    height: auto;
-    margin:0px 46px 29px 28px;
-    background-color: #FAEDE9;
-    border-radius: 20px;
-}
-
-#list2{
-    background: #2f323a;
-    height: 120px;
-    width: 450px;
-    margin: 20px;
-}
-
-#list1{
-    background: #2f323a;
-    width: 450px;
-    margin: 20px;
-    height: 120px;
+#information{
+    margin: -10px 30px 30px 30px;
 }
 
 .mayorContainer{
@@ -232,8 +247,3 @@ Sidebar consig
     flex-direction: column;
     justify-content: center;
 }
-
-.mayorContainer{
-    color: #df7187;
-}
-
