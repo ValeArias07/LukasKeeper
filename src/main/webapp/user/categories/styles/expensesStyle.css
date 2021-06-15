@@ -103,7 +103,6 @@ article config
 }
 
 .elementsComponent{
-    display: flex;
     flex-direction: column;
     justify-content: center;
     border: 2px solid #848181;
@@ -184,6 +183,10 @@ Sidebar consig
 
 .sidebar a:hover {
     background: rgb(28, 39, 61);
+}
+
+.field{
+    padding: 5px;
 }
 
 .sidebar h4 {

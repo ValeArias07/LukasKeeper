@@ -19,25 +19,6 @@ class loadExpensesElements{
         xhr.send();
     }
 
-    modifyExpenses = () =>{
-        let session = JSON.parse(window.localStorage.getItem('session'));
-        let xhr = new XMLHttpRequest();
-        let obj = {
-            id : 0,
-            descripcion : this.expenses.description,
-            fecha : this.expenses.fecha,
-            cantidad: this.expenses.cantidad
-        };
-        xhr.addEventListener('readystatechange', ()=>{
-            if(xhr.readyState === 4){
-                console.log(xhr.responseText);
-               this.deleteExpenses();
-            }
-        });
-        xhr.open('POST', 'http://localhost:8081/LukasKeeper_war/api/expenses/add?email='+session.email);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(obj));
-    }
 
     render = () =>{
         let component = document.createElement('div'); //<div></div>
@@ -55,23 +36,20 @@ class loadExpensesElements{
         fieldDescripcion.className = 'field';
         let descripcionLabel = document.createElement('label'); //<small></small>
         descripcionLabel.className = 'descripcionLabel';
-        let descripcionExpenses =document.createElement('input');
+        let descripcionExpenses =document.createElement('small');
         descripcionExpenses.id = "descripcionExpenses";
 
         let fieldFecha = document.createElement('div'); //<div></div>
         fieldFecha.className = 'field';
         let fechaLabel = document.createElement('label'); //<small></small>
         fechaLabel.className = 'fechaLabel';
-        let fechaExpenses =document.createElement('input');
+        let fechaExpenses =document.createElement('small');
         fechaExpenses.id = "fechaExpenses";
 
         let delBtn = document.createElement('button');
         delBtn.innerHTML = 'Eliminar';
         delBtn.className = 'buttonDelete';
 
-        let modBtn = document.createElement('button');
-        delBtn.innerHTML = 'Modificar';
-        delBtn.className = 'buttonDelete';
 
         cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
         descripcionLabel.innerHTML = "Descripción";
@@ -91,10 +69,10 @@ class loadExpensesElements{
         component.appendChild(fieldDescripcion); //div<p></p><small></small></div>
         component.appendChild(fieldFecha);
         component.appendChild(delBtn);
-        component.appendChild(modBtn);
+
 
         delBtn.addEventListener('click', this.deleteExpenses);
-        modBtn.addEventListener('click', this.modifyExpenses);
+
         return component;
     }
 }
