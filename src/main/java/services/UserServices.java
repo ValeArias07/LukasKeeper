@@ -1,7 +1,9 @@
 package services;
 
 import com.google.gson.Gson;
+import model.Cache;
 import model.User;
+import providers.CacheProvider;
 import providers.UserProvider;
 
 import javax.ws.rs.*;
@@ -21,12 +23,17 @@ public class UserServices {
 			UserProvider userProvider= new UserProvider();
 			User userObj= gson.fromJson(user,User.class);
 			userProvider.addUser(userObj);
+			//Añadir un cache para este usuario
+			User userCache = userProvider.getUser(userObj.getEmail());
+			CacheProvider cacheProvider = new CacheProvider();
+			Cache cache = new Cache(0, 0, 0, 0, userCache.getId(), 0);
+			cacheProvider.addCache(cache);
 			return Response
 					.status(200)
 					.header("Access-Control-Allow-Origin","*")
 					.build();
 
-		} catch (SQLException throwables) {
+		} catch (SQLException | ParseException throwables) {
 			throwables.printStackTrace();
 		}
 
