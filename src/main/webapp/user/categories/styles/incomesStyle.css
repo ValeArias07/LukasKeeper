@@ -78,13 +78,65 @@ article config
     float: right;
     text-align: center;
     border-radius: 20px;
-    background-color: #394D72;
+    font-family: 'Roboto', sans-serif;
+}
+
+.graph{
+    border-radius: 16px;
+    width: 900px;
+    height: 377px;
+    background: #FAEDE9;
+    margin-bottom: 30px;
+}
+
+.information{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#extraInformation{
+    border-radius: 16px;
+    width: 350px;
+    height: 150;
+    background: #FAEDE9;
+   margin: 20px;
+}
+#salarioInformation{
+    border-radius: 16px;
+    background: #FAEDE9;
+    width: 350px;
+    height: 150;
+    background: #FAEDE9;
+   margin: 20px;
+
+}
+
+.elementsTitle{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #F87E96;
     font-family: 'Roboto', sans-serif;
 }
 
 
 /*
-Sidebar consig
+Elements config
+*/
+
+#buttonDeleteSalario{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: url('/images/garbage.png') no-repeat center left;
+    cursor: pointer;
+    width: 60px;
+    height: 37px;
+    border-color: #FAEDE9;
+}
+
+
+/*
+Sidebar config
 */
 
 .sidebar {

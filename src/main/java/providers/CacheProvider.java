@@ -59,4 +59,33 @@ public class CacheProvider {
         return cache;
     }
 
+    /**
+     *
+     * @param debt Registro de la tabla que se va a modificar
+     * @param isAdd Valida si se agrega un debt o se elimina del cache
+     */
+    public void updateDebtCache(Debt debt, boolean isAdd) throws SQLException {
+        String fetchQuery = "SELECT user_cache.* FROM user_cache WHERE idUser = $ID"
+                .replace("$ID", "'" + debt.getIdUser() + "'");
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(fetchQuery);
+        double newDebt = 0;
+        if(resultSet.next()) {
+            int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
+            double debtsBalance = Double.parseDouble(resultSet.getString(resultSet.findColumn("debtsBalance")));
+
+            if(isAdd) {
+                newDebt = debtsBalance + debt.getValue();
+            } else {
+                newDebt = debtsBalance - debt.getValue();
+            }
+
+            String sql = ("UPDATE user_cache SET debtsBalance=$DB WHERE id=$ID")
+                    .replace("$ID","'" + id + "'")
+                    .replace("$DB","'"+newDebt+"'");
+            connection.commandSQL(sql);
+        }
+        connection.disconnect();
+    }
 }

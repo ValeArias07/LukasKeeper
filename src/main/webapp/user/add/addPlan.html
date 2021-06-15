@@ -14,19 +14,7 @@
 <body>
     <!--header start-->
     <header>
-        <a class="logo" href="/"><img src="../../images/logo.png" alt="logo" width="200px"> </a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="../dashboard.html ">Dashboard</a></li>
-                <li><a href="../categories/incomes.html">Ingresos</a></li>
-                <li><a href="../categories/expenses.html">Gastos</a></li>
-                <li><a href="../categories/debts.html">Deudas</a></li>
-                <li><a id="own1">Ahorros</a></li>
-                <li><a href="../about/help.html ">Ayuda </a></li>
-                <li><a href="../about/contact.html ">Contactanos</a></li>
-                <li><a href="# ">Cerrar sesion</a></li>
-            </ul>
-        </nav>
+        <div id="header"></div>
     </header>
     <!--header end-->
 
@@ -37,44 +25,63 @@
         <aside>
             <div class="sidebar ">
                 <center>
-                    <img src="../../images/model.jpg " class="profile_image " alt=" ">
-                    <h4>Hola, Jennifer! </h4>
+                    <img src="../../images/model.jpg" class="profile_image" alt="">
+                    <h4>Hola, <label id="nameModel"></label>! </h4>
                 </center>
-                <a class="choosed"><img src="../../images/addPlan.png" class="icons " align="center"><span>Crear plan</span></a>
-                <a href="addSaving.html"><img src="../../images/saving.png" class="icons " align="center"><span>Agregar Ahorro</span></a>
-                <a href="setBudget.html"><img src="../../images/setBudget.png" class="icons " align="center"><span>Establecer presupuesto</span></a>
-                <a href="# "><img src="../../images/period.png " class="icons " align="center"><span>Ver por periodo</span></a>
-                <a href="# "><img src="../../images/timeline.png " class="icons " align="center"><span>Comparar en el tiempo</span></a>
-                <a href="# "><img src="../../images/compare.png " class="icons " align="center"><span>Comparar entre categorias</span></a>
-                <a href="# "><img src="../../images/indicators.png " class="icons " align="center"><span>Ver indicadores</span></a>
+                <<button class="optionsButton" id="addBtn" href="addPlan.html"><img src="../../images/addPlan.png" class="icons" align="center"><span>Crear Plan</span></button>
+                <button class="optionsButton" id="addSaving" href="addSaving.html"> <img src="../../images/saving.png" class="icons" align="center"><span>Agregar Ahorro</span></button>
+                <button class="optionsButton" id="setBudget" href="setBudget.html"> <img src="../../images/setBudget.png" class="icons" align="center"><span>Establecer presupuesto</span></button>
+                <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver periodo</span></button>
 
                 <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
             </div>
         </aside>
 
         <div class="article ">
-            <h2>Titulo</h2>
+            <h2 id = "title">Crear plan de ahorro</h2>
+            <img id= img src="../../images/addPlanB.png"/>
+            <div class="fields">
+            <div><lab>Descripción: </lab><input id ="txtDescription" type="text"></div>
+            <div><lab>Costo: </lab><input id ="txtCost" type="number" min=0 step=100000></div>
+            <div><lab>Fecha esperada: </lab><input id ="expectedDate" type="date"></div>
+            <button id="btSave">Guardar</button>
+            </div>
         </div>
 
     </div>
 
     <!--footer start-->
     <footer>
-        <a class=" logo " href="/ "><img src="../../images/logo.png " alt="logo " width="200px "> </a>
-        <nav>
-            <ul class="nav__links ">
-                <li><a href="../dashboard.html">Dashboard</a></li>
-                <li><a href="incomes.html">Ingresos</a></li>
-                <li><a href="expenses.html">Gastos</a></li>
-                <li><a href="debts.html">Deudas</a></li>
-                <li><a id="own2">Ahorros</a></li>
-                <li><a href="../about/help.html ">Ayuda </a></li>
-                <li><a href="../about/contact.html ">Contactanos</a></li>
-                <li><a href="# ">Cerrar sesion</a></li>
-            </ul>
-        </nav>
+        <div id="footer"></div>
     </footer>
     <!--footer end-->
 </body>
+<script src="../../js/session.js"></script>
+<script src="js/loadBasicElements.js"></script>
+<script src="js/SavingPlan.js"></script>
+<script src="js/addPlan.js"></script>
+<script src="../../js/setName.js"></script>
+<script>
+    const setBudget = document.getElementById('setBudget');
+    const addSaving = document.getElementById('addSaving');
+    const periodBtn = document.getElementById('periodBtn');
 
+    goToBudget=()=>{
+        window.location.href="setBudget.html";
+    }
+
+    goToAddSaving=()=>{
+        window.location.href="addSaving.html";
+    }
+
+    goToMain=()=>{
+        window.location.href="../categories/savings.html";
+    }
+
+
+    addSaving.addEventListener('click', goToAddSaving);
+    setBudget.addEventListener('click', goToBudget);
+    periodBtn.addEventListener('click', goToMain);
+</script>
+<script src="../../js/logOut.js"></script>
 </html>
