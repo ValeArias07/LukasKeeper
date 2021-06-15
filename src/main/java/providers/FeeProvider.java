@@ -27,9 +27,9 @@ public class FeeProvider {
 
     public ArrayList<Fee> getAllFee(int idSavingPlan, int idDebts) throws SQLException, ParseException {
         String sql = ("SELECT fee.* FROM fee INNER JOIN $TABLE ON fee.$IDNAME = $TABLE.id WHERE $TABLE.id = $IDD")
-                .replace("$IDD", (idSavingPlan!=-1)?"'" + idSavingPlan + "'":"'" + idDebts + "'")
-                .replace("$TABLE", (idSavingPlan!=-1)?"'saving_plan'":"'debts'")
-                .replace("$IDNAME", (idSavingPlan!=-1)?"'idSavingPlan'":"'idDebts'");
+                .replace("$IDD", (idSavingPlan!=-1)?""+ idSavingPlan:"" + idDebts)
+                .replace("$TABLE", (idSavingPlan!=-1)?"saving_Plan":"debts")
+                .replace("$IDNAME", (idSavingPlan!=-1)?"idSavingPlan":"idDebts");
         DBConnection connection = new DBConnection();
         return getAll(connection, sql);
     }
@@ -54,6 +54,49 @@ public class FeeProvider {
         }
         connection.disconnect();
         return fees;
+    }
+
+    public void updateTotalFee(int idSavingPlan) throws SQLException, ParseException {
+        DBConnection connection = new DBConnection();
+
+        double totalFee = getSumSavingFee(idSavingPlan);
+
+        System.out.println(totalFee);
+
+        String sql = ("UPDATE saving_plan SET totalFee=$VALUE WHERE id=$ID")
+                .replace("$VALUE",totalFee+"")
+                .replace("$ID", idSavingPlan+"");
+
+        connection.connect();
+        System.out.println(sql);
+        connection.commandSQL(sql);
+        connection.disconnect();
+    }
+
+    private double getSumSavingFee(int idSavingPlan) throws SQLException, ParseException{
+        String sql = ("SELECT SUM(value) AS suma FROM fee WHERE idSavingPlan = $ID")
+                .replace("$ID", "'" + idSavingPlan + "'");
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        double suma = -1;
+        if(resultSet.next()) {
+            suma= resultSet.getDouble(resultSet.findColumn("suma"));
+        }
+        return suma;
+    }
+
+    public double getSumDebtFee(int idDebts) throws SQLException, ParseException{
+        String sql = ("SELECT SUM(value) AS suma FROM fee WHERE idDebts = $ID")
+                .replace("$ID", "'" + idDebts + "'");
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        double sum = -1;
+        if(resultSet.next()) {
+            sum= resultSet.getDouble(resultSet.findColumn("suma"));
+        }
+        return sum;
     }
 
     public void deleteById(int id) throws SQLException {
