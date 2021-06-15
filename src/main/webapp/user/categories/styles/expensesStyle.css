@@ -69,20 +69,59 @@ article config
     height: 100%;
 }
 
-
 .article {
-    margin: 55px 30px 30px 30px;
+    margin: 37px 30px;
     padding: 30px;
     height: auto;
-    width: 927px;
+    width: 958px;
     float: right;
     text-align: center;
     border-radius: 20px;
     font-family: 'Work Sans', sans-serif;
     display: flex;
-    flex-direction: column;
-    background: #000;
+    /*! flex-direction: column; */
+    background: #FAEDE9;
 }
+
+
+#information{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#entretenimientoInformation{
+    border-radius: 16px;
+    width: auto;
+    height: auto;
+    background: #FAEDE9;
+    outline: black;
+
+}
+
+#saludInformacion{
+    border-radius: 16px;
+    width: auto;
+    height: auto;
+    background: #FAEDE9;
+    outline: black;
+
+}
+
+.elementsComponent{
+    border-radius: 15px;
+    margin-bottom: 15px;
+    border: 4px solid #d0d0d0;
+}
+
+.elementsTitle{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #F87E96;
+    font-family: 'Roboto', sans-serif;
+
+}
+
 
 /*
 Sidebar consig
