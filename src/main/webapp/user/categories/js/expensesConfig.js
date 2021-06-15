@@ -16,14 +16,17 @@ const getAllExpenses = () =>{
                 let expenses = response[i];
                 let view = new loadExpensesElements(expenses);
                 view.onDeleteFinish = () =>{
-                    if(expenses.idDefaultCategory === 90000008) {
+                    if(expenses.idUserCategory === 90000008) {
                         saludInformation.removeChild(document.getElementById('expenses' + expenses.id));
                     } else{
                         entretenimientoInformation.removeChild(document.getElementById('expenses' + expenses.id));
                     }
                 };
-
-                saludInformation.appendChild(view.render());
+                if(expenses.idUserCategory === 90000008) {
+                    saludInformation.appendChild(view.render());
+                } else{
+                    entretenimientoInformation.appendChild(view.render());
+                }
 
             }
         }
