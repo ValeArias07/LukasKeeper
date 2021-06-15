@@ -22,13 +22,62 @@ footer {
     justify-content: center;
 }
 
+.topcontainer{
+    text-align: center;
+    width: auto;
+    justify-content: center;
+
+}
+
 .article {
     margin: 35px 3%;
     padding: 30px;
-    width: auto;
-    float: right;
+    width: max-content;
+    float: center;
     text-align: center;
+    justify-content: center;
     border-radius: 20px;
-    background-color: #394D72;
+    background-color: #FAEDE9;
     font-family: 'Roboto', sans-serif;
 }
+
+.table{
+    margin: 35px 3%;
+    margin-right: 0px;
+    padding: 30px;
+    width: auto;
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #FAEDE9;
+    font-family: 'Roboto', sans-serif;
+}
+
+.saldo{
+    width: 300px;
+}
+
+.ingreso{
+    width: 300px;
+}
+
+.gastos{
+    width: 300px;;
+}
+
+#ingresot{
+    color: #058a00;
+    font-weight: 900;
+}
+
+#saldot{
+    color: #244e9c;
+    font-weight: 1000;
+}
+
+#gastost{
+    color: #b90b0b;
+    font-weight: 900;
+}
+
+
