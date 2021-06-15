@@ -152,4 +152,65 @@ public class SavingServices {
 					.build();
 		}
 	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getAllFeeSavingPlan")
+	public Response getAllFeeGivingAnPlan(@QueryParam("savingPlan") int savingPlan) {
+		try {
+			FeeProvider provider = new FeeProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllFee(savingPlan, -1))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getAllFeeSavings")
+	public Response getAllFeeSavings() {
+		try {
+			FeeProvider provider = new FeeProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllSavingsFee())
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
+
+
+	@GET
+	@Produces("application/json")
+	@Path("getAllPlans")
+	public Response getAllPlans(@QueryParam("email")String email ) {
+		try {
+			SavingPlanProvider provider = new SavingPlanProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllSavingPlans(email))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
 }
