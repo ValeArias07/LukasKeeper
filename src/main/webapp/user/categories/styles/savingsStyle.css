@@ -189,10 +189,11 @@ Sidebar consig
 }
 
 .progress-bar{
-    height: 270px;
+    height: 100%;
     background-color: #FAEDE9;
     width: 870px;
     border-radius: 10px;
+    margin: auto;
 }
 
 
@@ -212,11 +213,48 @@ Sidebar consig
 
 .progress-bar h2{
     text-align: center;
+    padding: 20px;
 }
 
 .table-headers{
     display: flex;
     justify-content: space-evenly;
+}
+
+.myProgress {
+    width: 80%;
+    background-color: #394D72;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+  
+.myBar {
+
+    height: 30px;
+    background-color: #F87E96;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 5px;
+}
+
+.progress-container{
+    padding: 15px;
+    background-color: #DADDE1;
+    width: 90%;
+    margin: 5px auto;
+    border-radius: 10px;
+}
+
+#content-bars{
+    font-family: 'Roboto', sans-serif;
+    color: #394D72;
     
 }
+
+#content-bars p{
+    color: black;
+}
+
+
 
