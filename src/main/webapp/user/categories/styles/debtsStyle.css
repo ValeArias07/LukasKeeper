@@ -97,13 +97,13 @@ article config
     width: 400px;
     height: auto;
     background: #FAEDE9;
-
+    justify-content: center;
 }
 
 
 .elementsComponent{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     border: 2px solid #848181;
     border-radius: 10px;
@@ -129,12 +129,10 @@ article config
     width: 100px;
 }
 
-.elementsTitle{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #F87E96;
-    font-family: 'Roboto', sans-serif;
-
+.field {
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 10px;
 }
 
 
