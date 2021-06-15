@@ -117,7 +117,7 @@ public class ChangesInAssetsProvider {
 
     public double getBalanceIncome(String email) throws SQLException{
         String fetchSql = "SELECT SUM(changes_in_assets.value) as expensesBalance FROM changes_in_assets " +
-                "INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.email = $EMAIL AND changes_in_assets.values>0".replace("$EMAIL", "'" + email + "'");
+                "INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.email = $EMAIL AND changes_in_assets.value>0".replace("$EMAIL", "'" + email + "'");
         DBConnection connection =  new DBConnection();
         connection.connect();
         ResultSet resultSet = connection.getDataBySQL(fetchSql);
@@ -132,7 +132,7 @@ public class ChangesInAssetsProvider {
 
     public double getBalanceExpenses(String email) throws SQLException{
         String fetchSql = "SELECT SUM(changes_in_assets.value) as expensesBalance FROM changes_in_assets " +
-                "INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.email = $EMAIL AND changes_in_assets.values<0".replace("$EMAIL", "'" + email + "'");
+                "INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.email = $EMAIL AND changes_in_assets.value<0".replace("$EMAIL", "'" + email + "'");
         DBConnection connection =  new DBConnection();
         connection.connect();
         ResultSet resultSet = connection.getDataBySQL(fetchSql);
