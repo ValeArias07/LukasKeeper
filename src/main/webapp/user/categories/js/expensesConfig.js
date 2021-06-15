@@ -9,8 +9,16 @@ const getAllExpenses = () =>{
             let json = xhr.responseText;
             let response = JSON.parse(json);
             console.log(response);
+            let component = document.createElement('label'); //<div></div>
+            component.className = 'elementsTitle';
+            component.innerHTML = "Entretenimiento";
             entretenimientoInformation.innerHTML = '';
+            entretenimientoInformation.appendChild(component);
+            let component2 = document.createElement('label'); //<div></div>
+            component2.className = 'elementsTitle';
+            component2.innerHTML = "Salud";
             saludInformation.innerHTML = '';
+            saludInformation.appendChild(component2);
 
             for(let i = 0; i<response.length;i++){
                 let expenses = response[i];
