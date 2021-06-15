@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import model.Category;
 import model.ChangeInAsset;
 import model.Debt;
+import providers.CacheProvider;
 import providers.CategoryProvider;
 import providers.ChangesInAssetsProvider;
 import providers.UserProvider;
@@ -33,6 +34,9 @@ public class IncomeServices{
 			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
 			provider.addChangeInAsset(incomeObj);
 
+			//Actualizar income en cache
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateIncomeCache(incomeObj);
 			return  Response
 					.status(200)
 					.header("Access-Control-Allow-Origin","*")
@@ -97,12 +101,16 @@ public class IncomeServices{
 
 		try {
 			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			ChangeInAsset income = provider.findById(id);
 			provider.deleteById(id);
+			//Actualizar income en cache
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateIncomeCache(income);
 			return Response
 					.ok(new String("Operación Exitosa"))
 					.header("Content-Type","application/json")
 					.build();
-		} catch (SQLException e) {
+		} catch (SQLException | ParseException e) {
 			e.printStackTrace();
 			return Response
 					.status(500)
