@@ -18,14 +18,15 @@ const getAllIncomes = () =>{
                 let view = new loadIncomeElements(income);
 
                 view.onDeleteFinish = () =>{
-                    if(income.idDefaultCategory === 90000011){
+                    console.log(income.idDefaultCategory);
+                    if(income.idUserCategory === 90000013){
                         salarioInformationContainer.removeChild(document.getElementById('income' + income.id));
                     } else{
                         extraInformationContainer.removeChild(document.getElementById('income' + income.id));
                     }
 
                 };
-                if(income.idDefaultCategory === 90000011){
+                if(income.idUserCategory === 90000013){
                     salarioInformationContainer.appendChild(view.render());
                 } else{
                     extraInformationContainer.appendChild(view.render());
