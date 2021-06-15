@@ -84,22 +84,13 @@ article config
 }
 
 
-#information{
+.information{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-#entretenimientoInformation{
-    border-radius: 16px;
-    width: auto;
-    height: auto;
-    background: #FAEDE9;
-    outline: black;
-
-}
-
-#saludInformacion{
+#debtsInformation{
     border-radius: 16px;
     width: auto;
     height: auto;
