@@ -52,9 +52,9 @@ class loadDebtsElements{
         delBtn.className = 'buttonDelete';
 
         title.innerHTML = "Deudas";
-        cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
-        descripcionLabel.innerHTML = "Descripción";
-        fechaLabel.innerHTML = "Fecha";
+        cantidadLabel.innerHTML = "Cantidad: "; //<p>Nota 1</p>
+        descripcionLabel.innerHTML = "Descripción: ";
+        fechaLabel.innerHTML = "Fecha: ";
         cantidadDebts.innerHTML = this.debt.value;
         descripcionDebts.innerHTML = this.debt.description;
         fechaDebts.innerHTML = this.debt.date.substring(0,9);
