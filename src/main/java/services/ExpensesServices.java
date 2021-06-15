@@ -1,18 +1,46 @@
 package services;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import com.google.gson.Gson;
+import model.ChangeInAsset;
+import providers.ChangesInAssetsProvider;
+import providers.UserProvider;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.ArrayList;
 
 @Path("expenses")
-public class ExpensesServices implements GeneralServicesInterface{
+public class ExpensesServices {
 
 	@POST
+	@Consumes("application/json")
 	@Path("add")
-	public Response add(String Saving) {
-		return null;
+	public Response add(@QueryParam("email") String email, String expense) {
+		try {
+			Gson gson = new Gson();
+			UserProvider user = new UserProvider();
+
+			ChangeInAsset expenseObj=gson.fromJson(expense, ChangeInAsset.class);
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			expenseObj.setNegativeValue();
+			expenseObj.settingsCategory();
+			int idUser = (user.getUser(email)).getId();
+			expenseObj.setUserId(idUser);
+
+			provider.addChangeInAsset(expenseObj);
+			return  Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
 	}
 
 	@GET
@@ -39,13 +67,72 @@ public class ExpensesServices implements GeneralServicesInterface{
 		return null;
 	}
 
-	@GET
-	@Path("list")
-	public Response getList() {return null;  }
+	@DELETE
+	@Path("delete/{id}")
+	@Produces("application/json")
+	public Response delete(@PathParam("id") int id){
+
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			provider.deleteById(id);
+			return Response
+					.ok(new String("Operación Exitosa"))
+					.header("Content-Type","application/json")
+					.build();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response
+					.status(500)
+					.entity(new String("Operación Fallida"))
+					.header("Content-Type","application/json")
+					.build();
+		}
+	}
 
 	@GET
-	@Path("delete")
-	public Response deleteItem(@QueryParam("id") int id) {
-		return null;
+	@Produces("application/json")
+	@Path("list")
+	public Response getList(@QueryParam("email") String email) {
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			ArrayList<ChangeInAsset> list = provider.getAllExpenses(email);
+			return Response.ok()
+					.entity(list)
+					.header("Content-Type","application/json")
+					.build();
+		} catch (SQLException | ParseException exception) {
+			exception.printStackTrace();
+			return Response
+					.status(500)
+					.entity(new String("Operación Fallida"))
+					.header("Content-Type","application/json")
+					.build();
+		}
+	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getMonthlyData")
+	public Response getData(@QueryParam("email") String email, @QueryParam("date") String date) {
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllMonthExpenses(email, date))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
 	}
 }

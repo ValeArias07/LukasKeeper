@@ -1,22 +1,80 @@
 package services;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import com.google.gson.Gson;
+import model.Category;
+import model.ChangeInAsset;
+import model.Debt;
+import providers.CacheProvider;
+import providers.CategoryProvider;
+import providers.ChangesInAssetsProvider;
+import providers.UserProvider;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.ArrayList;
 
 @Path("incomes")
-public class IncomeServices implements GeneralServicesInterface{
+public class IncomeServices{
 
 	@POST
+	@Consumes("application/json")
 	@Path("add")
-	public Response add(String Saving) {
-		return null;
+	public Response add(@QueryParam("email") String email,  String income) {
+		try {
+			Gson gson = new Gson();
+
+			ChangeInAsset incomeObj=gson.fromJson(income, ChangeInAsset.class);
+			UserProvider user = new UserProvider();
+			int idUser = (user.getUser(email)).getId();
+			incomeObj.setUserId(idUser);
+			incomeObj.settingsCategory();
+
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			provider.addChangeInAsset(incomeObj);
+
+			//Actualizar income en cache
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateIncomeCache(incomeObj);
+			return  Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
 	}
 
+<<<<<<< HEAD
 	
 
+=======
+	@POST
+	@Path("addCategory")
+	public Response addCategory(String category) {
+		try {
+			Gson gson = new Gson();
+			Category categoryObj=gson.fromJson(category, Category.class);
+			CategoryProvider provider = new CategoryProvider();
+			provider.addCategory(categoryObj);
+			return  Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
+>>>>>>> income-services
 	@GET
 	@Path("balance")
 	public Response balance() {
@@ -41,13 +99,77 @@ public class IncomeServices implements GeneralServicesInterface{
 		return null;
 	}
 
-	@GET
-	@Path("list")
-	public Response getList() {return null;  }
+	@DELETE
+	@Path("delete/{id}")
+	@Produces("application/json")
+	public Response delete(@PathParam("id") int id){
+
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			ChangeInAsset income = provider.findById(id);
+			provider.deleteById(id);
+			//Actualizar income en cache
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateIncomeCache(income);
+			return Response
+					.ok(new String("Operación Exitosa"))
+					.header("Content-Type","application/json")
+					.build();
+		} catch (SQLException | ParseException e) {
+			e.printStackTrace();
+			return Response
+					.status(500)
+					.entity(new String("Operación Fallida"))
+					.header("Content-Type","application/json")
+					.build();
+		}
+	}
+
 
 	@GET
-	@Path("delete")
-	public Response deleteItem(@QueryParam("id") int id) {
-		return null;
+	@Produces("application/json")
+	@Path("list")
+	public Response getList(@QueryParam("email") String email) {
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			ArrayList<ChangeInAsset> list = provider.getAllIncomes(email);
+			return Response.ok()
+					.entity(list)
+					.header("Content-Type","application/json")
+					.build();
+		} catch (SQLException | ParseException exception) {
+			exception.printStackTrace();
+			return Response
+					.status(500)
+					.entity(new String("Operación Fallida"))
+					.header("Content-Type","application/json")
+					.build();
+		}
+	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getMonthlyData")
+	public Response getData(@QueryParam("email") String email, @QueryParam("date") String date) {
+		try {
+			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllMonthIncomes(email, date))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
 	}
 }

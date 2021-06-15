@@ -2,6 +2,7 @@ package providers;
 
 import db.DBConnection;
 import model.Cache;
+import model.ChangeInAsset;
 import model.Debt;
 
 import java.sql.ResultSet;
@@ -85,6 +86,29 @@ public class CacheProvider {
                     .replace("$ID","'" + id + "'")
                     .replace("$DB","'"+newDebt+"'");
             connection.commandSQL(sql);
+        }
+        connection.disconnect();
+    }
+
+        public void updateIncomeCache(ChangeInAsset income) throws SQLException {
+        String fetchQuery = "SELECT user_cache.* FROM user_cache WHERE idUser = $ID"
+                .replace("$ID", "'" + income.getIdUser() + "'");
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(fetchQuery);
+        double newChange = 0;
+        if(resultSet.next()) {
+            String sql = "";
+            if(income.getValue() > 0) {
+                int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
+                double incomeBalance = Double.parseDouble(resultSet.getString(resultSet.findColumn("incomeBalance")));
+                newChange = incomeBalance + income.getValue();
+
+                sql = ("UPDATE user_cache SET incomeBalance=$IB WHERE id=$ID")
+                        .replace("$ID","'" + id + "'")
+                        .replace("$IB","'"+newChange+"'");
+
+            }connection.commandSQL(sql);
         }
         connection.disconnect();
     }
