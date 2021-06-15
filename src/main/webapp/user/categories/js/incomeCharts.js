@@ -98,24 +98,24 @@ const initDoubleChart = () => {
 
 const callAditionalData = () => {
     if(sumExpense==0){
-    let xhr = new XMLHttpRequest();
-    xhr.addEventListener('readystatechange', () => {
-        if (xhr.readyState === 4) {
-            let json = xhr.responseText;
-            let response = JSON.parse(json);
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', () => {
+            if (xhr.readyState === 4) {
+                let json = xhr.responseText;
+                let response = JSON.parse(json);
 
-            for (let i = 0; i < response.length; i++) {
-                let dot = response[i];
-                sumExpense+=dot.value;
-                console.log(sumExpense);
+                for (let i = 0; i < response.length; i++) {
+                    let dot = response[i];
+                    sumExpense+=dot.value;
+                    console.log(sumExpense);
+                }
+                sumExpense*=(-1);
+                initDoubleChart();
             }
-            sumExpense*=(-1);
-            initDoubleChart();
-        }
-    });
-    let session = JSON.parse(window.localStorage.getItem('session'));
-    xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/expenses/getMonthlyData?email="+session.email+"&date=2021-06");
-    xhr.send();
+        });
+        let session = JSON.parse(window.localStorage.getItem('session'));
+        xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/expenses/getMonthlyData?email="+session.email+"&date=2021-06");
+        xhr.send();
     }else{
         initDoubleChart();
     }
