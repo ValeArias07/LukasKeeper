@@ -41,6 +41,19 @@ public class FeeProvider {
         return getAll(connection, sql);
     }
 
+    public double getAllSumSavingsFee(String email) throws SQLException, ParseException {
+        String sql = ("SELECT SUM(fee.value) AS suma FROM (fee INNER JOIN saving_plan ON fee.idSavingPlan = saving_plan.id) " +
+                "INNER JOIN users ON users.id = saving_plan.idUSer WHERE users.email = $EMAIL AND fee.idDebts IS NULL").replace("$EMAIL", "'" + email + "'");
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        double suma = -1;
+        if(resultSet.next()) {
+            suma = resultSet.getDouble(resultSet.findColumn("suma"));
+        }
+        return suma;
+    }
+
     private ArrayList<Fee> getAll(DBConnection connection, String sql) throws SQLException, ParseException{
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
