@@ -102,7 +102,7 @@ public class FeeProvider {
         return suma;
     }
 
-    public double getSumDebtFee(int idDebts) throws SQLException, ParseException{
+    public double getSumDebtFee(int idDebts) throws SQLException{
         String sql = ("SELECT SUM(value) AS suma FROM fee WHERE idDebts = $ID")
                 .replace("$ID", "'" + idDebts + "'");
         DBConnection connection = new DBConnection();
@@ -121,5 +121,14 @@ public class FeeProvider {
         connection.connect();
         connection.commandSQL(sql);
         connection.disconnect();
+    }
+
+    public ArrayList<Fee> getAllFeeInMonth(String email, String yearMonth) throws SQLException, ParseException {
+        String sql = ("SELECT fee.* FROM (fee INNER JOIN saving_plan ON fee.idSavingPlan = saving_plan.id)" +
+                "INNER JOIN users ON users.id = saving_plan.idUser WHERE users.email = $EMAIL AND fee.idDebts IS NULL AND fee.date LIKE $DATE")
+                .replace("$EMAIL", "'" + email + "'")
+                .replace("$DATE", "'" + yearMonth + "-%'");
+        DBConnection connection = new DBConnection();
+        return getAll(connection, sql);
     }
 }

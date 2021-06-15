@@ -33,25 +33,25 @@ class loadDebtsElements{
 
         let fieldDescripcion = document.createElement('div'); //<div></div>
         component.className = 'field';
-        let descripcionLabel = document.createElement('p'); //<small></small>
+        let descripcionLabel = document.createElement('label'); //<small></small>
         descripcionLabel.className = 'descripcionLabel';
-        let descripcionDebts =document.createElement('p');
+        let descripcionDebts =document.createElement('label');
         descripcionDebts.id = "descripcionDebts";
         
         let fieldFecha = document.createElement('div'); //<div></div>
         component.className = 'field';
-        let fechaLabel = document.createElement('p'); //<small></small>
+        let fechaLabel = document.createElement('label'); //<small></small>
         fechaLabel.className = 'fechaLabel';
-        let fechaDebts =document.createElement('p');
+        let fechaDebts =document.createElement('label');
         fechaDebts.id = "fechaDebts";
 
         let delBtn = document.createElement('button');
         delBtn.innerHTML = 'Eliminar';
         delBtn.className = 'delBtn';
         
-        cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
-        descripcionLabel.innerHTML = "Descripción";
-        fechaLabel.innerHTML = "Fecha";
+        cantidadLabel.innerHTML = "Cantidad   "; //<p>Nota 1</p>
+        descripcionLabel.innerHTML = "Descripción   ";
+        fechaLabel.innerHTML = "Fecha   ";
         cantidadDebts.innerHTML = this.debt.value;
         descripcionDebts.innerHTML = this.debt.description;
         fechaDebts.innerHTML = this.debt.date;
