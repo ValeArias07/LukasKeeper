@@ -83,6 +83,7 @@ article config
     display: flex;
     /*! flex-direction: column; */
     background: #FAEDE9;
+    justify-content: center;
 }
 
 
@@ -102,8 +103,7 @@ article config
 
 
 .elementsComponent{
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     border: 2px solid #848181;
     border-radius: 10px;
@@ -133,6 +133,7 @@ article config
     flex-direction: row;
     justify-content: center;
     margin-right: 10px;
+    padding: 5px;
 }
 
 

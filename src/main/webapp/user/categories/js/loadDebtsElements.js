@@ -20,6 +20,8 @@ class loadDebtsElements{
     }
 
     render = () =>{
+        let title = document.createElement('p'); //<div></div>
+        title.id = 'elementsTitle';
         let component = document.createElement('div'); //<div></div>
         component.id = 'debts' + this.debt.id;
         component.className = 'elementsComponent';
@@ -48,7 +50,8 @@ class loadDebtsElements{
         let delBtn = document.createElement('button');
         delBtn.innerHTML = 'Eliminar';
         delBtn.className = 'buttonDelete';
-        
+
+        title.innerHTML = "Deudas";
         cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
         descripcionLabel.innerHTML = "Descripción";
         fechaLabel.innerHTML = "Fecha";
@@ -63,6 +66,7 @@ class loadDebtsElements{
         fieldFecha.appendChild(fechaLabel);
         fieldFecha.appendChild(fechaDebts);
 
+        component.appendChild(title);
         component.appendChild(fieldCantidad); //<div><p></p></div>
         component.appendChild(fieldDescripcion); //div<p></p><small></small></div>
         component.appendChild(fieldFecha);
