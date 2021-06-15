@@ -93,4 +93,25 @@ public class ChangesInAssetsProvider {
         connection.commandSQL(sql);
         connection.disconnect();
     }
+
+    public ChangeInAsset findById(int idChange) throws SQLException, ParseException {
+        String fetchSql = "SELECT * FROM changes_in_assets WHERE id ="+idChange;
+        DBConnection connection =  new DBConnection();
+        connection.connect();
+        ResultSet resultSet = connection.getDataBySQL(fetchSql);
+        ChangeInAsset change = null;
+        if (resultSet.next()) {
+            int id = Integer.parseInt(resultSet.getString(resultSet.findColumn("id")));
+            double value =Double.parseDouble(resultSet.getString(resultSet.findColumn("value")));
+            String description = resultSet.getString(resultSet.findColumn("description"));
+            String date = resultSet.getString(resultSet.findColumn("date"));
+            String frequency = resultSet.getString(resultSet.findColumn("frequency"));
+            int idUserCategory = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUserCategory")));
+            int idDefaultCategory = Integer.parseInt(resultSet.getString(resultSet.findColumn("idDefaultCategory")));
+            int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
+            change = new ChangeInAsset(id,value,description,DBConnection.format.parse(date), frequency, idUserCategory, idDefaultCategory, idUser);
+        }
+        connection.disconnect();
+        return change;
+    }
 }
