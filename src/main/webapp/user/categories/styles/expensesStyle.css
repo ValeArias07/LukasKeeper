@@ -85,44 +85,49 @@ article config
     background: #FAEDE9;
 }
 
-
-.graph{
-    border-radius: 16px;
-    width: 900px;
-    height: 444px;
-    background: #FAEDE9;
-    margin-bottom: 20px;
-}
-
-.information{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
 #saludInformation{
     border-radius: 16px;
-    width: auto;
+    width: 400px;
     height: auto;
     background: #FAEDE9;
-    outline: black;
 
 }
 
 #entretenimientoInformation{
     border-radius: 16px;
-    width: auto;
+    width: 400px;
     height: auto;
     background: #FAEDE9;
-    outline: black;
-    margin-left: 250px;
+    margin-left: 50px;
 
 }
 
 .elementsComponent{
-    border-radius: 15px;
-    margin-bottom: 15px;
-    border: 4px solid #d0d0d0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #848181;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.elementsTitle{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #F87E96;
+    font-family: 'Roboto', sans-serif;
+}
+
+.buttonDelete{
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    font-weight: 10;
+    background-color: #F87E96;
+    color: #394D72;
+    transition: all 0.3s ease 0s;
+    margin-bottom: 10px;
+    width: 100px;
 }
 
 .elementsTitle{

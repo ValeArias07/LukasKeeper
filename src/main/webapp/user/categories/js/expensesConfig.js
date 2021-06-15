@@ -28,11 +28,8 @@ const getAllExpenses = () =>{
                         entretenimientoInformation.removeChild(document.getElementById('expenses' + expenses.id));
                     }
                 };
-                if(expenses.idDefaultCategory === 90000008) {
-                    saludInformacion.appendChild(view.render());
-                } else {
-                    entretenimientoInformation.appendChild(view.render());
-                }
+
+                saludInformation.appendChild(view.render());
 
             }
         }
@@ -76,8 +73,3 @@ authSession=()=> {
 }
 
 authSession();
-addBtn.addEventListener('click', loadContainerAdd);
-periodBtn.addEventListener('click', loadContainerPeriod);
-timelineBtn.addEventListener('click', loadContainerTimeLine);
-compareBtn.addEventListener('click', loadContainerCompare);
-indicatorsBtn.addEventListener('click', loadContainerIndicador);
