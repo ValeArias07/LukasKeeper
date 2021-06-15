@@ -44,6 +44,21 @@ public class DebtProvider {
         return getAllDebts(sql,connection);
     }
 
+    public double debtBalance(String email) throws SQLException, ParseException {
+        String sql = ("SELECT SUM(fee.value) AS feeSum FROM (fee INNER JOIN debts ON fee.idDebts = debts.id) " +
+                "INNER JOIN users ON debts.idUser = users.id WHERE users.email = $EMAIL").replace("$EMAIL", "'" + email + "'");
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        double sum = -1;
+        if(resultSet.next()) {
+            String sumBalance = resultSet.getString(resultSet.findColumn("feeSum"));
+            sum = (sumBalance!=null)?Double.parseDouble(sumBalance):0;
+        }
+        double balance = getSumDebt(email) - sum;
+        return balance;
+    }
+
     private ArrayList<Debt> getAllDebts(String sql, DBConnection connection) throws SQLException, ParseException {
         connection.connect();
         ResultSet resultSet =  connection.getDataBySQL(sql);
@@ -87,5 +102,19 @@ public class DebtProvider {
             debt = new Debt(value,description,(DBConnection.format.parse(date)),fee,interest,idUser);
         }
         return debt;
+    }
+
+    private double getSumDebt(String email) throws SQLException, ParseException{
+        String sql = ("SELECT SUM(debts.value) AS debSum FROM debts INNER JOIN users ON users.id = debts.idUser WHERE users.email = $EMAIL")
+                .replace("$EMAIL", "'" + email + "'");
+        DBConnection connection = new DBConnection();
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        double sum = -1;
+        if(resultSet.next()) {
+            String sumDebt = resultSet.getString(resultSet.findColumn("debSum"));
+            sum = (sumDebt!=null)?Double.parseDouble(sumDebt):0;
+        }
+        return sum;
     }
 }

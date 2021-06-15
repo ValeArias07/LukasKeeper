@@ -84,6 +84,7 @@ public class CacheProvider {
             String sql = ("UPDATE user_cache SET debtsBalance=$DB WHERE id=$ID")
                     .replace("$ID","'" + id + "'")
                     .replace("$DB","'"+newDebt+"'");
+            connection.commandSQL(sql);
         }
         connection.disconnect();
     }

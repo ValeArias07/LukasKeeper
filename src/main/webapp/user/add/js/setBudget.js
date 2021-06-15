@@ -71,6 +71,12 @@ function updateRangeLabel(){
     }
 }
 
+authSession=()=> {
+    if (localStorage.getItem('session') === null) {
+        window.location="../general/login.html";
+    }
+}
+
 function validate(){
     alert("entra");
     if (budget.Value !== '') {
