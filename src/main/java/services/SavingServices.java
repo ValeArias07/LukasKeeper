@@ -176,12 +176,12 @@ public class SavingServices {
 	@GET
 	@Produces("application/json")
 	@Path("getAllFeeSavings")
-	public Response getAllFeeSavings() {
+	public Response getAllFeeSavings(@QueryParam("email") String email) {
 		try {
 			FeeProvider provider = new FeeProvider();
 			return  Response
 					.status(200)
-					.entity(provider.getAllSavingsFee())
+					.entity(provider.getAllSavingsFee(email))
 					.header("Access-Control-Allow-Origin","*")
 					.build();
 		} catch (SQLException | ParseException throwables) {

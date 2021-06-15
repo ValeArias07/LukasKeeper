@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Añadir Ahorro</title>
+  <title>Añadir Cuota</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles/savingsStyle.css">
@@ -53,7 +53,7 @@
 <!--footer end-->
 </body>
 <script src="../../js/session.js"></script>
-<script src="js/addSaving.js"></script>
+<script src="js/addFeeDebts.js"></script>
 <script src="js/loadBasicElements.js"></script>
 <script src="../../js/setName.js"></script>
 <script>
@@ -68,6 +68,11 @@
     window.location="addDebts.html";
   }
 
+  authSession=()=> {
+    if (localStorage.getItem('session') === null) {
+      window.location="../general/login.html";
+    }
+  }
   addBtn.addEventListener('click', goToAdd);
   periodBtn.addEventListener('click', goToMain);
 </script>
