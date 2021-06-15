@@ -5,8 +5,12 @@ const btSave = document.getElementById('btSave');
 
 
 toRegister = () => {
-    let savingplan = new SavingPlan(description.value, cost.value, date.value);
-    console.log(savingplan)
+    let toDay = new Date(Date.now());
+    let dif = new Date(date.value) - toDay;
+    let monthsLeft = dif/(1000 * 60 * 60 * 24 * 30);
+    let monthlyFee = Math.ceil(cost.value/monthsLeft);
+    let plan = new SavingPlan(description.value, cost.value, date.value, monthlyFee);
+    console.log(plan)
     let session = JSON.parse(window.localStorage.getItem('session'));
     //POST
     let xhr = new XMLHttpRequest();
@@ -27,7 +31,7 @@ toRegister = () => {
     let baseUrl = window.location.origin + '/' + location.pathname.split('/')[1] + '/';
     xhr.open('POST', baseUrl + "api/savings/addPlan?email=" + session.email);
     xhr.setRequestHeader('Content-type', 'application/json');
-    xhr.send(JSON.stringify(savingplan)); //toJson
+    xhr.send(JSON.stringify(plan)); //toJson
 }
 
 

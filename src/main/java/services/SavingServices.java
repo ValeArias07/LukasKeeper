@@ -39,7 +39,6 @@ public class SavingServices {
 					.header("Access-Control-Allow-Origin","*")
 					.build();
 		}
-
 	}
 
 	@POST
@@ -50,6 +49,7 @@ public class SavingServices {
 			FeeProvider provider = new FeeProvider();
 			fee.setDate(new Date());
 			provider.addFee(fee);
+			provider.updateTotalFee(fee.getIdSavingPlan());
 			return  Response
 					.ok()
 					.header("Access-Control-Allow-Origin","*")
