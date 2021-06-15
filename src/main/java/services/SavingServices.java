@@ -213,4 +213,26 @@ public class SavingServices {
 					.build();
 		}
 	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getAllSumFee")
+	public Response getAllSumFee(@QueryParam("email")String email ) {
+		try {
+			FeeProvider provider = new FeeProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllSavingsFee (email))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
+
+
 }
