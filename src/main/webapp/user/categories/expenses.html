@@ -35,19 +35,23 @@
             </div>
         </aside>
 
-        
-        <div class="article">
-            <canvas id="myChart" width="870" height="430"></canvas>
 
-            <div id="listContainer">
-                <div id="list1">
+        <div id="mayorContainer">
+
+            <div class="article" id="canvasContainer">
+                <div id="canvas"> </div>
+            </div>
+
+            <div class="article" id="information">
+                <div id="saludInformation">
+                    <h3 class="elementsTitle">Salud</h3>
                 </div>
-
-                <div id="list2">
+                <div id="entretenimientoInformation">
+                    <h3 class="elementsTitle">Entretenimiento</h3>
                 </div>
             </div>
         </div>
-        
+    </div>
     </div>
 
 
@@ -64,19 +68,12 @@
 <script src="../../js/setName.js"></script>
 <script>
     const addBtn = document.getElementById('addBtn');
-    const periodBtn = document.getElementById('periodBtn');
-    const compareBtn = document.getElementById('compareBtn');
-
     goToAdd=()=>{
         window.location="../add/addExpenses.html";
     }
-
-    goToMain = () => {
-        window.location="../add/addExpenses.html";
-    }
-
     addBtn.addEventListener('click', goToAdd);
-    periodBtn.addEventListener('click', goToMain);
-    compareBtn.addEventListener('click', goToMain);
+
 </script>
-</html>
+</html><
+<script src="js/incomeConfig.js"></script>
+<script src="js/loadExpensesElements.js"></script>
