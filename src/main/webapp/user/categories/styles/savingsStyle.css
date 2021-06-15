@@ -206,3 +206,17 @@ Sidebar consig
     margin-bottom: 20px;
 }
 
+
+
+/*  PROGRESS BARS  */
+
+.progress-bar h2{
+    text-align: center;
+}
+
+.table-headers{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
