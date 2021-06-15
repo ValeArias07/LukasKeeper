@@ -93,7 +93,7 @@ public class ChangesInAssetsProvider {
         connection.commandSQL(sql);
         connection.disconnect();
     }
-
+    
     public double getBalanceIncome(String email) throws SQLException{
         String fetchSql = "SELECT SUM(changes_in_assets.value) as expensesBalance FROM changes_in_assets " +
                 "INNER JOIN users ON changes_in_assets.idUser = users.id WHERE users.email = $EMAIL AND changes_in_assets.values>0".replace("$EMAIL", "'" + email + "'");

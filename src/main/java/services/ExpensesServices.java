@@ -2,6 +2,7 @@ package services;
 
 import com.google.gson.Gson;
 import model.ChangeInAsset;
+import providers.CacheProvider;
 import providers.ChangesInAssetsProvider;
 import providers.UserProvider;
 
@@ -30,6 +31,9 @@ public class ExpensesServices {
 			expenseObj.setUserId(idUser);
 
 			provider.addChangeInAsset(expenseObj);
+			//Añadir expense a cache
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateExpenseCache(expenseObj);
 			return  Response
 					.status(200)
 					.header("Access-Control-Allow-Origin","*")
@@ -74,12 +78,16 @@ public class ExpensesServices {
 
 		try {
 			ChangesInAssetsProvider provider = new ChangesInAssetsProvider();
+			ChangeInAsset expense = provider.findById(id);
 			provider.deleteById(id);
+
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateExpenseCache(expense);
 			return Response
 					.ok(new String("Operación Exitosa"))
 					.header("Content-Type","application/json")
 					.build();
-		} catch (SQLException e) {
+		} catch (SQLException | ParseException e) {
 			e.printStackTrace();
 			return Response
 					.status(500)

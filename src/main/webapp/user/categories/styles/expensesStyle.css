@@ -71,7 +71,7 @@ article config
 
 
 .article {
-    margin: 56px 30px;
+    margin: 55px 30px 30px 30px;
     padding: 30px;
     height: auto;
     width: 927px;
@@ -167,12 +167,10 @@ Sidebar consig
 }
 
 #canvas {
-    height: 428px;
-    width: 100%;
-    float: right;
+    height: 520px;
     text-align: center;
     border-radius: 20px;
-    background-color: #2f323a;
+    background-color: #FAEDE9;
     font-family: 'Work Sans', sans-serif;
 }
 
@@ -180,6 +178,9 @@ Sidebar consig
     display:flex;
     flex-direction: row;
     height: auto;
+    margin:0px 46px 29px 28px;
+    background-color: #FAEDE9;
+    border-radius: 20px;
 }
 
 #list2{
@@ -194,5 +195,15 @@ Sidebar consig
     width: 450px;
     margin: 20px;
     height: 120px;
+}
+
+.mayorContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mayorContainer{
+    color: #df7187;
 }
 
