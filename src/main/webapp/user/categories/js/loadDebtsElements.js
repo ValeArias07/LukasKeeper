@@ -21,14 +21,15 @@ class loadDebtsElements{
 
     render = () =>{
         let component = document.createElement('div'); //<div></div>
-        component.className = 'debts' + this.debt.id;
+        component.id = 'debts' + this.debt.id;
+        component.className = 'elementsComponent';
 
         let fieldCantidad = document.createElement('div'); //<div></div>
         component.className = 'field';
-        let cantidadLabel = document.createElement('p'); //<p></p>
+        let cantidadLabel = document.createElement('label'); //<p></p>
         cantidadLabel.className = 'cantidadLabel';
-        let cantidadDebts =document.createElement('p');
-        cantidadDebts.id = "cantidadDebts";
+        let cantidadDebts =document.createElement('label');
+        cantidadDebts.id = 'cantidadDebts';
 
         let fieldDescripcion = document.createElement('div'); //<div></div>
         component.className = 'field';
