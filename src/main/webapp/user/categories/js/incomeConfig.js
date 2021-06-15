@@ -2,6 +2,7 @@ const extraInformationContainer = document.getElementById('extraInformation');
 const salarioInformationContainer = document.getElementById('salarioInformation');
 
 const getAllIncomes = () =>{
+    let session = JSON.parse(window.localStorage.getItem('session'));
     let xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', ()=>{
         if(xhr.readyState === 4){
@@ -30,7 +31,7 @@ const getAllIncomes = () =>{
             }
         }
     });
-    xhr.open('GET', 'http://localhost:8081/LukasKeeper_war/api/incomes/list');
+    xhr.open('GET', 'http://localhost:8081/LukasKeeper_war/api/incomes/list?email=' + session.email);
     xhr.send();
 };
 

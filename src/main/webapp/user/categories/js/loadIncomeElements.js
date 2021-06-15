@@ -28,14 +28,14 @@ class loadIncomeElements{
         let fieldCantidad = document.createElement('div'); //<div></div>
         component.className = 'field';
         let cantidadLabel = document.createElement('p'); //<p></p>
-        cantidad.className = 'cantidadLabel';
+        cantidadLabel.className = 'cantidadLabel';
         let cantidadIncome =document.createElement('p');
         cantidadIncome.id = "cantidadIncome";
 
         let fieldDescripcion = document.createElement('div'); //<div></div>
         component.className = 'field';
         let descripcionLabel = document.createElement('p'); //<small></small>
-        descripcion.className = 'descripcionLabel';
+        descripcionLabel.className = 'descripcionLabel';
         let descripcionIncome =document.createElement('p');
         descripcionIncome.id = "descripcionIncome";
 
