@@ -20,11 +20,7 @@ footer {
 /*
 article config
 */
-.mayorContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 
 .container {
     height: 100%;
@@ -44,7 +40,7 @@ article config
     font-family: 'Work Sans', sans-serif;
     display: flex;
     flex-direction: column;
-    background: #FAEDE9;
+    background: #000;
 }
 
 .titleAI {
@@ -226,11 +222,4 @@ Elements config
     width: 60px;
     height: 37px;
     border-color: #FAEDE9;
-}
-#information{
-    margin: -10px 30px 30px 30px;
-}
-
-.mayorContainer h2{
-    color: #f87e96cc;
 }

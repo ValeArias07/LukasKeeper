@@ -30,56 +30,55 @@
 </header>
 <!--header end-->
 
-<!--article start-->
-<div class="container">
 
+    <!--article start-->
+    <div class="container">
+        <aside>
+            <div class="sidebar">
+                <center>
+                    <img src="../../images/model.jpg" class="profile_image" alt="">
+                    <h4>Hola, <label id="nameModel"></label>! </h4>
+                </center>
+                <button class="optionsButton" id="addBtn" href="../add/addIncomes.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar ingreso</span></button>
+                <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
+                <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
+                <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
+            </div>
+        </aside>
 
-    <aside>
-        <div class="sidebar">
-            <center>
-                <img src="../../images/model.jpg" class="profile_image" alt="">
-                <h4>Hola, Jennifer! </h4>
-            </center>
-            <a href="../add/addIncomes.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar ingreso</span></a>
-            <a href="#"><img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></a>
-            <a href="#"><img src="../../images/timeline.png" class="icons" align="center"><span>Comparar en el tiempo</span></a>
-            <a href="#"><img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></a>
-            <a href="#"><img src="../../images/indicators.png" class="icons" align="center"><span>Ver indicadores</span></a>
+        <div class="article" id="canvasContainer">
 
-            <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
-        </div>
-    </aside>
+            <div id="canvas">
+                <canvas id="myChart" width="870" height="430"></canvas>
+            </div>
 
-    <div class="article">
-        <div class="graph">
-
-        </div>
-        <div class="information">
-        </div>
+            <div class="information">
+                <div id="extraInformation">
+                    <h2 class="elementsTitle">Extra</h2>
+                    <div class="field "> <label> Cantidad </label><input type="text" id="x" /></div>
+                    <div class="field "> <label> Descripción </label><input type="text" id="y" /></div>
+                    <div class="field "><label> Fecha: </label><input type="date" id="z" /></div>
+                    <div class="buttonContainer"><button id="buttonDeleteExtra" class="btnAction">Eliminar</button></div>
+                </div>
+                <div id="salarioInformation">
+                    <h2 class="elementsTitle">Salario</h2>
+                    <div class="field "> <label> Cantidad </label><input type="text" id="cantidadSalario" /></div>
+                    <div class="field "> <label> Descripción </label><input type="text" id="descripcionSalario" /></div>
+                    <div class="field "><label> Fecha: </label><input type="date" id="dateSalario" /></div>
+                    <div class="buttonContainer"><button id="buttonDeleteSalario" class="btnAction"> Eliminar </button></div>
+                </div>
+            </div>
     </div>
-
-</div>
-
-<!--footer start-->
-<footer>
-    <a class=" logo " href="/ "><img src="../../images/logo.png " alt="logo " width="200px "> </a>
-    <nav>
-        <ul class="nav__links ">
-            <li><a href="../dashboard.html">Dashboard</a></li>
-            <li><a id="own2">Ingresos</a></li>
-            <li><a href="expenses.html">Gastos</a></li>
-            <li><a href="debts.html">Deudas</a></li>
-            <li><a href="savings.html">Ahorros</a></li>
-            <li><a href="../about/help.html ">Ayuda </a></li>
-            <li><a href="../about/contact.html ">Contactanos</a></li>
-            <li><a href="# ">Cerrar sesión</a></li>
-        </ul>
-    </nav>
-</footer>
-<!--footer end-->
+    </div>
+    <!--footer start-->
+    <div id="footer"></div>
+    <!--footer end-->
 </body>
-
-</html>
-
-<script src="js/loadIncomeElements.js"></script>
+<script src="js/incomeCharts.js"></script>
 <script src="js/incomeConfig.js"></script>
+<script src="../../js/session.js"></script>
+<script src="../../js/checkCredentials.js"></script>
+<script src="js/loadBasicElements.js"></script>
+<script src="../../js/logOut.js"></script>
+<script src="../../js/setName.js"></script>
+</html>
