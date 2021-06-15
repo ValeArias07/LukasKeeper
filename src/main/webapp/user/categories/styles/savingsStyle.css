@@ -70,7 +70,7 @@ article config
 }
 
 .article {
-    margin: 4% 2%;
+    margin: 16px 10px;
     padding-top: 30px;
     width: auto;
     float: right;
@@ -87,7 +87,7 @@ Sidebar consig
 
 .sidebar {
     background: #2f323a;
-    margin: 40px 30px;
+    margin: 52px 30px;
     padding: 30px 0 5px 0;
     width: 290px;
     height: auto;
@@ -176,8 +176,9 @@ Sidebar consig
     flex-direction: row;
     justify-content: center;
     border-radius: 10px;
-    height: 430px;
-    width: 870px;
+    height: 464px;
+    width: 908px;
+    padding: 13px 5px;
 }
 
 .planContainer{
@@ -201,10 +202,12 @@ Sidebar consig
     display: flex;
     flex-direction: column;
     height: auto;
-    width: auto;
+    width: 915px;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    /*! padding-bottom: 20px; */
+    /*! margin-left: -21px; */
 }
 
 
@@ -226,8 +229,8 @@ Sidebar consig
     background-color: #394D72;
     margin: 0 auto;
     border-radius: 5px;
-  }
-  
+}
+
 .myBar {
 
     height: 30px;
@@ -249,7 +252,8 @@ Sidebar consig
 #content-bars{
     font-family: 'Roboto', sans-serif;
     color: #394D72;
-    
+
+    padding-bottom: 20px;
 }
 
 #content-bars p{
