@@ -37,9 +37,9 @@ class loadDebtsElements{
         cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
         descripcionLabel.innerHTML = "Descripción";
         fechaLabel.innerHTML = "Fecha";
-        cantidadDebts.innerHTML = this.Debts.value;
-        descripcionDebts.innerHTML = this.Debts.description;
-        fechaDebts.innerHTML = this.Debts.date;
+        cantidadDebts.innerHTML = this.debts.value;
+        descripcionDebts.innerHTML = this.debts.description;
+        fechaDebts.innerHTML = this.debts.date;
 
         component.appendChild(fieldCantidad); //<div><p></p></div>
         component.appendChild(fieldDescripcion); //div<p></p><small></small></div>
