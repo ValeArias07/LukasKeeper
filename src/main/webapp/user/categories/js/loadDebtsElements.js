@@ -33,7 +33,7 @@ class loadDebtsElements{
         let fieldDescripcion = document.createElement('div'); //<div></div>
         component.className = 'field';
         let descripcionLabel = document.createElement('p'); //<small></small>
-        descripcion.className = 'descripcionLabel';
+        descripcionLabel.className = 'descripcionLabel';
         let descripcionDebts =document.createElement('p');
         descripcionDebts.id = "descripcionDebts";
         
