@@ -2,8 +2,10 @@ package services;
 
 import com.google.gson.Gson;
 import db.DBConnection;
+import model.Cache;
 import model.Debt;
 import model.User;
+import providers.CacheProvider;
 import providers.DebtProvider;
 import providers.UserProvider;
 
@@ -30,6 +32,9 @@ public class DebtsServices {
 			int idUser = (user.getUser(email)).getId();
 			debtObj.setIdUser(idUser);
 			provider.addDebt(debtObj);
+			//Aumenta la deuda en la tabla user_cache
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateDebtCache(debtObj, true);
 			return  Response
 					.status(200)
 					.header("Access-Control-Allow-Origin","*")
@@ -96,12 +101,16 @@ public class DebtsServices {
 
 		try {
 			DebtProvider provider = new DebtProvider();
+			Debt debt = provider.getDebt(id);
 			provider.deleteById(id);
+			//Restar de cache el eliminado
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateDebtCache(debt, false);
 			return Response
 					.ok(new String("Operación Exitosa"))
 					.header("Content-Type","application/json")
 					.build();
-		} catch (SQLException e) {
+		} catch (SQLException | ParseException e) {
 			e.printStackTrace();
 			return Response
 					.status(500)

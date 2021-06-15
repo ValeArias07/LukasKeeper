@@ -70,4 +70,22 @@ public class DebtProvider {
         connection.commandSQL(sql);
         connection.disconnect();
     }
+
+    public Debt getDebt(int id) throws SQLException, ParseException {
+        String sql = "SELECT * FROM debts WHERE id ="+id;
+        Debt debt = null;
+        DBConnection connection =  new DBConnection();
+        connection.connect();
+        ResultSet resultSet =  connection.getDataBySQL(sql);
+        if (resultSet.next()) {
+            double value = Double.parseDouble(resultSet.getString(resultSet.findColumn("value")));
+            String description = resultSet.getString(resultSet.findColumn("description"));
+            String date = resultSet.getString(resultSet.findColumn("date"));
+            int fee = Integer.parseInt(resultSet.getString(resultSet.findColumn("fee")));
+            double interest = Double.parseDouble(resultSet.getString(resultSet.findColumn("interest")));
+            int idUser = Integer.parseInt(resultSet.getString(resultSet.findColumn("idUser")));
+            debt = new Debt(value,description,(DBConnection.format.parse(date)),fee,interest,idUser);
+        }
+        return debt;
+    }
 }
