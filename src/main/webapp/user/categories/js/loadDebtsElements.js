@@ -8,7 +8,7 @@ class loadDebtsElements{
     deleteDebt = () =>{
         let xhr = new XMLHttpRequest();
         xhr.addEventListener('readystatechange', ()=>{
-            if(xhr.readyState == 4){
+            if(xhr.readyState === 4){
                 console.log(xhr.responseText);
                 if(this.onDeleteFinish!=null){
                     this.onDeleteFinish();
@@ -21,12 +21,12 @@ class loadDebtsElements{
 
     render = () =>{
         let component = document.createElement('div'); //<div></div>
-        component.className = 'debts' + this.debts.id;
+        component.className = 'debts' + this.debt.id;
 
         let fieldCantidad = document.createElement('div'); //<div></div>
         component.className = 'field';
         let cantidadLabel = document.createElement('p'); //<p></p>
-        cantidad.className = 'cantidadLabel'; 
+        cantidadLabel.className = 'cantidadLabel';
         let cantidadDebts =document.createElement('p');
         cantidadDebts.id = "cantidadDebts";
 
@@ -51,14 +51,9 @@ class loadDebtsElements{
         cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
         descripcionLabel.innerHTML = "Descripción";
         fechaLabel.innerHTML = "Fecha";
-        cantidadDebts.innerHTML = this.debts.value;
-        descripcionDebts.innerHTML = this.debts.description;
-        fechaDebts.innerHTML = this.debts.date;
-
-        component.appendChild(fieldCantidad); //<div><p></p></div>
-        component.appendChild(fieldDescripcion); //div<p></p><small></small></div>
-        component.appendChild(fieldFecha);
-        component.appendChild(delBtn);
+        cantidadDebts.innerHTML = this.debt.value;
+        descripcionDebts.innerHTML = this.debt.description;
+        fechaDebts.innerHTML = this.debt.date;
 
         fieldCantidad.appendChild(cantidadLabel);
         fieldCantidad.appendChild(cantidadDebts);
@@ -66,6 +61,11 @@ class loadDebtsElements{
         fieldDescripcion.appendChild(descripcionDebts);
         fieldFecha.appendChild(fechaLabel);
         fieldFecha.appendChild(fechaDebts);
+
+        component.appendChild(fieldCantidad); //<div><p></p></div>
+        component.appendChild(fieldDescripcion); //div<p></p><small></small></div>
+        component.appendChild(fieldFecha);
+        component.appendChild(delBtn);
         
         delBtn.addEventListener('click', this.deleteDebt);
         return component;
