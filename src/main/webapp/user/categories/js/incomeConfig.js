@@ -11,8 +11,19 @@ const getAllIncomes = () =>{
             let json = xhr.responseText;
             let response = JSON.parse(json);
             console.log(response);
+            let component = document.createElement('label'); //<div></div>
+            component.className = 'elementsTitle';
+            component.innerHTML = "Extra";
             extraInformationContainer.innerHTML = '';
+            extraInformationContainer.appendChild(component);
+            let component2 = document.createElement('label'); //<div></div>
+            component2.className = 'elementsTitle';
+            component2.innerHTML = "Salario";
             salarioInformationContainer.innerHTML = '';
+            salarioInformationContainer.appendChild(component2);
+
+
+
             for(let i = 0; i<response.length;i++){
                 let income = response[i];
                 let view = new loadIncomeElements(income);

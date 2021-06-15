@@ -89,7 +89,7 @@ public class CacheProvider {
         connection.disconnect();
     }
 
-        public void updateIncomeCache(ChangeInAsset income) throws SQLException {
+    public void updateIncomeCache(ChangeInAsset income) throws SQLException {
         String fetchQuery = "SELECT user_cache.* FROM user_cache WHERE idUser = $ID"
                 .replace("$ID", "'" + income.getIdUser() + "'");
         DBConnection connection = new DBConnection();
@@ -111,4 +111,5 @@ public class CacheProvider {
         }
         connection.disconnect();
     }
+
 }
