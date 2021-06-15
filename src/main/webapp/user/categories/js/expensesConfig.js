@@ -22,10 +22,17 @@ const getAllExpenses = () =>{
                 let expenses = response[i];
                 let view = new loadExpensesElements(debts);
                 view.onDeleteFinish = () =>{
-                    //if(expenses.id)
-                    debtsInformation.removeChild(document.getElementById('debts' + debts.id));
+                    if(expenses.idDefaultCategory === 90000008) {
+                        saludInformacion.removeChild(document.getElementById('expenses' + expenses.id));
+                    } else{
+                        entretenimientoInformacion.removeChild(document.getElementById('expenses' + expenses.id));
+                    }
                 };
-                debtsInformation.appendChild(view.render());
+                if(expenses.idDefaultCategory === 90000008) {
+                    saludInformacion.appendChild(view.render());
+                } else {
+                    entretenimientoInformacion.appendChild(view.render());
+                }
 
             }
         }
