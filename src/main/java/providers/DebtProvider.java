@@ -41,6 +41,7 @@ public class DebtProvider {
                 .replace("$EMAIL", "'" + email.trim() + "'")
                 .replace("%DATE", "'" + yearMonth + "-%'");
         DBConnection connection = new DBConnection();
+        System.out.println(sql);
         return getAllDebts(sql,connection);
     }
 
