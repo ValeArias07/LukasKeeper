@@ -234,5 +234,24 @@ public class SavingServices {
 		}
 	}
 
+	@GET
+	@Produces("application/json")
+	@Path("getSavingMonth")
+	public Response getSavingMonth(@QueryParam("email")String email,@QueryParam("date") String date) {
+		try {
+			FeeProvider provider = new FeeProvider();
+			return Response
+					.status(200)
+					.entity(provider.getAllFeeInMonth(email, date))
+					.header("Access-Control-Allow-Origin", "*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return Response
+					.status(500)
+					.header("Access-Control-Allow-Origin", "*")
+					.build();
+		}
+	}
 
 }
