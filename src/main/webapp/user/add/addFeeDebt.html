@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Añadir Cuota</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/savingsStyle.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<!--header start-->
+<header>
+  <div id="header"></div>
+</header>
+<!--header end-->
+
+<!--article start-->
+<div class="container ">
+  <aside>
+    <div class="sidebar ">
+      <center>
+        <img src="../../images/model.jpg" class="profile_image" alt="">
+        <h4>Hola, <label id="nameModel"></label>! </h4>
+      </center>
+      <button class="optionsButton" id="addBtn" href="../add/addDebt.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar Deudas</span></button>
+      <button class="optionsButton"><img src="../../images/feeDebt.png" class="icons" align="center"><span>Agregar Cuota</span></button>
+      <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
+
+      <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
+    </div>
+  </aside>
+
+  <div class="article ">
+    <h2 id = "title">Agregar Cuota</h2>
+    <img id= img src="../../images/feeDebt.png"/>
+    <div class="fields">
+      <div><lab>Cantidad:</lab><input id ="txtAmount" type="number" step="10000" min="1000"></div>
+      <div><lab>Deuda: </lab><select name="Planes" id="planSelecter"></select></div>
+    </div>
+    <button id="btAdd">Añadir</button>
+  </div>
+
+</div>
+
+<!--footer start-->
+<footer>
+  <div id="footer"></div>
+</footer>
+<!--footer end-->
+</body>
+<script src="../../js/session.js"></script>
+<script src="js/addFeeDebts.js"></script>
+<script src="js/loadBasicElements.js"></script>
+<script src="../../js/setName.js"></script>
+<script>
+  const periodBtn = document.getElementById('periodBtn');
+  const addBtn = document.getElementById('addBtn');
+
+  goToMain = () => {
+    window.location="../categories/debts.html";
+  }
+
+  goToAdd = () => {
+    window.location="addDebts.html";
+  }
+
+  authSession=()=> {
+    if (localStorage.getItem('session') === null) {
+      window.location="../general/login.html";
+    }
+  }
+  addBtn.addEventListener('click', goToAdd);
+  periodBtn.addEventListener('click', goToMain);
+</script>
+</html>

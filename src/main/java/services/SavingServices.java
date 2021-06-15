@@ -39,7 +39,6 @@ public class SavingServices {
 					.header("Access-Control-Allow-Origin","*")
 					.build();
 		}
-
 	}
 
 	@POST
@@ -50,6 +49,7 @@ public class SavingServices {
 			FeeProvider provider = new FeeProvider();
 			fee.setDate(new Date());
 			provider.addFee(fee);
+			provider.updateTotalFee(fee.getIdSavingPlan());
 			return  Response
 					.ok()
 					.header("Access-Control-Allow-Origin","*")
@@ -142,6 +142,67 @@ public class SavingServices {
 			return  Response
 					.status(200)
 					.entity(provider.getAllSavingPlansNames(email))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getAllFeeSavingPlan")
+	public Response getAllFeeGivingAnPlan(@QueryParam("savingPlan") int savingPlan) {
+		try {
+			FeeProvider provider = new FeeProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllFee(savingPlan, -1))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
+
+	@GET
+	@Produces("application/json")
+	@Path("getAllFeeSavings")
+	public Response getAllFeeSavings(@QueryParam("email") String email) {
+		try {
+			FeeProvider provider = new FeeProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllSavingsFee(email))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException | ParseException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
+
+
+	@GET
+	@Produces("application/json")
+	@Path("getAllPlans")
+	public Response getAllPlans(@QueryParam("email")String email ) {
+		try {
+			SavingPlanProvider provider = new SavingPlanProvider();
+			return  Response
+					.status(200)
+					.entity(provider.getAllSavingPlans(email))
 					.header("Access-Control-Allow-Origin","*")
 					.build();
 		} catch (SQLException | ParseException throwables) {

@@ -2,9 +2,13 @@ package services;
 
 import com.google.gson.Gson;
 import db.DBConnection;
+import model.Cache;
 import model.Debt;
+import model.Fee;
 import model.User;
+import providers.CacheProvider;
 import providers.DebtProvider;
+import providers.FeeProvider;
 import providers.UserProvider;
 
 import javax.ws.rs.*;
@@ -12,6 +16,7 @@ import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Path("debts")
 public class DebtsServices {
@@ -30,6 +35,9 @@ public class DebtsServices {
 			int idUser = (user.getUser(email)).getId();
 			debtObj.setIdUser(idUser);
 			provider.addDebt(debtObj);
+			//Aumenta la deuda en la tabla user_cache
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateDebtCache(debtObj, true);
 			return  Response
 					.status(200)
 					.header("Access-Control-Allow-Origin","*")
@@ -44,27 +52,32 @@ public class DebtsServices {
 
 	}
 
+	@POST
+	@Consumes("application/json")
+	@Path("addFee")
+	public Response addFee(@QueryParam("email") String email,Fee fee) {
+		try {
+			Gson gson = new Gson();
+			FeeProvider provider = new FeeProvider();
+			fee.setDate(new Date());
+			fee.setIdSavingPlan(0);
+			provider.addFee(fee);
+
+			return  Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException e) {
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+	}
+
 	@GET
 	@Path("balance")
 	public Response balance() {
-		return null;
-	}
-
-	@GET
-	@Path("timeline")
-	public Response getTimeline() {
-		return null;
-	}
-
-	@GET
-	@Path("comparation")
-	public Response getComparation(@QueryParam("type") String type) {
-		return null;
-	}
-
-	@GET
-	@Path("indicator")
-	public Response getIndicators() {
 		return null;
 	}
 
@@ -96,12 +109,16 @@ public class DebtsServices {
 
 		try {
 			DebtProvider provider = new DebtProvider();
+			Debt debt = provider.getDebt(id);
 			provider.deleteById(id);
+			//Restar de cache el eliminado
+			CacheProvider cacheProvider = new CacheProvider();
+			cacheProvider.updateDebtCache(debt, false);
 			return Response
 					.ok(new String("Operación Exitosa"))
 					.header("Content-Type","application/json")
 					.build();
-		} catch (SQLException e) {
+		} catch (SQLException | ParseException e) {
 			e.printStackTrace();
 			return Response
 					.status(500)

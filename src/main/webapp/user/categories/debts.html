@@ -28,6 +28,7 @@
                     <h4>Hola, <label id="nameModel"></label>! </h4>
                 </center>
                 <button class="optionsButton" id="addBtn" href="../add/addDebt.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar Deudas</span></button>
+                <button class="optionsButton" id="addFee"> <img src="../../images/feeDebt.png" class="icons" align="center"><span>Agregar Cuota</span></button>
                 <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
                 <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
 
@@ -63,6 +64,7 @@
 
 <script>
     const addBtn = document.getElementById('addBtn');
+    const addFee = document.getElementById('addFee');
 
     goToAdd = () => {
         window.location="../add/addDebts.html";
@@ -72,6 +74,12 @@
             window.location="../general/login.html";
         }
     }
+
+    goToAdd = () => {
+        window.location="../add/addFeeDebt.html";
+    }
+
+    addFee.addEventListener('click', goToAdd);
     authSession();
     addBtn.addEventListener('click', goToAdd)
 </script>

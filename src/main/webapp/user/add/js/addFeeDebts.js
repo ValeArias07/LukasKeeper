@@ -1,27 +1,28 @@
 const amount = document.getElementById('txtAmount');
-const planSelecter = document.getElementById('planSelecter');
+const debt = document.getElementById('planSelecter');
 const btAdd = document.getElementById("btAdd");
 
 const savingPlans=[];
 
 toRegister = () => {
-    let saving = {
-        value: amount.value,
-        idSavingPlan: planSelecter.options[planSelecter.selectedIndex].value,
-    };
-    console.log(saving)
 
+    let fee = {
+        value: amount.value,
+        idDebts: planSelecter.options[planSelecter.selectedIndex].value
+    };
+    console.log(fee)
+    let session = JSON.parse(window.localStorage.getItem('session'));
     //POST
     let xhr = new XMLHttpRequest();
     let baseUrl = window.location.origin + '/' + location.pathname.split('/')[1] + '/';
-    xhr.open('POST', baseUrl + "api/savings/addSaving");
+    xhr.open('POST', baseUrl + "api/debts/addFee?email="+session.email);
     xhr.setRequestHeader('Content-type', 'application/json');
-    xhr.send(JSON.stringify(saving));
+    xhr.send(JSON.stringify(fee));
 
     xhr.onload = () => {
-        let textAdd = 'Ocurrio un error al agregar el ahorro';
+        let textAdd = 'Ocurrio un error al agregar la cuota';
         if(xhr.status === 200){
-            textAdd = 'Ahorro agregado exitosamente'
+            textAdd = 'Cuota agregada exitosamente'
             amount.value = '';
             planSelecter.selectedIndex = 0;
         }
@@ -41,21 +42,15 @@ loadOptionsOfPlanSelecter = () => {
                 console.log(plan);
                 let option = document.createElement("option");
                 option.value = plan.id;
-                option.innerHTML = plan.description + ' - Meta: $' + plan.goal;
+                option.innerHTML = plan.description;
                 planSelecter.add(option);
             }
         }
     });
     let baseUrl = window.location.origin + '/' + location.pathname.split('/')[1] + '/';
     let session = JSON.parse(window.localStorage.getItem('session'));
-    xhr.open('GET', baseUrl + "api/savings/list?email=" + session.email);
+    xhr.open('GET', baseUrl + "api/debts/list?email=" + session.email);
     xhr.send();
-}
-
-authSession=()=> {
-    if (localStorage.getItem('session') === null) {
-        window.location="../general/login.html";
-    }
 }
 
 btAdd.addEventListener('click', toRegister);
