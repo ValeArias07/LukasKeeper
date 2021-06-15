@@ -24,7 +24,8 @@
                 <img src="../../images/model.jpg" class="profile_image" alt="">
                 <h4>Hola, <label id="nameModel"></label>! </h4>\
             </center>
-            <button class="optionsButton" id="addBtn" href="../add/addDebt.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar Deudas</span></button>
+            <button class="optionsButton" href="../add/addDebt.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar Deudas</span></button>
+            <button class="optionsButton" id="addFee"> <img src="../../images/feeDebt.png" class="icons" align="center"><span>Agregar Cuota</span></button>
             <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
 
             <h5> Recomiendanos a un amigo<br> LukasKeeper © 2021 </h5>
@@ -61,10 +62,17 @@
 
 <script>
     const periodBtn = document.getElementById('periodBtn');
+    const addFee = document.getElementById('addFee');
 
     goToMain = () => {
         window.location="../categories/debts.html";
     }
+
+    goToAdd = () => {
+        window.location="addFeeDebt.html";
+    }
+
+    addFee.addEventListener('click', goToAdd);
 
     periodBtn.addEventListener('click', goToMain);
 </script>

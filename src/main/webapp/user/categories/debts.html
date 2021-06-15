@@ -28,6 +28,7 @@
                     <h4>Hola, <label id="nameModel"></label>! </h4>
                 </center>
                 <button class="optionsButton" id="addBtn" href="../add/addDebt.html"><img src="../../images/addIncome.png" class="icons" align="center"><span>Agregar Deudas</span></button>
+                <button class="optionsButton" id="addFee"> <img src="../../images/feeDebt.png" class="icons" align="center"><span>Agregar Cuota</span></button>
                 <button class="optionsButton" id="periodBtn"> <img src="../../images/period.png" class="icons" align="center"><span>Ver por periodo</span></button>
                 <button class="optionsButton" id="compareBtn"> <img src="../../images/compare.png" class="icons" align="center"><span>Comparar entre categorias</span></button>
 
@@ -41,20 +42,8 @@
         </div>
 
             <div class="article" id="information">
-                <div id="formalesInformation">
-                    <h2 class="elementsTitle">Formales</h2>
-                    <div class="field "> <label> Cantidad </label><input type="text" id="x" /></div>
-                    <div class="field "> <label> Descripción </label><input type="text" id="y" /></div>
-                    <div class="field "><label> Fecha: </label><input type="date" id="z" /></div>
-                    <div class="buttonContainer"><button class="buttonPropt" id="buttonDeleteExtra"> <img src="../../images/garbage.png"> </button></div>
-                </div>
+                <div id="debtsInformation">
 
-                <div id="informalesInformation">
-                    <h2 class="elementsTitle">Informales</h2>
-                    <div class="field "> <label> Cantidad </label><input type="text" id="cantidadSalario" /></div>
-                    <div class="field "> <label> Descripción </label><input type="text" id="descripcionSalario" /></div>
-                    <div class="field "><label> Fecha: </label><input type="date" id="dateSalario" /></div>
-                    <div class="buttonContainer"><button class="buttonPropt" id="buttonDeleteSalario"> <img src="../../images/garbage.png"> </button></div>
                 </div>
             </div>
     </div>
@@ -65,6 +54,8 @@
 </body>
 
 <script src="js/debtsChart.js"></script>
+<script src="js/loadDebtsElements.js"></script>
+<script src="js/debtsConfig.js"></script>
 <script src="../../js/user.js"></script>
 <script src="../../js/session.js"></script>
 <script src="js/loadBasicElements.js"></script>
@@ -73,6 +64,7 @@
 
 <script>
     const addBtn = document.getElementById('addBtn');
+    const addFee = document.getElementById('addFee');
 
     goToAdd = () => {
         window.location="../add/addDebts.html";
@@ -82,6 +74,12 @@
             window.location="../general/login.html";
         }
     }
+
+    goToAdd = () => {
+        window.location="../add/addFeeDebt.html";
+    }
+
+    addFee.addEventListener('click', goToAdd);
     authSession();
     addBtn.addEventListener('click', goToAdd)
 </script>

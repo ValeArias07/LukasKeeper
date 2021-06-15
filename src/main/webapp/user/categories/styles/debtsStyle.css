@@ -100,23 +100,12 @@ article config
     justify-content: center;
 }
 
-#formalesInformation{
+#debtsInformation{
     border-radius: 16px;
-    width: 350px;
+    width: auto;
     height: auto;
     background: #FAEDE9;
     outline: black;
-    border: 4px solid #d0d0d0;
-}
-
-#informalesInformation{
-    border-radius: 16px;
-    width: 350px;
-    height: auto;
-    background: #FAEDE9;
-    /*! margin: 10px; */
-
-    margin-left: 193px;
     border: 4px solid #d0d0d0;
 }
 
