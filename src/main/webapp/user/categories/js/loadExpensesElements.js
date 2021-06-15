@@ -15,9 +15,10 @@ class loadExpensesElements{
                 }
             }
         });
-        xhr.open('DELETE', 'http://localhost:8081/LukasKeeper_war/api/expenses/delete/'+this.debt.id);
+        xhr.open('DELETE', 'http://localhost:8081/LukasKeeper_war/api/expenses/delete/'+this.expenses.id);
         xhr.send();
     }
+
 
     render = () =>{
         let component = document.createElement('div'); //<div></div>
@@ -25,36 +26,37 @@ class loadExpensesElements{
         component.className = 'elementsComponent';
 
         let fieldCantidad = document.createElement('div'); //<div></div>
-        component.className = 'field';
+        fieldCantidad.className = 'field';
         let cantidadLabel = document.createElement('label'); //<p></p>
         cantidadLabel.className = 'cantidadLabel';
-        let cantidadExpenses =document.createElement('label');
+        let cantidadExpenses =document.createElement('small');
         cantidadExpenses.id = 'cantidadExpenses';
 
         let fieldDescripcion = document.createElement('div'); //<div></div>
-        component.className = 'field';
-        let descripcionLabel = document.createElement('p'); //<small></small>
+        fieldDescripcion.className = 'field';
+        let descripcionLabel = document.createElement('label'); //<small></small>
         descripcionLabel.className = 'descripcionLabel';
-        let descripcionExpenses =document.createElement('p');
+        let descripcionExpenses =document.createElement('small');
         descripcionExpenses.id = "descripcionExpenses";
 
         let fieldFecha = document.createElement('div'); //<div></div>
-        component.className = 'field';
-        let fechaLabel = document.createElement('p'); //<small></small>
+        fieldFecha.className = 'field';
+        let fechaLabel = document.createElement('label'); //<small></small>
         fechaLabel.className = 'fechaLabel';
-        let fechaExpenses =document.createElement('p');
+        let fechaExpenses =document.createElement('small');
         fechaExpenses.id = "fechaExpenses";
 
         let delBtn = document.createElement('button');
         delBtn.innerHTML = 'Eliminar';
-        delBtn.className = 'delBtn';
+        delBtn.className = 'buttonDelete';
 
-        cantidadLabel.innerHTML = "Cantidad "; //<p>Nota 1</p>
-        descripcionLabel.innerHTML = "Descripción ";
-        fechaLabel.innerHTML = "Fecha ";
+
+        cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
+        descripcionLabel.innerHTML = "Descripción";
+        fechaLabel.innerHTML = "Fecha";
         cantidadExpenses.innerHTML = this.expenses.value;
         descripcionExpenses.innerHTML = this.expenses.description;
-        fechaExpenses.innerHTML = this.expenses.date;
+        fechaExpenses.innerHTML = this.expenses.date.substring(0,9);
 
         fieldCantidad.appendChild(cantidadLabel);
         fieldCantidad.appendChild(cantidadExpenses);
@@ -68,7 +70,9 @@ class loadExpensesElements{
         component.appendChild(fieldFecha);
         component.appendChild(delBtn);
 
+
         delBtn.addEventListener('click', this.deleteExpenses);
+
         return component;
     }
 }
