@@ -51,10 +51,10 @@ class loadExpensesElements{
         delBtn.className = 'buttonDelete';
 
 
-        cantidadLabel.innerHTML = "Cantidad"; //<p>Nota 1</p>
-        descripcionLabel.innerHTML = "Descripción";
-        fechaLabel.innerHTML = "Fecha";
-        cantidadExpenses.innerHTML = this.expenses.value;
+        cantidadLabel.innerHTML = "Cantidad: "; //<p>Nota 1</p>
+        descripcionLabel.innerHTML = "Descripción: ";
+        fechaLabel.innerHTML = "Fecha: ";
+        cantidadExpenses.innerHTML = this.expenses.value*(-1);
         descripcionExpenses.innerHTML = this.expenses.description;
         fechaExpenses.innerHTML = this.expenses.date.substring(0,9);
 

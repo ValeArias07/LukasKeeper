@@ -11,12 +11,10 @@ const getAllExpenses = () =>{
             console.log(response);
             let component = document.createElement('label'); //<div></div>
             component.className = 'elementsTitle';
-            component.innerHTML = "Entretenimiento";
             entretenimientoInformation.innerHTML = '';
             entretenimientoInformation.appendChild(component);
             let component2 = document.createElement('label'); //<div></div>
             component2.className = 'elementsTitle';
-            component2.innerHTML = "Salud";
             saludInformation.innerHTML = '';
             saludInformation.appendChild(component2);
 

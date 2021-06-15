@@ -111,9 +111,7 @@ const callAditionalData = () => {
                 for (let i = 0; i < response.length; i++) {
                     let dot = response[i];
                     sumIncome+=dot.value;
-                    console.log(sumExpense);
                 }
-                initDoubleChart();
             }
         });
         let session = JSON.parse(window.localStorage.getItem('session'));
@@ -125,6 +123,7 @@ const callAditionalData = () => {
 };
 
 periodBtn.addEventListener('click', init);
-compareBtn.addEventListener('click', callAditionalData);
+compareBtn.addEventListener('click', initDoubleChart);
 
 init();
+callAditionalData();
