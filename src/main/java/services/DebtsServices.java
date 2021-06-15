@@ -62,7 +62,6 @@ public class DebtsServices {
 			fee.setDate(new Date());
 			fee.setIdSavingPlan(0);
 			provider.addFee(fee);
-
 			return  Response
 					.status(200)
 					.header("Access-Control-Allow-Origin","*")
@@ -76,9 +75,30 @@ public class DebtsServices {
 	}
 
 	@GET
+	@Produces("application/json")
 	@Path("balance")
-	public Response balance() {
-		return null;
+	public Response balance(@QueryParam("email") String email) {
+		try {
+			DebtProvider debtProvider = new DebtProvider();
+			return  Response
+					.status(200)
+					.entity(debtProvider.debtBalance(email))
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+			return  Response
+					.status(500)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return  Response
+					.status(200)
+					.header("Access-Control-Allow-Origin","*")
+					.build();
+		}
+
 	}
 
 	@GET

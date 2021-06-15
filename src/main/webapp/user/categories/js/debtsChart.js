@@ -6,7 +6,7 @@ let labelArray = [];
 
 let sumDebts=0;
 let sumSavings=0;
-
+let balanceDebts=0;
 let background =[];
 var canvas = document.getElementById("canvas");
 
@@ -30,7 +30,7 @@ const callData = () => {
         });
         let session = JSON.parse(window.localStorage.getItem('session'));
 
-        xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/debts/getMonthlyData?email=" + session.email + "&date=2021-06");
+        xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/debts/getMonthlyData?email=" + session.email +"&date=2021-06");
 
         xhr.send();
         return labelArray;
@@ -89,31 +89,46 @@ const initDoubleChart = () => {
             labels:['Deudas','Ahorros'],
             datasets: [{
                 label: 'Comparacion',
-                data: [sumDebts, sumSavings],
+                data: [balanceDebts, sumSavings],
                 backgroundColor: ["rgb(248, 126, 150)","rgb(57, 77, 114)"]
             }]
         }
     });
 }
 
-const callAditionalData = () => {
-    if(sumSavings==0){
+const getBalance=()=>{
+    if(balanceDebts===0) {
         let xhr = new XMLHttpRequest();
         xhr.addEventListener('readystatechange', () => {
             if (xhr.readyState === 4) {
                 let json = xhr.responseText;
                 let response = JSON.parse(json);
+                balanceDebts = response;
+            }
+        });
+        let session = JSON.parse(window.localStorage.getItem('session'));
+        xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/debts/balance?email=" + session.email);
+        xhr.send();
+        return balanceDebts;
+    }else{
+        return balanceDebts;
+    }
+}
 
-                for (let i = 0; i < response.length; i++) {
-                    let dot = response[i];
-                    sumSavings+=dot.value;
-                    console.log(sumSavings);
-                }
+const callAditionalData = () => {
+    if(sumSavings==0){
+        getBalance();
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', () => {
+            if (xhr.readyState === 4) {
+                let json = xhr.responseText;
+                let response = JSON.parse(json);
+                sumSavings=response;
                 initDoubleChart();
             }
         });
         let session = JSON.parse(window.localStorage.getItem('session'));
-        xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/savings/getMonthlyData?email="+session.email+"&date=2021-06");
+        xhr.open("GET", "http://localhost:8081/LukasKeeper_war/api/savings/getAllSumFee?email="+session.email);
         xhr.send();
     }else{
         initDoubleChart();

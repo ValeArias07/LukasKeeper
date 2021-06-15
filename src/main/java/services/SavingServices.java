@@ -222,7 +222,7 @@ public class SavingServices {
 			FeeProvider provider = new FeeProvider();
 			return  Response
 					.status(200)
-					.entity(provider.getAllSavingsFee (email))
+					.entity(provider.getAllSumSavingsFee(email))
 					.header("Access-Control-Allow-Origin","*")
 					.build();
 		} catch (SQLException | ParseException throwables) {
