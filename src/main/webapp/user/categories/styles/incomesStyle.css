@@ -60,7 +60,7 @@ article config
 
 
 .field {
-    display: flex;
+    padding: 5px;
     flex-direction: row;
     justify-content: center;
 }
@@ -202,7 +202,6 @@ Sidebar consig
 }
 
 .elementsComponent{
-    display: flex;
     flex-direction: column;
     justify-content: center;
     border: 2px solid #848181;
